@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using ChatWpf.DataModels;
 using ChatWpf.ViewModel.Base;
 using ChatWpf.Window;
 
@@ -21,11 +22,13 @@ namespace ChatWpf.ViewModel
 
         public bool Borderless { get { return (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked); } }
 
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
 
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
 
-        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
+
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
         public int OuterMarginSize
         {
@@ -56,6 +59,7 @@ namespace ChatWpf.ViewModel
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
 
         public int TitleHeight { get; set; } = 42;
+
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
         public ICommand MinimizeCommand { get; set; }
@@ -106,7 +110,6 @@ namespace ChatWpf.ViewModel
             OnPropertyChanged(nameof(WindowRadius));
             OnPropertyChanged(nameof(WindowCornerRadius));
         }
-
 
     }
 }
