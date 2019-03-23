@@ -7,12 +7,8 @@
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
 
-    <Border Background="{StaticResource WordBlueBrush}">
+    <Border>
         <Grid>
-            <!-- Blue background image -->
-            <Grid.Background>
-                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
-            </Grid.Background>
 
             <!-- Main content scroll -->
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -37,7 +33,7 @@
                                    Foreground="{StaticResource WordBlueBrush}" />
 
                             <!-- Sign up subtext-->
-                            <TextBlock Text="It's about to get fun" 
+                            <TextBlock Text="ПИШИ, ЧЕРТЯКА!" 
                                        FontSize="{StaticResource FontSizeRegular}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
                                        Margin="0 0 0 20"
@@ -47,7 +43,7 @@
                             <TextBox Tag="Email" />
 
                             <!-- Password -->
-                            <TextBox Tag="Password" Margin="0 0 0 30" />
+                            <PasswordBox Tag="Password" Margin="0 0 0 30" />
 
                             <!-- Next button -->
                             <Button Content="Next" HorizontalAlignment="Center" />

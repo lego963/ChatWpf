@@ -75,8 +75,8 @@
 
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
-                                            <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,-5">
-                                                <Run Text="Chat Application" Foreground="{StaticResource WordBlueBrush}"></Run>
+                                            <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,0">
+                                                <Run Text="Chat Application" Foreground="{StaticResource WordBlueBrush}"/>
                                             </TextBlock>
                                         </Viewbox>
 
@@ -112,7 +112,15 @@
             GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" />
-    </Grid>
+    <Border Background="{StaticResource WordBlueBrush}">
+        <Grid>
+
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
+            </Grid.Background>
+
+            <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" Background="Transparent" />
+        </Grid>
+    </Border>
+
 </Window>

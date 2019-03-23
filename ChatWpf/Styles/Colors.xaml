@@ -22,13 +22,10 @@
     <Color x:Key="WordBlue">#3099c5</Color>
     <SolidColorBrush x:Key="WordBlueBrush" Color="{StaticResource WordBlue}" />
 
-    <Color x:Key="WordOrange">#ffa800</Color>
-    <SolidColorBrush x:Key="WordOrangeBrush" Color="{StaticResource WordOrange}" />
+    <Color x:Key="WordBlueHover">#90dbf9</Color>
+    <SolidColorBrush x:Key="WordBlueHoverBrush" Color="{StaticResource WordBlueHover}" />
 
-    <Color x:Key="WordRed">#ff4747</Color>
-    <SolidColorBrush x:Key="WordRedBrush" Color="{StaticResource WordRed}" />
-
-    <Color x:Key="WordGreen">#00c541</Color>
-    <SolidColorBrush x:Key="WordGreenBrush" Color="{StaticResource WordGreen}" />
+    <Color x:Key="WordTextHover">#d13aff</Color>
+    <SolidColorBrush x:Key="WordTextHoverBrush" Color="{StaticResource WordTextHover}" />
 
 </ResourceDictionary>
