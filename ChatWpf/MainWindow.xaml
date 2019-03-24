@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ChatWpf"
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
+        xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -128,7 +129,9 @@
             <Frame Grid.Column="1" x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" Background="Transparent" />
 
             <!-- Side Menu -->
-            <controls:SideMenuControl Grid.Column="0">
+            <controls:SideMenuControl>
+
+                <chat:ChatListControl />
 
             </controls:SideMenuControl>
         </Grid>
