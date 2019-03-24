@@ -28,4 +28,7 @@
     <Color x:Key="WordTextHover">#d13aff</Color>
     <SolidColorBrush x:Key="WordTextHoverBrush" Color="{StaticResource WordTextHover}" />
 
+    <Color x:Key="WordDarkBlue">#0c6991</Color>
+    <SolidColorBrush x:Key="WordDarkBlueBrush" Color="{StaticResource WordDarkBlue}" />
+
 </ResourceDictionary>

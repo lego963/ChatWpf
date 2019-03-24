@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatWpf"
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+        xmlns:controls="clr-namespace:ChatWpf.Controls"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -115,11 +116,21 @@
     <Border Background="{StaticResource WordBlueBrush}">
         <Grid>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
             </Grid.Background>
 
-            <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" Background="Transparent" />
+            <Frame Grid.Column="1" x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" Background="Transparent" />
+
+            <!-- Side Menu -->
+            <controls:SideMenuControl Grid.Column="0">
+
+            </controls:SideMenuControl>
         </Grid>
     </Border>
 

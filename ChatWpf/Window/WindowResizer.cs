@@ -33,6 +33,8 @@ namespace ChatWpf.Window
 
         public event Action<WindowDockPosition> WindowDockChanged = (dock) => { };
 
+        public Rectangle CurrentMonitorSize { get; set; } = new Rectangle();
+
         public WindowResizer(System.Windows.Window window)
         {
             mWindow = window;
@@ -149,6 +151,8 @@ namespace ChatWpf.Window
                 lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcMonitor.Right - lPrimaryScreenInfo.rcMonitor.Left;
                 lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcMonitor.Bottom - lPrimaryScreenInfo.rcMonitor.Top;
             }
+
+            CurrentMonitorSize = new Rectangle(lMmi.ptMaxPosition.X, lMmi.ptMaxPosition.Y, lMmi.ptMaxSize.X + lMmi.ptMaxPosition.X, lMmi.ptMaxSize.Y + lMmi.ptMaxPosition.Y);
 
             var minSize = mTransformToDevice.Transform(new Point(mWindow.MinWidth, mWindow.MinHeight));
 

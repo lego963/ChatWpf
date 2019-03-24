@@ -10,15 +10,17 @@ namespace ChatWpf.ViewModel
     {
         private System.Windows.Window mWindow;
 
+        private WindowResizer mWindowResizer;
+
         private int mOuterMarginSize = 10;
 
         private int mWindowRadius = 10;
 
         private WindowDockPosition mDockPosition = WindowDockPosition.Undocked;
 
-        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 600;
 
-        public double WindowMinimumHeight { get; set; } = 400;
+        public double WindowMinimumHeight { get; set; } = 600;
 
         public bool Borderless { get { return (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked); } }
 
@@ -28,7 +30,7 @@ namespace ChatWpf.ViewModel
 
         public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
 
         public int OuterMarginSize
         {
@@ -84,9 +86,9 @@ namespace ChatWpf.ViewModel
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
 
-            var resizer = new WindowResizer(mWindow);
+            mWindowResizer = new WindowResizer(mWindow);
 
-            resizer.WindowDockChanged += (dock) =>
+            mWindowResizer.WindowDockChanged += (dock) =>
             {
                 mDockPosition = dock;
 
@@ -98,7 +100,10 @@ namespace ChatWpf.ViewModel
         {
             var position = Mouse.GetPosition(mWindow);
 
-            return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
+            if (mWindow.WindowState == WindowState.Maximized)
+                return new Point(position.X + mWindowResizer.CurrentMonitorSize.Left, position.Y + mWindowResizer.CurrentMonitorSize.Top);
+            else
+                return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
         }
 
         private void WindowResized()
