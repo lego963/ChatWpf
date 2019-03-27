@@ -35,6 +35,9 @@ namespace ChatWpf.Core.ViewModel
 
         public async Task RegisterAsync()
         {
+            IoC.IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
+            return;
+
             IoC.IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
 
             await Task.Delay(1);

@@ -8,6 +8,7 @@
         xmlns:controls="clr-namespace:ChatWpf.Controls"
         xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
         xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
+        xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -24,7 +25,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         <!-- Outer border with the dropshadow margin -->
-                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
 
                             <!-- Main window outline -->
                             <Grid>
@@ -80,7 +81,7 @@
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
                                             <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,0">
-                                                <Run Text="Chat Application" Foreground="{StaticResource WordBlueBrush}"/>
+                                                <Run Text="Synthesis" Foreground="{StaticResource WordBlueBrush}"/>
                                             </TextBlock>
                                         </Viewbox>
 
@@ -94,7 +95,7 @@
                                     </Grid>
 
                                     <!-- Page Content -->
-                                    <Border Grid.Row="1" Padding="{Binding InnerContentPadding}">
+                                    <Border Grid.Row="1" Padding="{Binding InnerContentPadding}" ClipToBounds="True">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
 
@@ -120,7 +121,7 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -134,7 +135,10 @@
                    Background="Transparent" />
 
             <!-- Side Menu -->
-            <controls:SideMenuControl Grid.Column="0">
+            <controls:SideMenuControl 
+                Width="300" 
+                attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
+                                     Source={x:Static viewModels:ViewModelLocator.Instance}}">
 
                 <chat:ChatListControl />
 
