@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace ChatWpf.ViewModel.Chat.Design
+namespace ChatWpf.Core.ViewModel.Chat.Design
 {
     public class ChatListDesignModel : ChatListViewModel
     {
@@ -58,7 +54,7 @@ namespace ChatWpf.ViewModel.Chat.Design
                     Message = "The new server is up, got 192.168.1.1",
                     ProfilePictureRGB = "00d405"
                 },
-                                new ChatListItemViewModel
+                new ChatListItemViewModel
                 {
                     Name = "Luke",
                     Initials = "LM",

@@ -7,6 +7,7 @@
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
         xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
+        xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -16,6 +17,7 @@
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
         Title="MainWindow" Height="600" Width="900">
+
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Template">
@@ -126,10 +128,13 @@
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
             </Grid.Background>
 
-            <Frame Grid.Column="1" x:Name="MainFrame" Content="{Binding CurrentPage, Converter={valueConverter:ApplicationPageValueConverter}}" Background="Transparent" />
+            <Frame Grid.Column="1" 
+                   x:Name="MainFrame" 
+                   Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static viewModels:ViewModelLocator.Instance}, Converter={valueConverter:ApplicationPageValueConverter}}"
+                   Background="Transparent" />
 
             <!-- Side Menu -->
-            <controls:SideMenuControl>
+            <controls:SideMenuControl Grid.Column="0">
 
                 <chat:ChatListControl />
 

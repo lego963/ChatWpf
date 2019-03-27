@@ -1,4 +1,4 @@
-﻿using ChatWpf.ViewModel;
+﻿using ChatWpf.Core.ViewModel;
 
 namespace ChatWpf.Pages
 {

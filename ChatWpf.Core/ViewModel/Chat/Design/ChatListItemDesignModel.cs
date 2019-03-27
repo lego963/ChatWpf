@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChatWpf.ViewModel.Chat.Design
+﻿namespace ChatWpf.Core.ViewModel.Chat.Design
 {
     public class ChatListItemDesignModel : ChatListItemViewModel
     {

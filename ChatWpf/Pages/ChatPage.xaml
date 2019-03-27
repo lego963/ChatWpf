@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:pages="clr-namespace:ChatWpf.Pages"
-      xmlns:viewModel="clr-namespace:ChatWpf.ViewModel"
+      xmlns:viewModel="clr-namespace:ChatWpf.Core.ViewModel;assembly=ChatWpf.Core"
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" 

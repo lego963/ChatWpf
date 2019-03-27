@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using ChatWpf.DataModels;
-using ChatWpf.ViewModel.Base;
+using ChatWpf.Core.DataModels;
+using ChatWpf.Core.ViewModel.Base;
 using ChatWpf.Window;
 
 namespace ChatWpf.ViewModel
@@ -22,29 +22,21 @@ namespace ChatWpf.ViewModel
 
         public double WindowMinimumHeight { get; set; } = 600;
 
-        public bool Borderless { get { return (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked); } }
+        public bool Borderless => (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked);
 
-        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
+        public int ResizeBorder => Borderless ? 0 : 6;
 
-        public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
+        public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
 
         public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
-
         public int OuterMarginSize
         {
-            get
-            {
-                return Borderless ? 0 : mOuterMarginSize;
-            }
-            set
-            {
-                mOuterMarginSize = value;
-            }
+            get => Borderless ? 0 : mOuterMarginSize;
+            set => mOuterMarginSize = value;
         }
 
-        public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
+        public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
 
         public int WindowRadius
         {
@@ -58,11 +50,11 @@ namespace ChatWpf.ViewModel
             }
         }
 
-        public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
+        public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
 
         public int TitleHeight { get; set; } = 42;
 
-        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+        public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
 
         public ICommand MinimizeCommand { get; set; }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ChatWpf.ViewModel.Base
+namespace ChatWpf.Core.ViewModel.Base
 {
     public class RelayParameterizedCommand : ICommand
     {

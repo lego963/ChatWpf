@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using ChatWpf.Expressions;
+using ChatWpf.Core.Expressions;
 using PropertyChanged;
 
-namespace ChatWpf.ViewModel.Base
+namespace ChatWpf.Core.ViewModel.Base
 {
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged
@@ -17,7 +17,7 @@ namespace ChatWpf.ViewModel.Base
             PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        protected async Task RunCommand(Expression<Func<bool>> updatingFlag, Func<Task> action)
+        protected async Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<Task> action)
         {
             if (updatingFlag.GetPropertyValue())
                 return;

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace ChatWpf.Security
+namespace ChatWpf.Core.Security
 {
     public static class SecureStringHelpers
     {

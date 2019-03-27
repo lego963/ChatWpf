@@ -8,11 +8,11 @@ namespace ChatWpf.ValueConverter
     public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
         where T : class, new()
     {
-        private static T mConverter = null;
+        private static T Converter = null;
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return mConverter ?? (mConverter = new T());
+            return Converter ?? (Converter = new T());
         }
 
         public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);

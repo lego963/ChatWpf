@@ -119,8 +119,7 @@ namespace ChatWpf.Window
 
         private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
         {
-            POINT lMousePosition;
-            GetCursorPos(out lMousePosition);
+            GetCursorPos(out var lMousePosition);
 
             var lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
 

@@ -1,18 +1,17 @@
 ﻿using System.Security;
-using System.Windows;
 using ChatWpf.Core.ViewModel;
 using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для LoginPage.xaml
+    /// Логика взаимодействия для RegisterPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage<LoginViewModel>, IHavePassword
+    public partial class RegisterPage : BasePage<LoginViewModel>, IHavePassword
     {
         public SecureString SecurePassword => PasswordText.SecurePassword;
 
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }

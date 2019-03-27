@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using ChatWpf.DataModels;
+using ChatWpf.Core.DataModels;
 using ChatWpf.Pages;
 
 namespace ChatWpf.ValueConverter
@@ -18,6 +18,9 @@ namespace ChatWpf.ValueConverter
 
                 case ApplicationPage.Chat:
                     return new ChatPage();
+
+                case ApplicationPage.Register:
+                    return new RegisterPage();
 
                 default:
                     Debugger.Break();

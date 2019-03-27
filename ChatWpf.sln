@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatWpf", "ChatWpf\ChatWpf.csproj", "{64001F4C-B05E-46DE-A0BC-7EF6C7DB8C50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatWpf.Core", "ChatWpf.Core\ChatWpf.Core.csproj", "{E74820A6-7222-4CCD-84C0-928A6F645D7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{64001F4C-B05E-46DE-A0BC-7EF6C7DB8C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64001F4C-B05E-46DE-A0BC-7EF6C7DB8C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64001F4C-B05E-46DE-A0BC-7EF6C7DB8C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74820A6-7222-4CCD-84C0-928A6F645D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74820A6-7222-4CCD-84C0-928A6F645D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74820A6-7222-4CCD-84C0-928A6F645D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74820A6-7222-4CCD-84C0-928A6F645D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using ChatWpf.ViewModel;
+﻿using ChatWpf.Core.ViewModel;
+using ChatWpf.ViewModel;
 
 namespace ChatWpf
 {
@@ -7,6 +8,7 @@ namespace ChatWpf
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+
         public MainWindow()
         {
             InitializeComponent();

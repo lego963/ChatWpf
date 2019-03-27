@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using ChatWpf.Animation;
-using ChatWpf.ViewModel.Base;
+using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Pages
 {
@@ -18,7 +18,7 @@ namespace ChatWpf.Pages
 
         public VM ViewModel
         {
-            get { return mViewModel; }
+            get => mViewModel;
             set
             {
                 if (mViewModel == value)
@@ -35,17 +35,17 @@ namespace ChatWpf.Pages
             if (PageLoadAnimation != PageAnimation.None)
                 Visibility = Visibility.Collapsed;
 
-            Loaded += BasePage_Loaded;
+            Loaded += BasePage_LoadedAsync;
 
             ViewModel = new VM();
         }
 
-        private async void BasePage_Loaded(object sender, RoutedEventArgs e)
+        private async void BasePage_LoadedAsync(object sender, RoutedEventArgs e)
         {
-            await AnimateIn();
+            await AnimateInAsync();
         }
 
-        public async Task AnimateIn()
+        public async Task AnimateInAsync()
         {
             if (PageLoadAnimation == PageAnimation.None)
                 return;
@@ -53,12 +53,12 @@ namespace ChatWpf.Pages
             switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRight(SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
                     break;
             }
         }
 
-        public async Task AnimateOut()
+        public async Task AnimateOutAsync()
         {
             if (PageUnloadAnimation == PageAnimation.None)
                 return;
@@ -66,7 +66,7 @@ namespace ChatWpf.Pages
             switch (PageUnloadAnimation)
             {
                 case PageAnimation.SlideAndFadeOutToLeft:
-                    await this.SlideAndFadeOutToLeft(SlideSeconds);
+                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
                     break;
             }
         }
