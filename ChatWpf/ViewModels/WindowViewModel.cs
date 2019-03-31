@@ -6,21 +6,21 @@ namespace ChatWpf
 {
     public class WindowViewModel : BaseViewModel
     {
-        private System.Windows.Window mWindow;
+        private System.Windows.Window _mWindow;
 
-        private WindowResizer mWindowResizer;
+        private WindowResizer _mWindowResizer;
 
-        private int mOuterMarginSize = 10;
+        private int _mOuterMarginSize = 10;
 
-        private int mWindowRadius = 10;
+        private int _mWindowRadius = 10;
 
-        private WindowDockPosition mDockPosition = WindowDockPosition.Undocked;
+        private WindowDockPosition _mDockPosition = WindowDockPosition.Undocked;
 
         public double WindowMinimumWidth { get; set; } = 600;
 
         public double WindowMinimumHeight { get; set; } = 600;
 
-        public bool Borderless => (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked);
+        public bool Borderless => (_mWindow.WindowState == WindowState.Maximized || _mDockPosition != WindowDockPosition.Undocked);
 
         public int ResizeBorder => Borderless ? 0 : 6;
 
@@ -30,8 +30,8 @@ namespace ChatWpf
 
         public int OuterMarginSize
         {
-            get => Borderless ? 0 : mOuterMarginSize;
-            set => mOuterMarginSize = value;
+            get => Borderless ? 0 : _mOuterMarginSize;
+            set => _mOuterMarginSize = value;
         }
 
         public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
@@ -40,11 +40,11 @@ namespace ChatWpf
         {
             get
             {
-                return Borderless ? 0 : mWindowRadius;
+                return Borderless ? 0 : _mWindowRadius;
             }
             set
             {
-                mWindowRadius = value;
+                _mWindowRadius = value;
             }
         }
 
@@ -64,36 +64,36 @@ namespace ChatWpf
 
         public WindowViewModel(System.Windows.Window window)
         {
-            mWindow = window;
+            _mWindow = window;
 
-            mWindow.StateChanged += (sender, e) =>
+            _mWindow.StateChanged += (sender, e) =>
             {
                 WindowResized();
             };
 
-            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
-            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => mWindow.Close());
-            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            MinimizeCommand = new RelayCommand(() => _mWindow.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => _mWindow.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => _mWindow.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_mWindow, GetMousePosition()));
 
-            mWindowResizer = new WindowResizer(mWindow);
+            _mWindowResizer = new WindowResizer(_mWindow);
 
-            mWindowResizer.WindowDockChanged += (dock) =>
+            _mWindowResizer.WindowDockChanged += (dock) =>
             {
-                mDockPosition = dock;
+                _mDockPosition = dock;
 
                 WindowResized();
             };
         }
 
-        private Point GetMousePosition()
+        private System.Windows.Point GetMousePosition()
         {
-            var position = Mouse.GetPosition(mWindow);
+            var position = Mouse.GetPosition(_mWindow);
 
-            if (mWindow.WindowState == WindowState.Maximized)
-                return new Point(position.X + mWindowResizer.CurrentMonitorSize.Left, position.Y + mWindowResizer.CurrentMonitorSize.Top);
+            if (_mWindow.WindowState == WindowState.Maximized)
+                return new System.Windows.Point(position.X + _mWindowResizer.CurrentMonitorSize.Left, position.Y + _mWindowResizer.CurrentMonitorSize.Top);
             else
-                return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
+                return new System.Windows.Point(position.X + _mWindow.Left, position.Y + _mWindow.Top);
         }
 
         private void WindowResized()

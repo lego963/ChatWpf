@@ -9,7 +9,7 @@ namespace ChatWpf.Core
 
         public string Initials { get; set; }
 
-        public string ProfilePictureRGB { get; set; }
+        public string ProfilePictureRgb { get; set; }
 
         public bool NewContentAvailable { get; set; }
 

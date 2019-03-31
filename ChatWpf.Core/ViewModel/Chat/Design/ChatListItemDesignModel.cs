@@ -9,7 +9,7 @@
             Initials = "LM";
             Name = "Luke";
             Message = "This chat app is awesome! I bet it will be fast too";
-            ProfilePictureRGB = "3099c5";
+            ProfilePictureRgb = "3099c5";
         }
 
     }

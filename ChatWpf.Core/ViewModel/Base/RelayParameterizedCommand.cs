@@ -5,13 +5,13 @@ namespace ChatWpf.Core
 {
     public class RelayParameterizedCommand : ICommand
     {
-        private Action<object> mAction;
+        private Action<object> _mAction;
 
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 
         public RelayParameterizedCommand(Action<object> action)
         {
-            mAction = action;
+            _mAction = action;
         }
 
         public bool CanExecute(object parameter)
@@ -21,7 +21,7 @@ namespace ChatWpf.Core
 
         public void Execute(object parameter)
         {
-            mAction(parameter);
+            _mAction(parameter);
         }
     }
 }
