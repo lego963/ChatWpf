@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using ChatWpf.Animation;
 
-namespace ChatWpf.AttachedProperties
+namespace ChatWpf
 {
     public abstract class AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool> where Parent : BaseAttachedProperty<Parent, bool>, new()
     {

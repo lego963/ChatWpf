@@ -4,11 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatWpf"
-        xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
         xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
-        xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
-        xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -37,7 +34,7 @@
 
                                 <!-- Window border and dropshadown -->
                                 <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
-                                    Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    Background="{StaticResource ForegroundLightBrush}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                                     </Border.Effect>
@@ -129,16 +126,18 @@
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
             </Grid.Background>
 
-            <Frame Grid.Column="1" 
-                   x:Name="MainFrame" 
-                   Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static viewModels:ViewModelLocator.Instance}, Converter={valueConverter:ApplicationPageValueConverter}}"
-                   Background="Transparent" />
+            <controls:PageHost Grid.Column="1" 
+                            d:DataContext=""
+                            DataContext="{Binding ApplicationViewModel.CurrentPage, 
+                                     Source={x:Static local:ViewModelLocator.Instance},  
+                                     Converter={local:ApplicationPageValueConverter}}"
+                            CurrentPage="{Binding}" />
 
             <!-- Side Menu -->
-            <controls:SideMenuControl 
+            <controls:SideMenuControl
                 Width="300" 
-                attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
-                                     Source={x:Static viewModels:ViewModelLocator.Instance}}">
+                local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
+                                     Source={x:Static local:ViewModelLocator.Instance}}">
 
                 <chat:ChatListControl />
 

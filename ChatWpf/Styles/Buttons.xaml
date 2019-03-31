@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
-                    xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter">
+                    xmlns:chatWpf="clr-namespace:ChatWpf">
 
 
     <ResourceDictionary.MergedDictionaries>
@@ -91,7 +90,7 @@
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
 
-        <Setter Property="attachedProperties:IsBusyProperty.Value" Value="False" />
+        <Setter Property="chatWpf:IsBusyProperty.Value" Value="False" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -104,7 +103,7 @@
                             SnapsToDevicePixels="True">
                         <Grid>
                             <TextBlock Text="{TemplateBinding Content}" 
-                                       Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
+                                       Visibility="{TemplateBinding chatWpf:IsBusyProperty.Value, Converter={chatWpf:BooleanToVisibilityConverter}}"
                                        Focusable="False" 
                                        FontFamily="{TemplateBinding FontFamily}"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -115,7 +114,7 @@
                             <TextBlock Style="{StaticResource SpinningText}" 
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                       Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}" />
+                                       Visibility="{TemplateBinding chatWpf:IsBusyProperty.Value, Converter={chatWpf:BooleanToVisibilityConverter}, ConverterParameter=True}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

@@ -1,10 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using ChatWpf.Core.DataModels;
-using ChatWpf.Core.Security;
-using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel
+namespace ChatWpf.Core
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -25,20 +22,17 @@ namespace ChatWpf.Core.ViewModel
         {
             await RunCommandAsync(() => LoginIsRunning, async () =>
             {
-                await Task.Delay(5000);
+                await Task.Delay(1000);
 
-                var email = Email;
+                IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
 
-                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
             });
         }
 
         public async Task RegisterAsync()
         {
-            IoC.IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
-            return;
 
-            IoC.IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
+            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
 
             await Task.Delay(1);
         }

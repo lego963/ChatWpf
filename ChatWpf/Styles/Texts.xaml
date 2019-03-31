@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
-                    xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter">
+                    xmlns:chatWpf="clr-namespace:ChatWpf">
 
     <Style TargetType="{x:Type TextBlock}" x:Key="HeaderText" BasedOn="{StaticResource BaseTextBlockStyle}">
         <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}" />
@@ -90,7 +89,7 @@
         <Setter Property="Background" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundVeryDarkBrush}" />
 
-        <Setter Property="attachedProperties:MonitorPasswordProperty.Value" Value="True" />
+        <Setter Property="chatWpf:MonitorPasswordProperty.Value" Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -111,7 +110,7 @@
                                    x:Name="placeholder"
                                    FontFamily="{StaticResource LatoThin}"
                                    Padding="{TemplateBinding Padding}"
-                                   Visibility="{TemplateBinding attachedProperties:HasTextProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
+                                   Visibility="{TemplateBinding chatWpf:HasTextProperty.Value, Converter={chatWpf:BooleanToVisibilityConverter}}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                    Foreground="{StaticResource ForegroundVeryDarkBrush}"

@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.Window
+﻿namespace ChatWpf
 {
     public enum WindowDockPosition
     {

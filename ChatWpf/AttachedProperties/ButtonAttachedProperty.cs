@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.AttachedProperties
+﻿namespace ChatWpf
 {
     public class IsBusyProperty : BaseAttachedProperty<IsBusyProperty, bool>
     {

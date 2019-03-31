@@ -1,6 +1,5 @@
-﻿using ChatWpf.Core.ViewModel.Base;
-
-namespace ChatWpf.Core.ViewModel.Chat
+﻿
+namespace ChatWpf.Core
 {
     public class ChatListItemViewModel : BaseViewModel
     {

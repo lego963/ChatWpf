@@ -1,7 +1,4 @@
-﻿using ChatWpf.Core.ViewModel;
-using ChatWpf.ViewModel;
-
-namespace ChatWpf
+﻿namespace ChatWpf
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

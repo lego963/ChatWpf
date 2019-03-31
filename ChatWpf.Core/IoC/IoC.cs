@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatWpf.Core.ViewModel;
-using Ninject;
+﻿using Ninject;
 
-namespace ChatWpf.Core.IoC
+namespace ChatWpf.Core
 {
     public static class IoC
     {

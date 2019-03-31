@@ -2,22 +2,17 @@
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace ChatWpf.Animation
+namespace ChatWpf
 {
-    public static class FrameworkElementAnimation
+    public static class FrameworkElementAnimations
     {
         public static async Task SlideAndFadeInFromRightAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true)
         {
             var sb = new Storyboard();
-
             sb.AddSlideFromRight(seconds, element.ActualWidth, keepMargin: keepMargin);
-
             sb.AddFadeIn(seconds);
-
             sb.Begin(element);
-
             element.Visibility = Visibility.Visible;
-
             await Task.Delay((int)(seconds * 1000));
         }
 

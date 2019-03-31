@@ -1,34 +1,19 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using ChatWpf.Animation;
-using ChatWpf.Core.ViewModel.Base;
+using ChatWpf.Core;
 
-namespace ChatWpf.Pages
+namespace ChatWpf
 {
-    public class BasePage<VM> : Page where VM : BaseViewModel, new()
+    public class BasePage : Page
     {
-        private VM mViewModel;
-
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
 
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
 
-        public float SlideSeconds { get; set; } = 0.8f;
+        public float SlideSeconds { get; set; } = 0.4f;
 
-        public VM ViewModel
-        {
-            get => mViewModel;
-            set
-            {
-                if (mViewModel == value)
-                    return;
-
-                mViewModel = value;
-
-                DataContext = mViewModel;
-            }
-        }
+        public bool ShouldAnimateOut { get; set; }
 
         public BasePage()
         {
@@ -36,13 +21,14 @@ namespace ChatWpf.Pages
                 Visibility = Visibility.Collapsed;
 
             Loaded += BasePage_LoadedAsync;
-
-            ViewModel = new VM();
         }
 
         private async void BasePage_LoadedAsync(object sender, RoutedEventArgs e)
         {
-            await AnimateInAsync();
+            if (ShouldAnimateOut)
+                await AnimateOutAsync();
+            else
+                await AnimateInAsync();
         }
 
         public async Task AnimateInAsync()
@@ -70,5 +56,31 @@ namespace ChatWpf.Pages
                     break;
             }
         }
+    }
+
+    public class BasePage<VM> : BasePage
+        where VM : BaseViewModel, new()
+    {
+        private VM mViewModel;
+
+        public VM ViewModel
+        {
+            get => mViewModel;
+            set
+            {
+                if (mViewModel == value)
+                    return;
+
+                mViewModel = value;
+
+                DataContext = mViewModel;
+            }
+        }
+
+        public BasePage() : base()
+        {
+            ViewModel = new VM();
+        }
+
     }
 }

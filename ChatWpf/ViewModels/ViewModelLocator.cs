@@ -1,7 +1,6 @@
-﻿using ChatWpf.Core.IoC;
-using ChatWpf.Core.ViewModel;
+﻿using ChatWpf.Core;
 
-namespace ChatWpf.ViewModels
+namespace ChatWpf
 {
     public class ViewModelLocator
     {

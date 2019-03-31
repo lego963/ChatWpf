@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.Animation
+﻿namespace ChatWpf
 {
     public enum PageAnimation
     {

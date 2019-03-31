@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChatWpf.Core.ViewModel.Chat.Design
+namespace ChatWpf.Core
 {
     public class ChatListDesignModel : ChatListViewModel
     {

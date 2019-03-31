@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace ChatWpf.ValueConverter
+namespace ChatWpf
 {
     public class StringRGBToBrushConverter : BaseValueConverter<StringRGBToBrushConverter>
     {

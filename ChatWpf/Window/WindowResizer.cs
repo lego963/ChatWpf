@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace ChatWpf.Window
+namespace ChatWpf
 {
     public class WindowResizer
     {
@@ -12,7 +12,7 @@ namespace ChatWpf.Window
 
         private Rect mScreenSize = new Rect();
 
-        private int mEdgeTolerance = 2;
+        private int mEdgeTolerance = 8;
 
         private Matrix mTransformToDevice;
 
@@ -121,13 +121,11 @@ namespace ChatWpf.Window
         {
             GetCursorPos(out var lMousePosition);
 
-            var lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
-
-            var lPrimaryScreenInfo = new MONITORINFO();
-            if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
-                return;
-
             var lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
+
+            var lCurrentScreenInfo = new MONITORINFO();
+            if (GetMonitorInfo(lCurrentScreen, lCurrentScreenInfo) == false)
+                return;
 
             if (lCurrentScreen != mLastScreen || mTransformToDevice == default(Matrix))
                 GetTransform();
@@ -136,20 +134,10 @@ namespace ChatWpf.Window
 
             var lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
-            if (lPrimaryScreen.Equals(lCurrentScreen) == true)
-            {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcWork.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcWork.Right - lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcWork.Bottom - lPrimaryScreenInfo.rcWork.Top;
-            }
-            else
-            {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcMonitor.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcMonitor.Right - lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcMonitor.Bottom - lPrimaryScreenInfo.rcMonitor.Top;
-            }
+            lMmi.ptMaxPosition.X = 0;
+            lMmi.ptMaxPosition.Y = 0;
+            lMmi.ptMaxSize.X = lCurrentScreenInfo.rcWork.Right - lCurrentScreenInfo.rcWork.Left;
+            lMmi.ptMaxSize.Y = lCurrentScreenInfo.rcWork.Bottom - lCurrentScreenInfo.rcWork.Top;
 
             CurrentMonitorSize = new Rectangle(lMmi.ptMaxPosition.X, lMmi.ptMaxPosition.Y, lMmi.ptMaxSize.X + lMmi.ptMaxPosition.X, lMmi.ptMaxSize.Y + lMmi.ptMaxPosition.Y);
 

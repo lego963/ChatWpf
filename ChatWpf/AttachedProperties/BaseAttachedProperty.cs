@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 
-namespace ChatWpf.AttachedProperties
+namespace ChatWpf
 {
-    public abstract class BaseAttachedProperty<TParent, TProperty> where TParent : BaseAttachedProperty<TParent, TProperty>, new()
+    public abstract class BaseAttachedProperty<TParent, TProperty> where TParent : new()
     {
         public event Action<DependencyObject, DependencyPropertyChangedEventArgs> ValueChanged = (sender, e) => { };
 
@@ -11,19 +11,26 @@ namespace ChatWpf.AttachedProperties
 
         public static TParent Instance { get; private set; } = new TParent();
 
-        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", typeof(TProperty), typeof(BaseAttachedProperty<TParent, TProperty>), new UIPropertyMetadata(new PropertyChangedCallback(OnValuePropertyChanged)));
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
+            "Value",
+            typeof(TProperty),
+            typeof(BaseAttachedProperty<TParent, TProperty>),
+            new UIPropertyMetadata(
+                default(TProperty), 
+                new PropertyChangedCallback(OnValuePropertyChanged),
+                new CoerceValueCallback(OnValuePropertyUpdated)));
 
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Instance.OnValueChanged(d, e);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueChanged(d, e);
 
-            Instance.ValueChanged(d, e);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueChanged(d, e);
         }
 
         private static object OnValuePropertyUpdated(DependencyObject d, object value)
         {
-            Instance.OnValueUpdated(d, value);
-            Instance.ValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueUpdated(d, value);
             return value;
         }
 

@@ -1,10 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using ChatWpf.Core.DataModels;
-using ChatWpf.Core.ViewModel.Base;
-using ChatWpf.Window;
+using ChatWpf.Core;
 
-namespace ChatWpf.ViewModel
+namespace ChatWpf
 {
     public class WindowViewModel : BaseViewModel
     {

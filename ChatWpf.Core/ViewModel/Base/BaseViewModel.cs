@@ -2,10 +2,9 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using ChatWpf.Core.Expressions;
 using PropertyChanged;
 
-namespace ChatWpf.Core.ViewModel.Base
+namespace ChatWpf.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged

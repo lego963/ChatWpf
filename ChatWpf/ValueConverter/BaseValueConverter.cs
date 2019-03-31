@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace ChatWpf.ValueConverter
+namespace ChatWpf
 {
     public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
         where T : class, new()

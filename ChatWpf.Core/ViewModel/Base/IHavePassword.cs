@@ -1,6 +1,6 @@
 ﻿using System.Security;
 
-namespace ChatWpf.Core.ViewModel.Base
+namespace ChatWpf.Core
 {
     public interface IHavePassword
     {
