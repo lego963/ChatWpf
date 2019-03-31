@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:design1="clr-namespace:ChatWpf.Core.ViewModel.Chat.Design;assembly=ChatWpf.Core"
+             xmlns:design1="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatList.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d" 
              d:DesignWidth="300">
 
@@ -52,7 +52,7 @@
                                 </Border>
 
                                 <!-- Main content -->
-                                <Border Grid.Column="1" Padding="0 0 8 0">
+                                <Border Grid.Column="1" Padding="0 0 15 0">
                                     <StackPanel VerticalAlignment="Center">
                                         <!-- Name-->
                                         <TextBlock Text="{Binding Name}"
@@ -76,13 +76,13 @@
                         <ControlTemplate.Triggers>
 
                             <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                                <Setter Property="Background" TargetName="background" Value="{StaticResource WordVeryLightBlueBrush}"/>
+                                <Setter Property="Background" TargetName="background" Value="{StaticResource WordVeryVeryLightBlueBrush}"/>
                             </DataTrigger>
 
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation To="{StaticResource WordVeryLightBlue}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                        <ColorAnimation To="{StaticResource WordVeryVeryLightBlue}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>

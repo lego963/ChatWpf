@@ -23,7 +23,7 @@ namespace ChatWpf.ViewModels
 
         public bool Borderless => (_mWindow.WindowState == WindowState.Maximized || _mDockPosition != WindowDockPosition.Undocked);
 
-        public int ResizeBorder => Borderless ? 0 : 6;
+        public int ResizeBorder => Borderless ? 0 : 10;
 
         public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
 
@@ -87,14 +87,14 @@ namespace ChatWpf.ViewModels
             };
         }
 
-        private System.Windows.Point GetMousePosition()
+        private Point GetMousePosition()
         {
             var position = Mouse.GetPosition(_mWindow);
 
             if (_mWindow.WindowState == WindowState.Maximized)
-                return new System.Windows.Point(position.X + _mWindowResizer.CurrentMonitorSize.Left, position.Y + _mWindowResizer.CurrentMonitorSize.Top);
+                return new Point(position.X + _mWindowResizer.CurrentMonitorSize.Left, position.Y + _mWindowResizer.CurrentMonitorSize.Top);
             else
-                return new System.Windows.Point(position.X + _mWindow.Left, position.Y + _mWindow.Top);
+                return new Point(position.X + _mWindow.Left, position.Y + _mWindow.Top);
         }
 
         private void WindowResized()

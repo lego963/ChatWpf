@@ -3,33 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
+             xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
              mc:Ignorable="d" 
              d:DesignWidth="300">
 
-    <Border Padding="5" Background="{StaticResource WordBlueBrush}">
+    <Border Padding="5" 
+            DataContext="{x:Static core:ChatMessageListItemDesignModel.Instance}">
         <Grid>
 
             <!-- Profile picture -->
             <Border VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Margin="0 7.5 0 7.5"
+                    Visibility="{Binding SentByMe, Converter={valueConverter:BooleanToVisibilityConverter}}"
                     CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Width="35"
                     Background="Green"
                     BorderBrush="{StaticResource ForegroundLightBrush}"
-                    BorderThickness="1"
-                    >
-                <TextBlock Text="LM"
+                    BorderThickness="1">
+                <TextBlock Text="{Binding Initials}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="{StaticResource ForegroundLightBrush}"
-                           FontFamily="{StaticResource LatoRegular}"
-                           />
+                           FontFamily="{StaticResource LatoRegular}"/>
             </Border>
 
             <!-- Chat message container -->
-            <Grid Margin="25 0 0 0" HorizontalAlignment="Left">
+            <Grid Margin="25 0 0 0" 
+                  HorizontalAlignment="{Binding SentByMe, Converter={valueConverter:SentByMeToAlignmentConverter}}">
+
+                <Grid.Triggers>
+
+                    <!-- Mouse over shows time -->
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
+                                <DoubleAnimation To="1" Duration="00:00:00.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <!-- Mouse leave hides time -->
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="ExtraDetails" Storyboard.TargetProperty="Opacity">
+                                <DoubleAnimation To="0" Duration="00:00:00.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                </Grid.Triggers>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -40,16 +65,14 @@
                 <!-- Speech bubble rectangle -->
                 <Border CornerRadius="10"
                     Padding="15"
-                    Background="{StaticResource ForegroundLightBrush}"
-                    >
+                    Background="{Binding SentByMe, Converter={valueConverter:SentByMeToBackgroundConverter}}">
 
                     <!-- Message text -->
                     <TextBlock VerticalAlignment="Center"
                            TextWrapping="Wrap"
                            FontFamily="{StaticResource LatoRegular}"
                            Foreground="{StaticResource WordDarkBlueBrush}"
-                           Text="This chat app is awesome! When is it coming out? I want it NOW!"
-                           />
+                           Text="{Binding Message}"/>
 
                 </Border>
 
@@ -60,14 +83,29 @@
                       Margin="15 -1 15 0"
                       Data="M 0,0 L 10,10 L 20,0 L 0,0" 
                       StrokeThickness="0"
-                      Fill="{StaticResource ForegroundLightBrush}" />
+                      HorizontalAlignment="{Binding SentByMe, Converter={valueConverter:SentByMeToAlignmentConverter}}"
+                      Fill="{Binding SentByMe, Converter={valueConverter:SentByMeToBackgroundConverter}}" />
 
-                <TextBlock Grid.Row="2"
-                           Text="11:54am"
-                           Foreground="{StaticResource ForegroundLightBrush}"
-                           HorizontalAlignment="Right"
-                           FontSize="{StaticResource FontSizeSmall}"
-                           />
+                <!-- Time containers -->
+                <StackPanel Name="ExtraDetails" 
+                            Grid.Row="2"
+                            HorizontalAlignment="{Binding SentByMe, Converter={valueConverter:SentByMeToAlignmentConverter}, ConverterParameter=True}"
+                            Orientation="Horizontal">
+
+                    <!-- Sent time -->
+                    <TextBlock Text="{Binding MessageSentTime, Converter={valueConverter:TimeToDisplayTimeConverter}}"
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               FontSize="{StaticResource FontSizeSmall}"
+                               FontFamily="{StaticResource LatoRegular}"
+                               Margin="0 0 15 0"/>
+
+                    <!-- Read time -->
+                    <TextBlock Text="{Binding MessageReadTime, Converter={valueConverter:TimeToReadTimeConverter}}"
+                               Foreground="{StaticResource WordDarkBlueBrush}"
+                               FontSize="{StaticResource FontSizeSmall}"
+                               FontFamily="{StaticResource LatoRegular}"/>
+
+                </StackPanel>
 
             </Grid>
 

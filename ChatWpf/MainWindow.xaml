@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatWpf"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
-        xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
         xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
         xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"

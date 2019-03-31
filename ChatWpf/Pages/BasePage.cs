@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ChatWpf.Animation;
@@ -6,7 +7,7 @@ using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Pages
 {
-    public class BasePage : Page
+    public class BasePage : UserControl
     {
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
 
@@ -18,6 +19,9 @@ namespace ChatWpf.Pages
 
         public BasePage()
         {
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             if (PageLoadAnimation != PageAnimation.None)
                 Visibility = Visibility.Collapsed;
 
@@ -40,7 +44,7 @@ namespace ChatWpf.Pages
             switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds, width: (int)Application.Current.MainWindow.Width);
                     break;
             }
         }

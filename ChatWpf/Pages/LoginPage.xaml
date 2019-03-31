@@ -9,8 +9,7 @@
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" 
-      d:DesignWidth="700"
-      Title="LoginPage">
+      d:DesignWidth="700">
 
     <Border>
         <Grid>
@@ -45,13 +44,16 @@
                                        />
 
                             <!-- Email -->
-                            <TextBox Text="{Binding Email}" Tag="Email" />
+                            <TextBox Text="{Binding Email}" 
+                                     Tag="Email" 
+                                     attachedProperties:IsFocusedProperty.Value="True"/>
 
                             <!-- Password -->
                             <PasswordBox x:Name="PasswordText" Tag="Password" Margin="0 0 0 30" />
 
-                            <!-- Next button -->
+                            <!-- Login button -->
                             <Button Content="Login" 
+                                    IsDefault="True"
                                     attachedProperties:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                     Command="{Binding LoginCommand}"
                                     CommandParameter="{Binding ElementName=Page}" 

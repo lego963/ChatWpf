@@ -8,28 +8,23 @@ namespace ChatWpf.Window
 {
     public class WindowResizer
     {
-        private System.Windows.Window _mWindow;
+        private System.Windows.Window mWindow;
+        private Rect mScreenSize = new Rect();
+        private int mEdgeTolerance = 8;
+        private DpiScale? mMonitorDpi;
+        private IntPtr mLastScreen;
+        private WindowDockPosition mLastDock = WindowDockPosition.Undocked;
 
-        private Rect _mScreenSize = new Rect();
-
-        private int _mEdgeTolerance = 8;
-
-        private Matrix _mTransformToDevice;
-
-        private IntPtr _mLastScreen;
-
-
-        private WindowDockPosition _mLastDock = WindowDockPosition.Undocked;
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool GetCursorPos(out Point lpPoint);
+        static extern bool GetCursorPos(out POINT lpPoint);
 
         [DllImport("user32.dll")]
-        static extern bool GetMonitorInfo(IntPtr hMonitor, Monitorinfo lpmi);
+        static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
 
         [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr MonitorFromPoint(Point pt, MonitorOptions dwFlags);
+        static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
 
         public event Action<WindowDockPosition> WindowDockChanged = (dock) => { };
 
@@ -37,30 +32,15 @@ namespace ChatWpf.Window
 
         public WindowResizer(System.Windows.Window window)
         {
-            _mWindow = window;
-
-            GetTransform();
-
-            _mWindow.SourceInitialized += Window_SourceInitialized;
-
-            _mWindow.SizeChanged += Window_SizeChanged;
-        }
-
-        private void GetTransform()
-        {
-            var source = PresentationSource.FromVisual(_mWindow);
-
-            _mTransformToDevice = default(Matrix);
-
-            if (source == null)
-                return;
-
-            _mTransformToDevice = source.CompositionTarget.TransformToDevice;
+            mWindow = window;
+            mWindow.SourceInitialized += Window_SourceInitialized;
+            mWindow.SizeChanged += Window_SizeChanged;
+            mWindow.LocationChanged += Window_LocationChanged;
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
         {
-            var handle = (new WindowInteropHelper(_mWindow)).Handle;
+            var handle = (new WindowInteropHelper(mWindow)).Handle;
             var handleSource = HwndSource.FromHwnd(handle);
 
             if (handleSource == null)
@@ -71,23 +51,21 @@ namespace ChatWpf.Window
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (_mTransformToDevice == default(Matrix))
+            if (mMonitorDpi == null)
                 return;
 
-            var size = e.NewSize;
+            var top = mWindow.Top;
+            var left = mWindow.Left;
+            var bottom = top + mWindow.Height;
+            var right = left + mWindow.Width;
 
-            var top = _mWindow.Top;
-            var left = _mWindow.Left;
-            var bottom = top + size.Height;
-            var right = left + _mWindow.Width;
+            var windowTopLeft = new Point(left * mMonitorDpi.Value.DpiScaleX, top * mMonitorDpi.Value.DpiScaleX);
+            var windowBottomRight = new Point(right * mMonitorDpi.Value.DpiScaleX, bottom * mMonitorDpi.Value.DpiScaleX);
 
-            var windowTopLeft = _mTransformToDevice.Transform(new System.Windows.Point(left, top));
-            var windowBottomRight = _mTransformToDevice.Transform(new System.Windows.Point(right, bottom));
-
-            var edgedTop = windowTopLeft.Y <= (_mScreenSize.Top + _mEdgeTolerance);
-            var edgedLeft = windowTopLeft.X <= (_mScreenSize.Left + _mEdgeTolerance);
-            var edgedBottom = windowBottomRight.Y >= (_mScreenSize.Bottom - _mEdgeTolerance);
-            var edgedRight = windowBottomRight.X >= (_mScreenSize.Right - _mEdgeTolerance);
+            var edgedTop = windowTopLeft.Y <= (mScreenSize.Top + mEdgeTolerance) && windowTopLeft.Y >= (mScreenSize.Top - mEdgeTolerance);
+            var edgedLeft = windowTopLeft.X <= (mScreenSize.Left + mEdgeTolerance) && windowTopLeft.X >= (mScreenSize.Left - mEdgeTolerance);
+            var edgedBottom = windowBottomRight.Y >= (mScreenSize.Bottom - mEdgeTolerance) && windowBottomRight.Y <= (mScreenSize.Bottom + mEdgeTolerance);
+            var edgedRight = windowBottomRight.X >= (mScreenSize.Right - mEdgeTolerance) && windowBottomRight.X <= (mScreenSize.Right + mEdgeTolerance);
 
             var dock = WindowDockPosition.Undocked;
 
@@ -95,13 +73,29 @@ namespace ChatWpf.Window
                 dock = WindowDockPosition.Left;
             else if (edgedTop && edgedBottom && edgedRight)
                 dock = WindowDockPosition.Right;
+            else if (edgedTop && edgedBottom)
+                dock = WindowDockPosition.TopBottom;
+            else if (edgedTop && edgedLeft)
+                dock = WindowDockPosition.TopLeft;
+            else if (edgedTop && edgedRight)
+                dock = WindowDockPosition.TopRight;
+            else if (edgedBottom && edgedLeft)
+                dock = WindowDockPosition.BottomLeft;
+            else if (edgedBottom && edgedRight)
+                dock = WindowDockPosition.BottomRight;
             else
                 dock = WindowDockPosition.Undocked;
 
-            if (dock != _mLastDock)
+            if (dock != mLastDock)
                 WindowDockChanged(dock);
 
-            _mLastDock = dock;
+            // Save last dock position
+            mLastDock = dock;
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            Window_SizeChanged(null, null);
         }
 
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -119,56 +113,64 @@ namespace ChatWpf.Window
 
         private void WmGetMinMaxInfo(IntPtr hwnd, IntPtr lParam)
         {
-            GetCursorPos(out var lMousePosition);
+            GetCursorPos(out POINT lMousePosition);
 
-            var lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MonitorDefaulttonearest);
+            var lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
+            var lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
 
-            var lCurrentScreenInfo = new Monitorinfo();
+            var lCurrentScreenInfo = new MONITORINFO();
             if (GetMonitorInfo(lCurrentScreen, lCurrentScreenInfo) == false)
                 return;
 
-            if (lCurrentScreen != _mLastScreen || _mTransformToDevice == default(Matrix))
-                GetTransform();
+            var lPrimaryScreenInfo = new MONITORINFO();
+            if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
+                return;
 
-            _mLastScreen = lCurrentScreen;
+            if (lCurrentScreen != mLastScreen || mMonitorDpi == null)
+                mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
 
-            var lMmi = (Minmaxinfo)Marshal.PtrToStructure(lParam, typeof(Minmaxinfo));
+            mLastScreen = lCurrentScreen;
 
-            lMmi.ptMaxPosition.X = 0;
-            lMmi.ptMaxPosition.Y = 0;
-            lMmi.ptMaxSize.X = lCurrentScreenInfo.rcWork.Right - lCurrentScreenInfo.rcWork.Left;
-            lMmi.ptMaxSize.Y = lCurrentScreenInfo.rcWork.Bottom - lCurrentScreenInfo.rcWork.Top;
+            var currentX = lCurrentScreenInfo.rcWork.Left - lCurrentScreenInfo.rcMonitor.Left;
+            var currentY = lCurrentScreenInfo.rcWork.Top - lCurrentScreenInfo.rcMonitor.Top;
+            var currentWidth = (lCurrentScreenInfo.rcWork.Right - lCurrentScreenInfo.rcWork.Left);
+            var currentHeight = (lCurrentScreenInfo.rcWork.Bottom - lCurrentScreenInfo.rcWork.Top);
+            var currentRatio = (float)currentWidth / (float)currentHeight;
+
+            var primaryX = lPrimaryScreenInfo.rcWork.Left - lPrimaryScreenInfo.rcMonitor.Left;
+            var primaryY = lPrimaryScreenInfo.rcWork.Top - lPrimaryScreenInfo.rcMonitor.Top;
+            var primaryWidth = (lPrimaryScreenInfo.rcWork.Right - lPrimaryScreenInfo.rcWork.Left);
+            var primaryHeight = (lPrimaryScreenInfo.rcWork.Bottom - lPrimaryScreenInfo.rcWork.Top);
+            var primaryRatio = (float)primaryWidth / (float)primaryHeight;
+
+
+            var lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+
+            lMmi.ptMaxPosition.X = currentX;
+            lMmi.ptMaxPosition.Y = currentY;
+            lMmi.ptMaxSize.X = currentWidth;
+            lMmi.ptMaxSize.Y = currentHeight;
 
             CurrentMonitorSize = new Rectangle(lMmi.ptMaxPosition.X, lMmi.ptMaxPosition.Y, lMmi.ptMaxSize.X + lMmi.ptMaxPosition.X, lMmi.ptMaxSize.Y + lMmi.ptMaxPosition.Y);
 
-            var minSize = _mTransformToDevice.Transform(new System.Windows.Point(_mWindow.MinWidth, _mWindow.MinHeight));
-
+            var minSize = new Point(mWindow.MinWidth * mMonitorDpi.Value.DpiScaleX, mWindow.MinHeight * mMonitorDpi.Value.DpiScaleX);
             lMmi.ptMinTrackSize.X = (int)minSize.X;
             lMmi.ptMinTrackSize.Y = (int)minSize.Y;
 
-            _mScreenSize = new Rect(lMmi.ptMaxPosition.X, lMmi.ptMaxPosition.Y, lMmi.ptMaxSize.X, lMmi.ptMaxSize.Y);
+            mScreenSize = new Rect(lCurrentScreenInfo.rcWork.Left, lCurrentScreenInfo.rcWork.Top, lMmi.ptMaxSize.X, lMmi.ptMaxSize.Y);
 
             Marshal.StructureToPtr(lMmi, lParam, true);
         }
     }
 
-    enum MonitorOptions : uint
-    {
-        MonitorDefaulttonull = 0x00000000,
-        MonitorDefaulttoprimary = 0x00000001,
-        MonitorDefaulttonearest = 0x00000002
-    }
-
-
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    public class Monitorinfo
+    public class MONITORINFO
     {
-        public int cbSize = Marshal.SizeOf(typeof(Monitorinfo));
+        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
         public Rectangle rcMonitor = new Rectangle();
         public Rectangle rcWork = new Rectangle();
         public int dwFlags = 0;
     }
-
 
     [StructLayout(LayoutKind.Sequential)]
     public struct Rectangle
@@ -185,25 +187,26 @@ namespace ChatWpf.Window
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct Minmaxinfo
+    public struct MINMAXINFO
     {
-        public Point ptReserved;
-        public Point ptMaxSize;
-        public Point ptMaxPosition;
-        public Point ptMinTrackSize;
-        public Point ptMaxTrackSize;
+        public POINT ptReserved;
+        public POINT ptMaxSize;
+        public POINT ptMaxPosition;
+        public POINT ptMinTrackSize;
+        public POINT ptMaxTrackSize;
     };
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct Point
+    public struct POINT
     {
         public int X;
         public int Y;
 
-        public Point(int x, int y)
+        public POINT(int x, int y)
         {
             X = x;
             Y = y;
         }
     }
+
 }

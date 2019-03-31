@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel.Chat
+namespace ChatWpf.Core.ViewModel.Chat.ChatList
 {
     public class ChatListViewModel : BaseViewModel
     {

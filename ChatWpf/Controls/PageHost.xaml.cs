@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ChatWpf.Core.IoC;
+using ChatWpf.Core.ViewModel;
 using ChatWpf.Pages;
+using ChatWpf.ValueConverter;
 
 namespace ChatWpf.Controls
 {
@@ -30,6 +23,9 @@ namespace ChatWpf.Controls
         public PageHost()
         {
             InitializeComponent();
+            if (DesignerProperties.GetIsInDesignMode(this))
+                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Get<ApplicationViewModel>().CurrentPage);
+
         }
 
         public static readonly DependencyProperty CurrentPageProperty =
@@ -47,7 +43,14 @@ namespace ChatWpf.Controls
             oldPageFrame.Content = oldPageContent;
 
             if (oldPageContent is BasePage oldPage)
+            {
                 oldPage.ShouldAnimateOut = true;
+                Task.Delay((int)(oldPage.SlideSeconds * 1000)).ContinueWith((t) =>
+                {
+                    // Remove old page
+                    Application.Current.Dispatcher.Invoke(() => oldPageFrame.Content = null);
+                });
+            }
 
             newPageFrame.Content = e.NewValue;
         }
