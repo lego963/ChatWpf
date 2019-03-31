@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.Core
+﻿namespace ChatWpf.Core.ViewModel.Chat.Design
 {
     public class ChatListItemDesignModel : ChatListItemViewModel
     {

@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using ChatWpf.Core;
+using ChatWpf.Animation;
+using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf
+namespace ChatWpf.Pages
 {
     public class BasePage : Page
     {
@@ -58,28 +59,28 @@ namespace ChatWpf
         }
     }
 
-    public class BasePage<VM> : BasePage
-        where VM : BaseViewModel, new()
+    public class BasePage<TVm> : BasePage
+        where TVm : BaseViewModel, new()
     {
-        private VM mViewModel;
+        private TVm _mViewModel;
 
-        public VM ViewModel
+        public TVm ViewModel
         {
-            get => mViewModel;
+            get => _mViewModel;
             set
             {
-                if (mViewModel == value)
+                if (_mViewModel == value)
                     return;
 
-                mViewModel = value;
+                _mViewModel = value;
 
-                DataContext = mViewModel;
+                DataContext = _mViewModel;
             }
         }
 
         public BasePage() : base()
         {
-            ViewModel = new VM();
+            ViewModel = new TVm();
         }
 
     }

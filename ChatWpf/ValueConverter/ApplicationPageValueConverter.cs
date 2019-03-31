@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using ChatWpf.Core;
+using ChatWpf.Core.DataModels;
 using ChatWpf.Pages;
 
-namespace ChatWpf
+namespace ChatWpf.ValueConverter
 {
     public class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
     {

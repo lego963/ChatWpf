@@ -1,6 +1,7 @@
-﻿using Ninject;
+﻿using ChatWpf.Core.ViewModel;
+using Ninject;
 
-namespace ChatWpf.Core
+namespace ChatWpf.Core.IoC
 {
     public static class IoC
     {

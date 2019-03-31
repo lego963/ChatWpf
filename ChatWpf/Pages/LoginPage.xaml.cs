@@ -1,6 +1,8 @@
 ﻿using System.Security;
 using System.Windows;
 using ChatWpf.Core;
+using ChatWpf.Core.ViewModel;
+using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Pages
 {

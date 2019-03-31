@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using ChatWpf.Core.DataModels;
+using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core
+namespace ChatWpf.Core.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -24,7 +26,7 @@ namespace ChatWpf.Core
             {
                 await Task.Delay(1000);
 
-                IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
+                IoC.IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
 
             });
         }
@@ -32,7 +34,7 @@ namespace ChatWpf.Core
         public async Task RegisterAsync()
         {
 
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
+            IoC.IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
 
             await Task.Delay(1);
         }

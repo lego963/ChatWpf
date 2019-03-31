@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace ChatWpf
+namespace ChatWpf.Animation
 {
     public static class StoryboardHelpers
     {

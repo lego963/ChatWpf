@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace ChatWpf
+namespace ChatWpf.Window
 {
     public class WindowResizer
     {
@@ -58,7 +58,7 @@ namespace ChatWpf
             _mTransformToDevice = source.CompositionTarget.TransformToDevice;
         }
 
-        private void Window_SourceInitialized(object sender, System.EventArgs e)
+        private void Window_SourceInitialized(object sender, EventArgs e)
         {
             var handle = (new WindowInteropHelper(_mWindow)).Handle;
             var handleSource = HwndSource.FromHwnd(handle);
@@ -117,7 +117,7 @@ namespace ChatWpf
             return (IntPtr)0;
         }
 
-        private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
+        private void WmGetMinMaxInfo(IntPtr hwnd, IntPtr lParam)
         {
             GetCursorPos(out var lMousePosition);
 
@@ -177,10 +177,10 @@ namespace ChatWpf
 
         public Rectangle(int left, int top, int right, int bottom)
         {
-            this.Left = left;
-            this.Top = top;
-            this.Right = right;
-            this.Bottom = bottom;
+            Left = left;
+            Top = top;
+            Right = right;
+            Bottom = bottom;
         }
     }
 
@@ -202,8 +202,8 @@ namespace ChatWpf
 
         public Point(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
     }
 }

@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:chatWpf="clr-namespace:ChatWpf"
-             xmlns:design="clr-namespace:ChatWpf.Core;assembly=ChatWpf.Core"
+             xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+             xmlns:design1="clr-namespace:ChatWpf.Core.ViewModel.Chat.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d" 
              Height="60"
              d:DesignHeight="60" 
@@ -31,13 +32,13 @@
                                 <Border Background="Red" 
                                     Width="4"
                                     HorizontalAlignment="Left"
-                                    Visibility="{Binding NewContentAvailable, Converter={chatWpf:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                                    Visibility="{Binding NewContentAvailable, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}"
                                     />
 
                                 <!-- Profile picture padding -->
                                 <Border Grid.Column="0" Padding="8">
                                     <!-- Profile picture background -->
-                                    <Border Background="{Binding ProfilePictureRGB, Converter={chatWpf:StringRGBToBrushConverter}}" 
+                                    <Border Background="{Binding ProfilePictureRGB, Converter={valueConverter:StringRgbToBrushConverter}}" 
                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
                                         <!-- Profile picture initials -->
@@ -105,6 +106,6 @@
         </Style>
     </UserControl.Resources>
 
-    <ContentControl d:DataContext="{x:Static design:ChatListItemDesignModel.Instance}"
+    <ContentControl d:DataContext="{x:Static design1:ChatListItemDesignModel.Instance}"
                     Style="{StaticResource ContentStyle}" />
 </UserControl>

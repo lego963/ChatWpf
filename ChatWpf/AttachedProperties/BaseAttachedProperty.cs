@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace ChatWpf
+namespace ChatWpf.AttachedProperties
 {
     public abstract class BaseAttachedProperty<TParent, TProperty> where TParent : new()
     {

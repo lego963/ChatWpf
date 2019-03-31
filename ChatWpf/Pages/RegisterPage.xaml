@@ -1,11 +1,11 @@
-﻿<chatWpf:BasePage x:TypeArguments="core:RegisterViewModel" x:Class="ChatWpf.Pages.RegisterPage"
+﻿<pages:BasePage x:TypeArguments="viewModel:RegisterViewModel" x:Class="ChatWpf.Pages.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
+      xmlns:viewModel="clr-namespace:ChatWpf.Core.ViewModel;assembly=ChatWpf.Core"
       xmlns:pages="clr-namespace:ChatWpf.Pages"
-      xmlns:chatWpf="clr-namespace:ChatWpf"
-      xmlns:core="clr-namespace:ChatWpf.Core;assembly=ChatWpf.Core"
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" d:DesignWidth="700"
@@ -51,7 +51,7 @@
 
                             <!-- Next button -->
                             <Button Content="Register" 
-                                    chatWpf:IsBusyProperty.Value="{Binding RegisterIsRunning}"
+                                    attachedProperties:IsBusyProperty.Value="{Binding RegisterIsRunning}"
                                     Command="{Binding RegisterCommand}"
                                     CommandParameter="{Binding ElementName=Page}" 
                                     HorizontalAlignment="Center" />
@@ -71,4 +71,4 @@
         </Grid>
     </Border>
 
-</chatWpf:BasePage>
+</pages:BasePage>

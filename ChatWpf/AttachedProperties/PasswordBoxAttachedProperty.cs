@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ChatWpf
+namespace ChatWpf.AttachedProperties
 {
     public class MonitorPasswordProperty : BaseAttachedProperty<MonitorPasswordProperty, bool>
     {

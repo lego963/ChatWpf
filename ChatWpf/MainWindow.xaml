@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:ChatWpf"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
         xmlns:chat="clr-namespace:ChatWpf.Controls.Chat"
+        xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
+        xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+        xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -129,15 +132,15 @@
             <controls:PageHost Grid.Column="1" 
                             d:DataContext=""
                             DataContext="{Binding ApplicationViewModel.CurrentPage, 
-                                     Source={x:Static local:ViewModelLocator.Instance},  
-                                     Converter={local:ApplicationPageValueConverter}}"
+                                     Source={x:Static viewModels:ViewModelLocator.Instance},  
+                                     Converter={valueConverter:ApplicationPageValueConverter}}"
                             CurrentPage="{Binding}" />
 
             <!-- Side Menu -->
             <controls:SideMenuControl
                 Width="300" 
-                local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
-                                     Source={x:Static local:ViewModelLocator.Instance}}">
+                attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
+                                     Source={x:Static viewModels:ViewModelLocator.Instance}}">
 
                 <chat:ChatListControl />
 

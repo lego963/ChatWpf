@@ -1,8 +1,9 @@
 ﻿using System.Windows;
+using ChatWpf.Animation;
 
-namespace ChatWpf
+namespace ChatWpf.AttachedProperties
 {
-    public abstract class AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool> where Parent : BaseAttachedProperty<Parent, bool>, new()
+    public abstract class AnimateBaseProperty<TParent> : BaseAttachedProperty<TParent, bool> where TParent : BaseAttachedProperty<TParent, bool>, new()
     {
         public bool FirstLoad { get; set; } = true;
 

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using ChatWpf.Core;
+using ChatWpf.Core.IoC;
 
 namespace ChatWpf
 {

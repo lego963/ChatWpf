@@ -1,4 +1,6 @@
-﻿namespace ChatWpf
+﻿using ChatWpf.ViewModels;
+
+namespace ChatWpf
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

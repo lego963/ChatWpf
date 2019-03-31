@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.Core
+﻿namespace ChatWpf.Core.DataModels
 {
     public enum ApplicationPage
     {
