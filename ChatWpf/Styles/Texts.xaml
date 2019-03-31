@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:chatWpf="clr-namespace:ChatWpf"
                     xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
                     xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter">
 
@@ -13,7 +12,7 @@
 
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}">
 
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="Margin" Value="0 5 0 5" />
@@ -44,8 +43,7 @@
                                    Padding="{TemplateBinding Padding}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                   Foreground="{StaticResource ForegroundVeryDarkBrush}"
-                                   >
+                                   Foreground="{StaticResource ForegroundVeryDarkBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Collapsed" />
@@ -81,7 +79,7 @@
 
     <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource BaseStyle}">
 
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="Margin" Value="0 5 0 5" />
@@ -111,12 +109,12 @@
                                    Text="{TemplateBinding Tag}"
                                    x:Name="placeholder"
                                    FontFamily="{StaticResource LatoThin}"
+                                   FontSize="{TemplateBinding FontSize}"
                                    Padding="{TemplateBinding Padding}"
                                    Visibility="{TemplateBinding attachedProperties:HasTextProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                   Foreground="{StaticResource ForegroundVeryDarkBrush}"
-                                   >
+                                   Foreground="{StaticResource ForegroundVeryDarkBrush}">
                         </TextBlock>
 
                     </Grid>

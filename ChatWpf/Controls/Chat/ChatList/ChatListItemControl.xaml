@@ -1,14 +1,11 @@
-﻿<UserControl x:Class="ChatWpf.Controls.Chat.ChatListItemControl"
+﻿<UserControl x:Class="ChatWpf.Controls.Chat.ChatList.ChatListItemControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:chatWpf="clr-namespace:ChatWpf"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
              xmlns:design1="clr-namespace:ChatWpf.Core.ViewModel.Chat.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d" 
-             Height="60"
-             d:DesignHeight="60" 
              d:DesignWidth="300">
 
     <UserControl.Resources>
@@ -36,17 +33,19 @@
                                     />
 
                                 <!-- Profile picture padding -->
-                                <Border Grid.Column="0" Padding="8">
+                                <Border Grid.Column="0" 
+                                        Padding="8 15">
                                     <!-- Profile picture background -->
-                                    <Border Background="{Binding ProfilePictureRGB, Converter={valueConverter:StringRgbToBrushConverter}}" 
-                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                    <Border Background="{Binding ProfilePictureRgb, Converter={valueConverter:StringRgbToBrushConverter}}" 
+                                            Height="40"
+                                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
                                         <!-- Profile picture initials -->
                                         <TextBlock Text="{Binding Initials}"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center"
                                                Foreground="{StaticResource ForegroundLightBrush}"
-                                               FontSize="{StaticResource FontSizeAverage}"
+                                               FontSize="{StaticResource FontSizeLarge}"
                                                FontFamily="{StaticResource LatoRegular}"
                                                />
                                     </Border>
@@ -57,17 +56,16 @@
                                     <StackPanel VerticalAlignment="Center">
                                         <!-- Name-->
                                         <TextBlock Text="{Binding Name}"
-                                                Foreground="{StaticResource WordBlueBrush}"
-                                                TextTrimming="CharacterEllipsis"
-                                                FontFamily="{StaticResource LatoRegular}"
-                                                />
+                                                   Padding="0 0 0 2"
+                                                   Foreground="{StaticResource WordBlueBrush}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   FontFamily="{StaticResource LatoRegular}"/>
                                         <!-- Message -->
                                         <TextBlock Text="{Binding Message}"
-                                               Foreground="{StaticResource ForegroundDarkBrush}"
-                                               TextTrimming="CharacterEllipsis"
-                                               FontFamily="{StaticResource LatoRegular}"
-                                               />
-
+                                                   Padding="0 2 0 0"
+                                                   Foreground="{StaticResource ForegroundDarkBrush}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   FontFamily="{StaticResource LatoRegular}"/>
                                     </StackPanel>
                                 </Border>
 

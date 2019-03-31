@@ -32,13 +32,13 @@
 
                             <!-- Sign Up header -->
                             <TextBlock Text="Sign Up" 
-                                   FontSize="{StaticResource FontSizeLarge}" 
+                                   FontSize="{StaticResource FontSizeXXLarge}" 
                                    FontFamily="{StaticResource LatoRegular}"
                                    Foreground="{StaticResource WordBlueBrush}" />
 
                             <!-- Sign up subtext-->
-                            <TextBlock Text="ПИШИ ДАНЫЕ, ДЬЯВОЛ!" 
-                                       FontSize="{StaticResource FontSizeRegular}"
+                            <TextBlock Text="PISHI, D'YAVOL!" 
+                                       FontSize="{StaticResource FontSizeXXLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
                                        Margin="0 0 0 20"
                                        />
