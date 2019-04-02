@@ -3,13 +3,15 @@ using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Core.ViewModel.PopupMenu
 {
-    public class BasePopupMenuViewModel : BaseViewModel
+    public class BasePopupViewModel : BaseViewModel
     {
         public string BubbleBackground { get; set; }
 
+        public BaseViewModel Content { get; set; }
+
         public ElementHorizontalAlignment ArrowAlignment { get; set; }
 
-        public BasePopupMenuViewModel()
+        public BasePopupViewModel()
         {
             // TODO: Move colors into Core and make use of it here
             BubbleBackground = "ffffff";

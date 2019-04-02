@@ -1,5 +1,6 @@
 ﻿using System.Security;
 using ChatWpf.Core.ViewModel;
+using ChatWpf.Core.ViewModel.Application;
 using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Pages

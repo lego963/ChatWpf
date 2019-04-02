@@ -1,7 +1,7 @@
 ﻿using ChatWpf.Core.DataModels;
 using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel
+namespace ChatWpf.Core.ViewModel.Application
 {
     public class ApplicationViewModel : BaseViewModel
     {
@@ -9,8 +9,12 @@ namespace ChatWpf.Core.ViewModel
 
         public bool SideMenuVisible { get; set; } = true;
 
+        public bool SettingsMenuVisible { get; set; }
+
         public void GoToPage(ApplicationPage page)
         {
+            SettingsMenuVisible = false;
+
             CurrentPage = page;
 
             SideMenuVisible = page == ApplicationPage.Chat;

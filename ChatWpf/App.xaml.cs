@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using ChatWpf.Core.IoC;
+using ChatWpf.Core.IoC.Interfaces;
+using ChatWpf.IoC;
 
 namespace ChatWpf
 {
@@ -12,10 +13,16 @@ namespace ChatWpf
         {
             base.OnStartup(e);
 
-            IoC.Setup();
+            ApplicationSetup();
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
+        }
+
+        private void ApplicationSetup()
+        {
+            Core.IoC.Base.IoC.Setup();
+            Core.IoC.Base.IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
         }
     }
 }

@@ -44,7 +44,7 @@ namespace ChatWpf.Pages
             switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds, width: (int)Application.Current.MainWindow.Width);
+                    await this.SlideAndFadeInAsync(AnimationSlideInDirection.Right, false, SlideSeconds, size: (int)Application.Current.MainWindow.Width);
                     break;
             }
         }
@@ -57,7 +57,7 @@ namespace ChatWpf.Pages
             switch (PageUnloadAnimation)
             {
                 case PageAnimation.SlideAndFadeOutToLeft:
-                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
+                    await this.SlideAndFadeOutAsync(AnimationSlideInDirection.Right, SlideSeconds);
                     break;
             }
         }

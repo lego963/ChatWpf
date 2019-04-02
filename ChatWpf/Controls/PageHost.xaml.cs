@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ChatWpf.Core.IoC;
+using ChatWpf.Core.IoC.Base;
 using ChatWpf.Core.ViewModel;
 using ChatWpf.Pages;
 using ChatWpf.ValueConverter;
@@ -24,7 +25,7 @@ namespace ChatWpf.Controls
         {
             InitializeComponent();
             if (DesignerProperties.GetIsInDesignMode(this))
-                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Get<ApplicationViewModel>().CurrentPage);
+                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(ChatWpf.Core.IoC.Base.IoC.Application.CurrentPage);
 
         }
 

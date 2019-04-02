@@ -9,7 +9,7 @@ namespace ChatWpf.ViewModels
     {
         private System.Windows.Window _mWindow;
 
-        private WindowResizer _mWindowResizer;
+        private WindowResizer mWindowResizer;
 
         private int _mOuterMarginSize = 10;
 
@@ -23,7 +23,7 @@ namespace ChatWpf.ViewModels
 
         public bool Borderless => (_mWindow.WindowState == WindowState.Maximized || _mDockPosition != WindowDockPosition.Undocked);
 
-        public int ResizeBorder => Borderless ? 0 : 10;
+        public int ResizeBorder => 10;
 
         public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
 
@@ -55,6 +55,8 @@ namespace ChatWpf.ViewModels
 
         public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
 
+        public bool DimmableOverlayVisible { get; set; }
+
         public ICommand MinimizeCommand { get; set; }
 
         public ICommand MaximizeCommand { get; set; }
@@ -77,9 +79,9 @@ namespace ChatWpf.ViewModels
             CloseCommand = new RelayCommand(() => _mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_mWindow, GetMousePosition()));
 
-            _mWindowResizer = new WindowResizer(_mWindow);
+            mWindowResizer = new WindowResizer(_mWindow);
 
-            _mWindowResizer.WindowDockChanged += (dock) =>
+            mWindowResizer.WindowDockChanged += (dock) =>
             {
                 _mDockPosition = dock;
 
@@ -89,12 +91,7 @@ namespace ChatWpf.ViewModels
 
         private Point GetMousePosition()
         {
-            var position = Mouse.GetPosition(_mWindow);
-
-            if (_mWindow.WindowState == WindowState.Maximized)
-                return new Point(position.X + _mWindowResizer.CurrentMonitorSize.Left, position.Y + _mWindowResizer.CurrentMonitorSize.Top);
-            else
-                return new Point(position.X + _mWindow.Left, position.Y + _mWindow.Top);
+            return mWindowResizer.GetCursorPosition();
         }
 
         private void WindowResized()

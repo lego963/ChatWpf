@@ -17,6 +17,8 @@
         Icon="Images/Logo/chat-logo.png"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
+        Deactivated="AppWindow_Deactivated"
+        Activated="AppWindow_Activated"
         Title="MainWindow" Height="600" Width="900">
 
     <Window.Resources>
@@ -128,6 +130,18 @@
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 1920 1080" ImageSource="/Images/Backgrounds/background.jpg" />
             </Grid.Background>
+
+            <!-- Settings page -->
+            <controls:SettingsControl Grid.ColumnSpan="2"
+                                   Panel.ZIndex="9"
+                                   attachedProperties:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static viewModels:ViewModelLocator.Instance}}"/>
+
+            <Border Grid.ColumnSpan="2"
+                    Panel.ZIndex="10"
+                    Opacity="0.3">
+                <Border Background="{StaticResource ForegroundVeryDarkBrush}"
+                        attachedProperties:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"/>
+            </Border>
 
             <controls:PageHost Grid.Column="1" 
                             d:DataContext=""

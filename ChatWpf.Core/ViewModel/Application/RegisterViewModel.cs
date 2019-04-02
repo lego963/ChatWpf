@@ -3,7 +3,7 @@ using System.Windows.Input;
 using ChatWpf.Core.DataModels;
 using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel
+namespace ChatWpf.Core.ViewModel.Application
 {
     public class RegisterViewModel : BaseViewModel
     {
@@ -31,7 +31,7 @@ namespace ChatWpf.Core.ViewModel
 
         public async Task LoginAsync()
         {
-            IoC.IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Login);
+            IoC.Base.IoC.Application.GoToPage(ApplicationPage.Login);
 
             await Task.Delay(1);
         }

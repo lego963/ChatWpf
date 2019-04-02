@@ -7,7 +7,6 @@ using PropertyChanged;
 
 namespace ChatWpf.Core.ViewModel.Base
 {
-    [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };

@@ -15,7 +15,7 @@ namespace ChatWpf.ValueConverter
             if (time.Date == DateTimeOffset.UtcNow.Date)
                 return $"Read {time.ToLocalTime().ToString("HH:mm")}";
 
-            return $"Read {time.ToLocalTime().ToString("HH:mm, MMM yyyy")}";
+            return $"Read {time.ToLocalTime().ToString("HH:mm, dd MMM yyyy")}";
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
