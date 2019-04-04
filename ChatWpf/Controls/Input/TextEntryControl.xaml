@@ -8,6 +8,7 @@
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
              mc:Ignorable="d" 
              d:DataContext="{x:Static core:TextEntryDesignModel.Instance}">
+
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"
             BorderThickness="0 0 0 0.5">
@@ -54,6 +55,7 @@
             <TextBlock Text="{Binding Label}"
                        Name="Label"
                        Margin="15 12"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"/>
 

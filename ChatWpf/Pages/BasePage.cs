@@ -9,6 +9,8 @@ namespace ChatWpf.Pages
 {
     public class BasePage : UserControl
     {
+        private object mViewModel;
+
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
 
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
@@ -16,6 +18,19 @@ namespace ChatWpf.Pages
         public float SlideSeconds { get; set; } = 0.4f;
 
         public bool ShouldAnimateOut { get; set; }
+
+        public object ViewModelObject
+        {
+            get => mViewModel;
+            set
+            {
+                if (mViewModel == value)
+                    return;
+                mViewModel = value;
+//OnViewModelChanged();
+                DataContext = mViewModel;
+            }
+        }
 
         public BasePage()
         {
@@ -57,34 +72,38 @@ namespace ChatWpf.Pages
             switch (PageUnloadAnimation)
             {
                 case PageAnimation.SlideAndFadeOutToLeft:
-                    await this.SlideAndFadeOutAsync(AnimationSlideInDirection.Right, SlideSeconds);
+                    await this.SlideAndFadeOutAsync(AnimationSlideInDirection.Left, SlideSeconds);
                     break;
             }
+        }
+
+        protected virtual void OnViewModelChanged()
+        {
+
         }
     }
 
     public class BasePage<TVm> : BasePage
         where TVm : BaseViewModel, new()
     {
-        private TVm _mViewModel;
 
         public TVm ViewModel
         {
-            get => _mViewModel;
-            set
-            {
-                if (_mViewModel == value)
-                    return;
-
-                _mViewModel = value;
-
-                DataContext = _mViewModel;
-            }
+            get => (TVm)ViewModelObject;
+            set => ViewModelObject = value;
         }
 
         public BasePage() : base()
         {
-            ViewModel = new TVm();
+            ViewModel = Core.IoC.Base.IoC.Get<TVm>();
+        }
+
+        public BasePage(TVm specificViewModel = null) : base()
+        {
+            if (specificViewModel != null)
+                ViewModel = specificViewModel;
+            else
+                ViewModel = Core.IoC.Base.IoC.Get<TVm>();
         }
 
     }

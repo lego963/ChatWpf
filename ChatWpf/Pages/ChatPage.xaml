@@ -5,14 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:pages="clr-namespace:ChatWpf.Pages"
       xmlns:chatMessage="clr-namespace:ChatWpf.Controls.Chat.ChatMessage"
-      xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage;assembly=ChatWpf.Core"
       xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
       xmlns:controls="clr-namespace:ChatWpf.Controls"
       xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+      xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
+      xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage;assembly=ChatWpf.Core"
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" 
-      d:DesignWidth="700">
+      d:DesignWidth="700"
+      d:DataContext="{x:Static design:ChatMessageListDesignModel.Instance}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -43,21 +45,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
-
             </Grid.ColumnDefinitions>
-
-            <!-- Example Marquee Title -->
-            <!--<Border ClipToBounds="True">
-                <Border local:AnimateMarqueeProperty.Value="True">
-                    <TextBlock Text="Parnell" 
-                       Foreground="{StaticResource ForegroundLightBrush}"
-                       FontSize="{StaticResource FontSizeXLarge}"
-                       FontFamily="{StaticResource LatoRegular}"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       />
-                </Border>
-            </Border>-->
 
             <!-- Title text -->
             <TextBlock Text="Parnell" 
@@ -77,16 +65,21 @@
         </Grid>
 
         <!-- Chat List -->
-        <chatMessage:ChatMessageListControl Grid.Row="1" />
+        <chatMessage:ChatMessageListControl 
+            x:Name="ChatMessageList" 
+            Grid.Row="1" 
+            DataContext="{Binding}" />
 
         <!-- Attachment Menu Popup -->
-        <controls:BubbleContent 
-            Grid.Row="1"
-            Panel.ZIndex="2"
-            DataContext="{Binding AttachmentMenu}"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Left"
-            attachedProperties:AnimateSlideInFromBottomProperty.Value="{Binding ViewModel.AttachmentMenuVisible, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type pages:ChatPage}}}"/>
+        <Border Grid.Row="1"
+                Panel.ZIndex="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                attachedProperties:AnimateSlideInFromBottomProperty.Value="{Binding AttachmentMenuVisible}">
+
+            <controls:BubbleContent DataContext="{Binding AttachmentMenu}" />
+
+        </Border>
 
         <!-- Message Send Text box -->
         <Grid Grid.Row="2"
@@ -115,15 +108,19 @@
                     Foreground="{StaticResource ForegroundDarkBrush}"/>
 
             <!-- Message box -->
-            <TextBox Grid.Column="1" 
+            <TextBox x:Name="MessageText"
+                     Grid.Column="1" 
                      Tag="Write a message..."
+                     attachedProperties:IsFocusedProperty.Value="True"
+                     Text="{Binding PendingMessageText, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="{StaticResource FontSizeRegular}"
                      VerticalAlignment="Center"
                      BorderThickness="0"
                      Padding="0 10 10 10"
                      AcceptsReturn="True"
                      AcceptsTab="True"
-                     VerticalScrollBarVisibility="Auto"/>
+                     VerticalScrollBarVisibility="Auto"
+                     PreviewKeyDown="MessageText_PreviewKeyDown"/>
 
             <!-- Additional buttons -->
             <StackPanel Grid.Column="2"
@@ -140,6 +137,8 @@
                 <!-- Send button -->
                 <Button Content="Send"
                         Padding="8"
+                        IsDefault="True"
+                        Focusable="False"
                         Command="{Binding SendCommand}"
                         Background="{StaticResource WordTextHoverBrush}"
                         FontSize="{StaticResource FontSizeRegular}"/>

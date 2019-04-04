@@ -22,5 +22,13 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
         public bool MessageRead => MessageReadTime > DateTimeOffset.MinValue;
 
         public DateTimeOffset MessageSentTime { get; set; }
+
+        public bool NewItem { get; set; }
+
+        public ChatMessageListItemImageAttachmentViewModel ImageAttachment { get; set; }
+
+        public bool HasMessage => Message != null;
+
+        public bool HasImageAttachment => ImageAttachment != null;
     }
 }

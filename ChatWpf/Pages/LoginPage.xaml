@@ -15,7 +15,8 @@
         <Grid>
 
             <!-- Main content scroll -->
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Auto">
                 <StackPanel 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -40,8 +41,7 @@
                             <TextBlock Text="ПИШИ, ЧЕРТЯКА!" 
                                        FontSize="{StaticResource FontSizeXXLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
-                                       Margin="0 0 0 20"
-                                       />
+                                       Margin="0 0 0 20"/>
 
                             <!-- Email -->
                             <TextBox Text="{Binding Email}" 
@@ -49,7 +49,9 @@
                                      attachedProperties:IsFocusedProperty.Value="True"/>
 
                             <!-- Password -->
-                            <PasswordBox x:Name="PasswordText" Tag="Password" Margin="0 0 0 30" />
+                            <PasswordBox x:Name="PasswordText" 
+                                         Tag="Password" 
+                                         Margin="0 0 0 30" />
 
                             <!-- Login button -->
                             <Button Content="Login" 

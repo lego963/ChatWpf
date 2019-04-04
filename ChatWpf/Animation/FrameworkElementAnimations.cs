@@ -12,26 +12,23 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             switch (direction)
             {
-                // Add slide from left animation
                 case AnimationSlideInDirection.Left:
                     sb.AddSlideFromLeft(seconds, size == 0 ? element.ActualWidth : size, keepMargin: keepMargin);
                     break;
-                // Add slide from right animation
                 case AnimationSlideInDirection.Right:
                     sb.AddSlideFromRight(seconds, size == 0 ? element.ActualWidth : size, keepMargin: keepMargin);
                     break;
-                // Add slide from top animation
                 case AnimationSlideInDirection.Top:
                     sb.AddSlideFromTop(seconds, size == 0 ? element.ActualHeight : size, keepMargin: keepMargin);
                     break;
-                // Add slide from bottom animation
                 case AnimationSlideInDirection.Bottom:
                     sb.AddSlideFromBottom(seconds, size == 0 ? element.ActualHeight : size, keepMargin: keepMargin);
                     break;
             }
             sb.AddFadeIn(seconds);
             sb.Begin(element);
-            if (seconds != 0 || firstLoad) element.Visibility = Visibility.Visible;
+            if (seconds != 0 || firstLoad)
+                element.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
         }
 
@@ -40,26 +37,23 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             switch (direction)
             {
-                // Add slide to left animation
                 case AnimationSlideInDirection.Left:
                     sb.AddSlideToLeft(seconds, size == 0 ? element.ActualWidth : size, keepMargin: keepMargin);
                     break;
-                // Add slide to right animation
                 case AnimationSlideInDirection.Right:
                     sb.AddSlideToRight(seconds, size == 0 ? element.ActualWidth : size, keepMargin: keepMargin);
                     break;
-                // Add slide to top animation
                 case AnimationSlideInDirection.Top:
                     sb.AddSlideToTop(seconds, size == 0 ? element.ActualHeight : size, keepMargin: keepMargin);
                     break;
-                // Add slide to bottom animation
                 case AnimationSlideInDirection.Bottom:
                     sb.AddSlideToBottom(seconds, size == 0 ? element.ActualHeight : size, keepMargin: keepMargin);
                     break;
             }
             sb.AddFadeOut(seconds);
             sb.Begin(element);
-            if (seconds != 0) element.Visibility = Visibility.Visible;
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
             element.Visibility = Visibility.Hidden;
         }
@@ -69,7 +63,8 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             sb.AddFadeIn(seconds);
             sb.Begin(element);
-            if (seconds != 0 || firstLoad) element.Visibility = Visibility.Visible;
+            if (seconds != 0 || firstLoad)
+                element.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
         }
 
@@ -78,7 +73,8 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             sb.AddFadeOut(seconds);
             sb.Begin(element);
-            if (seconds != 0) element.Visibility = Visibility.Visible;
+            if (seconds != 0)
+                element.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
             element.Visibility = Visibility.Collapsed;
         }

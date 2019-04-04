@@ -1,5 +1,4 @@
 ﻿using ChatWpf.Core.IoC.Interfaces;
-using ChatWpf.Core.ViewModel;
 using ChatWpf.Core.ViewModel.Application;
 using Ninject;
 
@@ -9,7 +8,7 @@ namespace ChatWpf.Core.IoC.Base
     {
         public static IKernel Kernel { get; private set; } = new StandardKernel();
 
-        public static IUIManager UI => IoC.Get<IUIManager>();
+        public static IUIManager UI => Get<IUIManager>();
 
         public static ApplicationViewModel Application => IoC.Get<ApplicationViewModel>();
 

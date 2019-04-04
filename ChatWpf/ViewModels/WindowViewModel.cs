@@ -11,42 +11,41 @@ namespace ChatWpf.ViewModels
 
         private WindowResizer mWindowResizer;
 
-        private int _mOuterMarginSize = 10;
+        private Thickness _mOuterMarginSize = new Thickness(5);
 
         private int _mWindowRadius = 10;
 
         private WindowDockPosition _mDockPosition = WindowDockPosition.Undocked;
 
-        public double WindowMinimumWidth { get; set; } = 600;
+        public double WindowMinimumWidth { get; set; } = 800;
 
-        public double WindowMinimumHeight { get; set; } = 600;
+        public double WindowMinimumHeight { get; set; } = 500;
 
         public bool Borderless => (_mWindow.WindowState == WindowState.Maximized || _mDockPosition != WindowDockPosition.Undocked);
 
-        public int ResizeBorder => 10;
+        public int ResizeBorder => _mWindow.WindowState == WindowState.Maximized ? 0 : 4;
 
-        public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
+        public int FlatBorderThickness => Borderless && _mWindow.WindowState != WindowState.Maximized ? 1 : 0;
+
+        public Thickness ResizeBorderThickness => new Thickness(
+            OuterMarginSize.Left + ResizeBorder,
+            OuterMarginSize.Top + ResizeBorder,
+            OuterMarginSize.Right + ResizeBorder,
+            OuterMarginSize.Bottom + ResizeBorder);
 
         public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
-        public int OuterMarginSize
+        public Thickness OuterMarginSize
         {
-            get => Borderless ? 0 : _mOuterMarginSize;
+            get => _mWindow.WindowState == WindowState.Maximized ? mWindowResizer.CurrentMonitorMargin : (Borderless ? new Thickness(0) : _mOuterMarginSize);
+
             set => _mOuterMarginSize = value;
         }
 
-        public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
-
         public int WindowRadius
         {
-            get
-            {
-                return Borderless ? 0 : _mWindowRadius;
-            }
-            set
-            {
-                _mWindowRadius = value;
-            }
+            get => Borderless ? 0 : _mWindowRadius;
+            set => _mWindowRadius = value;
         }
 
         public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
@@ -87,6 +86,14 @@ namespace ChatWpf.ViewModels
 
                 WindowResized();
             };
+
+            mWindowResizer.WindowFinishedMove += () =>
+            {
+                // Check for moved to top of window and not at an edge
+                if (_mDockPosition == WindowDockPosition.Undocked && _mWindow.Top == mWindowResizer.CurrentScreenSize.Top)
+                    // If so, move it to the true top (the border size)
+                    _mWindow.Top = -OuterMarginSize.Top;
+            };
         }
 
         private Point GetMousePosition()
@@ -97,9 +104,9 @@ namespace ChatWpf.ViewModels
         private void WindowResized()
         {
             OnPropertyChanged(nameof(Borderless));
+            OnPropertyChanged(nameof(FlatBorderThickness));
             OnPropertyChanged(nameof(ResizeBorderThickness));
             OnPropertyChanged(nameof(OuterMarginSize));
-            OnPropertyChanged(nameof(OuterMarginSizeThickness));
             OnPropertyChanged(nameof(WindowRadius));
             OnPropertyChanged(nameof(WindowCornerRadius));
         }

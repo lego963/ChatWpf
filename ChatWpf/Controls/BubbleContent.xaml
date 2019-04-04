@@ -20,8 +20,7 @@
         <Border CornerRadius="10"
                 Padding="12"
                 Margin="5 0 0 0"
-                Background="{Binding BubbleBackground, Converter={valueConverter:StringRgbToBrushConverter}}"
-        >
+                Background="{Binding BubbleBackground, Converter={valueConverter:StringRgbToBrushConverter}}">
 
             <Border.Effect>
                 <DropShadowEffect BlurRadius="4" ShadowDepth="2" Color="{StaticResource WordBlueHover}" />

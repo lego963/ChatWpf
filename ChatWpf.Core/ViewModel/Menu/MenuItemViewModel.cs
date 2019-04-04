@@ -1,7 +1,7 @@
 ﻿using ChatWpf.Core.DataModels;
 using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel.Chat.Menu
+namespace ChatWpf.Core.ViewModel.Menu
 {
     public class MenuItemViewModel:BaseViewModel
     {

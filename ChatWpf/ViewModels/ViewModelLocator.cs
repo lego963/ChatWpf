@@ -1,5 +1,4 @@
-﻿using ChatWpf.Core.ViewModel;
-using ChatWpf.Core.ViewModel.Application;
+﻿using ChatWpf.Core.ViewModel.Application;
 
 namespace ChatWpf.ViewModels
 {

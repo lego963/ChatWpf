@@ -5,18 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatWpf.Controls.Chat.ChatMessage"
              xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
+             xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
-    <Grid DataContext="{x:Static design:ChatMessageListDesignModel.Instance}"
+
+    <Grid d:DataContext="{x:Static design:ChatMessageListDesignModel.Instance}"
         VerticalAlignment="Bottom">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      attachedProperties:ScrollToBottomOnLoadProperty.Value="True"
+                      attachedProperties:AutoScrollToBottomProperty.Value="True">
+            
             <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:ChatMessageListItemControl />
+                        <local:ChatMessageListItemControl attachedProperties:AnimateSlideInFromBottomOnLoadProperty.Value="{Binding NewItem}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
         </ScrollViewer>
+
     </Grid>
 </UserControl>

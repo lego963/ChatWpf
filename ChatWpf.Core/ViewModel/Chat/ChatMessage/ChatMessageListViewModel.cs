@@ -1,20 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ChatWpf.Core.ViewModel.Base;
-using ChatWpf.Core.ViewModel.Dialogs;
 using ChatWpf.Core.ViewModel.PopupMenu;
 
 namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
 {
     public class ChatMessageListViewModel : BaseViewModel
     {
-        public List<ChatMessageListItemViewModel> Items { get; set; }
+        public ObservableCollection<ChatMessageListItemViewModel> Items { get; set; }
 
         public bool AttachmentMenuVisible { get; set; }
 
         public bool AnyPopupVisible => AttachmentMenuVisible;
 
         public ChatAttachmentPopupMenuViewModel AttachmentMenu { get; set; }
+
+        public string PendingMessageText { get; set; }
 
         public ICommand AttachmentButtonCommand { get; set; }
         public ICommand PopupClickawayCommand { get; set; }
@@ -24,8 +26,10 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
         {
             AttachmentButtonCommand = new RelayCommand(AttachmentButton);
             PopupClickawayCommand = new RelayCommand(PopupClickaway);
-            AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
             SendCommand = new RelayCommand(Send);
+
+            AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
+
         }
 
         public void AttachmentButton()
@@ -40,12 +44,20 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
 
         public void Send()
         {
-            IoC.Base.IoC.UI.ShowMessage(new MessageBoxDialogViewModel
+            if (Items == null)
+                Items = new ObservableCollection<ChatMessageListItemViewModel>();
+
+            // Fake send a new message
+            Items.Add(new ChatMessageListItemViewModel
             {
-                Title = "Send Message",
-                Message = "Thank you for writing a nice message :)",
-                OkText = "OK"
+                Initials = "LM",
+                Message = PendingMessageText,
+                MessageSentTime = DateTime.UtcNow,
+                SentByMe = true,
+                SenderName = "Luke Malpass",
+                NewItem = true
             });
+            PendingMessageText = string.Empty;
         }
     }
 }

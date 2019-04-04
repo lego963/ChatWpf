@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ChatWpf.Core.ViewModel.Base;
 
-namespace ChatWpf.Core.ViewModel.Chat.Menu
+namespace ChatWpf.Core.ViewModel.Menu
 {
     public class MenuViewModel:BaseViewModel
     {

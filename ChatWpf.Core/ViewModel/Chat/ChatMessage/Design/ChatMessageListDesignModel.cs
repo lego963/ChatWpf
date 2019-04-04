@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ChatWpf.Core.ViewModel.Chat.ChatMessage.Design
 {
@@ -9,7 +9,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage.Design
 
         public ChatMessageListDesignModel()
         {
-            Items = new List<ChatMessageListItemViewModel>
+            Items = new ObservableCollection<ChatMessageListItemViewModel>
             {
                 new ChatMessageListItemViewModel
                 {

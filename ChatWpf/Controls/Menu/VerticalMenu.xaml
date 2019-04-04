@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Chat.Menu.Design;assembly=ChatWpf.Core"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Menu.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d">
 
-    <ItemsControl d:DataContext="{x:Static core:MenuDesignModel.Instance}"
+    <ItemsControl d:DataContext="{x:Static design:MenuDesignModel.Instance}"
                   ItemsSource="{Binding Items}"
                   Background="White">
 
@@ -53,13 +53,11 @@
                                         <ColorAnimation To="{StaticResource ForegroundLight}" 
                                                         Duration="0:0:0" 
                                                         Storyboard.TargetProperty="Foreground.Color" 
-                                                        Storyboard.TargetName="icon"
-                                                        />
+                                                        Storyboard.TargetName="icon"/>
                                         <ColorAnimation To="{StaticResource ForegroundLight}" 
                                                         Duration="0:0:0" 
                                                         Storyboard.TargetProperty="Foreground.Color" 
-                                                        Storyboard.TargetName="text"
-                                                        />
+                                                        Storyboard.TargetName="text"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -73,13 +71,11 @@
                                         <ColorAnimation To="{StaticResource ForegroundDark}" 
                                                         Duration="0:0:0" 
                                                         Storyboard.TargetProperty="Foreground.Color" 
-                                                        Storyboard.TargetName="icon"
-                                                        />
+                                                        Storyboard.TargetName="icon"/>
                                         <ColorAnimation To="{StaticResource ForegroundVeryDark}" 
                                                         Duration="0:0:0" 
                                                         Storyboard.TargetProperty="Foreground.Color" 
-                                                        Storyboard.TargetName="text"
-                                                        />
+                                                        Storyboard.TargetName="text"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -100,8 +96,7 @@
                                        VerticalAlignment="Center"
                                        FontFamily="{StaticResource FontAwesome}"
                                        Text="{Binding Icon, Converter={valueConverter:IconTypeToFontAwesomeConverter}}"
-                                       Foreground="{StaticResource ForegroundDarkBrush}"
-                                       />
+                                       Foreground="{StaticResource ForegroundDarkBrush}"/>
 
                             <!-- Text -->
                             <TextBlock Name="text"

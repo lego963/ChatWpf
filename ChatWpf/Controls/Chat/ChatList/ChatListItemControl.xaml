@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:design1="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatList.Design;assembly=ChatWpf.Core"
+             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatList.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d" 
              d:DesignWidth="300">
 
@@ -16,6 +16,12 @@
 
                         <!-- Content -->
                         <Border x:Name="background" Background="{StaticResource ForegroundLightBrush}">
+
+                            <!-- Click to open message -->
+                            <Border.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding OpenMessageCommand}" />
+                            </Border.InputBindings>
+
                             <Grid x:Name="container" Background="Transparent">
                                 <Grid.ColumnDefinitions>
                                     <!-- New Message Indicator Bar -->
@@ -29,8 +35,7 @@
                                 <Border Background="Red" 
                                     Width="4"
                                     HorizontalAlignment="Left"
-                                    Visibility="{Binding NewContentAvailable, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}"
-                                    />
+                                    Visibility="{Binding NewContentAvailable, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}"/>
 
                                 <!-- Profile picture padding -->
                                 <Border Grid.Column="0" 
@@ -46,8 +51,7 @@
                                                HorizontalAlignment="Center"
                                                Foreground="{StaticResource ForegroundLightBrush}"
                                                FontSize="{StaticResource FontSizeLarge}"
-                                               FontFamily="{StaticResource LatoRegular}"
-                                               />
+                                               FontFamily="{StaticResource LatoRegular}"/>
                                     </Border>
                                 </Border>
 
@@ -104,6 +108,6 @@
         </Style>
     </UserControl.Resources>
 
-    <ContentControl d:DataContext="{x:Static design1:ChatListItemDesignModel.Instance}"
+    <ContentControl d:DataContext="{x:Static design:ChatListItemDesignModel.Instance}"
                     Style="{StaticResource ContentStyle}" />
 </UserControl>

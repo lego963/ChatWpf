@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using ChatWpf.Core.IoC;
-using ChatWpf.Core.IoC.Base;
-using ChatWpf.Core.ViewModel;
+using ChatWpf.Core.DataModels;
+using ChatWpf.Core.ViewModel.Base;
 using ChatWpf.Pages;
 using ChatWpf.ValueConverter;
 
@@ -15,9 +14,9 @@ namespace ChatWpf.Controls
     /// </summary>
     public partial class PageHost : UserControl
     {
-        public BasePage CurrentPage
+        public ApplicationPage CurrentPage
         {
-            get => (BasePage)GetValue(CurrentPageProperty);
+            get => (ApplicationPage)GetValue(CurrentPageProperty);
             set => SetValue(CurrentPageProperty, value);
         }
 
@@ -25,17 +24,47 @@ namespace ChatWpf.Controls
         {
             InitializeComponent();
             if (DesignerProperties.GetIsInDesignMode(this))
-                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(ChatWpf.Core.IoC.Base.IoC.Application.CurrentPage);
-
+                NewPage.Content = Core.IoC.Base.IoC.Application.CurrentPage.ToBasePage();
         }
 
         public static readonly DependencyProperty CurrentPageProperty =
-            DependencyProperty.Register(nameof(CurrentPage), typeof(BasePage), typeof(PageHost), new UIPropertyMetadata(CurrentPagePropertyChanged));
+            DependencyProperty.Register(
+                nameof(CurrentPage), 
+                typeof(ApplicationPage), 
+                typeof(PageHost), 
+                new UIPropertyMetadata(
+                    default(ApplicationPage), 
+                    null, 
+                    CurrentPagePropertyChanged));
 
-        private static void CurrentPagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public BaseViewModel CurrentPageViewModel
         {
+            get => (BaseViewModel)GetValue(CurrentPageViewModelProperty);
+            set => SetValue(CurrentPageViewModelProperty, value);
+        }
+
+        public static readonly DependencyProperty CurrentPageViewModelProperty =
+            DependencyProperty.Register(nameof(CurrentPageViewModel),
+                typeof(BaseViewModel),
+                typeof(PageHost),
+                new UIPropertyMetadata());
+
+        private static object CurrentPagePropertyChanged(DependencyObject d, object value)
+        {
+            var currentPage = (ApplicationPage)d.GetValue(CurrentPageProperty);
+            var currentPageViewModel = d.GetValue(CurrentPageViewModelProperty);
+
             var newPageFrame = (d as PageHost).NewPage;
             var oldPageFrame = (d as PageHost).OldPage;
+
+            if (newPageFrame.Content is BasePage page &&
+                page.ToApplicationPage() == currentPage)
+            {
+                // Just update the view model
+                page.ViewModelObject = currentPageViewModel;
+
+                return value;
+            }
 
             var oldPageContent = newPageFrame.Content;
 
@@ -53,7 +82,9 @@ namespace ChatWpf.Controls
                 });
             }
 
-            newPageFrame.Content = e.NewValue;
+            newPageFrame.Content = currentPage.ToBasePage(currentPageViewModel);
+
+            return value;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ChatWpf.Core.DataModels;
 
-namespace ChatWpf.Core.ViewModel.Chat.Menu.Design
+namespace ChatWpf.Core.ViewModel.Menu.Design
 {
     public class MenuItemDesignModel : MenuItemViewModel
     {

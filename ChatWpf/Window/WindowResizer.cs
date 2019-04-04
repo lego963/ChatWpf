@@ -10,12 +10,14 @@ namespace ChatWpf.Window
     {
         private System.Windows.Window mWindow;
         private Rect mScreenSize = new Rect();
-        private int mEdgeTolerance = 8;
+        private int mEdgeTolerance = 1;
         private DpiScale? mMonitorDpi;
         private IntPtr mLastScreen;
         private WindowDockPosition mLastDock = WindowDockPosition.Undocked;
 
         public Rect CurrentScreenSize => mScreenSize;
+
+        public Thickness CurrentMonitorMargin { get; private set; } = new Thickness();
 
         public Point GetCursorPosition()
         {
@@ -37,6 +39,8 @@ namespace ChatWpf.Window
         static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
 
         public event Action<WindowDockPosition> WindowDockChanged = (dock) => { };
+
+        public event Action WindowFinishedMove = () => { };
 
         public Rectangle CurrentMonitorSize { get; set; } = new Rectangle();
 
@@ -61,6 +65,10 @@ namespace ChatWpf.Window
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            WmGetMinMaxInfo(IntPtr.Zero, IntPtr.Zero);
+
+            mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
+
             if (mMonitorDpi == null)
                 return;
 
@@ -116,6 +124,9 @@ namespace ChatWpf.Window
                     WmGetMinMaxInfo(hwnd, lParam);
                     handled = true;
                     break;
+                case 0x0232: // WM_EXITSIZEMOVE
+                    WindowFinishedMove();
+                    break;
             }
 
             return (IntPtr)0;
@@ -136,8 +147,8 @@ namespace ChatWpf.Window
             if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
                 return;
 
-            if (lCurrentScreen != mLastScreen || mMonitorDpi == null)
-                mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
+            //if (lCurrentScreen != mLastScreen || mMonitorDpi == null)
+            mMonitorDpi = VisualTreeHelper.GetDpi(mWindow);
 
             mLastScreen = lCurrentScreen;
 
@@ -153,23 +164,36 @@ namespace ChatWpf.Window
             var primaryHeight = (lPrimaryScreenInfo.RCWork.Bottom - lPrimaryScreenInfo.RCWork.Top);
             var primaryRatio = (float)primaryWidth / (float)primaryHeight;
 
+            if (lParam != IntPtr.Zero)
+            {
+                var lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
-            var lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
-            lMmi.PointMaxPosition.X = currentX;
-            lMmi.PointMaxPosition.Y = currentY;
-            lMmi.PointMaxSize.X = currentWidth;
-            lMmi.PointMaxSize.Y = currentHeight;
+                // Set to primary monitor size
+                lMmi.PointMaxPosition.X = lPrimaryScreenInfo.RCMonitor.Left;
+                lMmi.PointMaxPosition.Y = lPrimaryScreenInfo.RCMonitor.Top;
+                lMmi.PointMaxSize.X = lPrimaryScreenInfo.RCMonitor.Right;
+                lMmi.PointMaxSize.Y = lPrimaryScreenInfo.RCMonitor.Bottom;
 
-            CurrentMonitorSize = new Rectangle(lMmi.PointMaxPosition.X, lMmi.PointMaxPosition.Y, lMmi.PointMaxSize.X + lMmi.PointMaxPosition.X, lMmi.PointMaxSize.Y + lMmi.PointMaxPosition.Y);
+                // Set min size
+                var minSize = new Point(mWindow.MinWidth * mMonitorDpi.Value.DpiScaleX, mWindow.MinHeight * mMonitorDpi.Value.DpiScaleX);
+                lMmi.PointMinTrackSize.X = (int)minSize.X;
+                lMmi.PointMinTrackSize.Y = (int)minSize.Y;
 
-            var minSize = new Point(mWindow.MinWidth * mMonitorDpi.Value.DpiScaleX, mWindow.MinHeight * mMonitorDpi.Value.DpiScaleX);
-            lMmi.PointMinTrackSize.X = (int)minSize.X;
-            lMmi.PointMinTrackSize.Y = (int)minSize.Y;
+                // Now we have the max size, allow the host to tweak as needed
+                Marshal.StructureToPtr(lMmi, lParam, true);
+            }
 
-            mScreenSize = new Rect(lCurrentScreenInfo.RCWork.Left, lCurrentScreenInfo.RCWork.Top, lMmi.PointMaxSize.X, lMmi.PointMaxSize.Y);
+            CurrentMonitorSize = new Rectangle(currentX, currentY, currentWidth + currentX, currentHeight + currentY);
 
-            Marshal.StructureToPtr(lMmi, lParam, true);
+            CurrentMonitorMargin = new Thickness(
+                (lCurrentScreenInfo.RCMonitor.Left - lCurrentScreenInfo.RCWork.Left) / mMonitorDpi.Value.DpiScaleX,
+                (lCurrentScreenInfo.RCMonitor.Top - lCurrentScreenInfo.RCWork.Top) / mMonitorDpi.Value.DpiScaleY,
+                (lCurrentScreenInfo.RCMonitor.Right - lCurrentScreenInfo.RCWork.Right) / mMonitorDpi.Value.DpiScaleX,
+                (lCurrentScreenInfo.RCMonitor.Bottom - lCurrentScreenInfo.RCWork.Bottom) / mMonitorDpi.Value.DpiScaleY
+            );
+
+            mScreenSize = new Rect(lCurrentScreenInfo.RCWork.Left, lCurrentScreenInfo.RCWork.Top, currentWidth, currentHeight);
         }
     }
 
@@ -216,6 +240,10 @@ namespace ChatWpf.Window
         {
             X = x;
             Y = y;
+        }
+        public override string ToString()
+        {
+            return $"{X} {Y}";
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using ChatWpf.Animation;
 
 namespace ChatWpf.AttachedProperties
@@ -21,8 +22,9 @@ namespace ChatWpf.AttachedProperties
 
             if (!mAlreadyLoaded.ContainsKey(sender))
             {
-                if (!(bool)value)
-                    element.Visibility = Visibility.Hidden;
+                mAlreadyLoaded[sender] = false;
+
+                element.Visibility = Visibility.Hidden;
 
                 RoutedEventHandler onLoaded = null;
                 onLoaded = async (ss, ee) =>
@@ -97,6 +99,40 @@ namespace ChatWpf.AttachedProperties
         protected override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
         {
             element.MarqueeAsync(firstLoad ? 0 : 3f);
+        }
+    }
+
+    public class AnimateSlideInFromBottomOnLoadProperty : AnimateBaseProperty<AnimateSlideInFromBottomOnLoadProperty>
+    {
+        protected override async void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            // Animate in
+            await element.SlideAndFadeInAsync(AnimationSlideInDirection.Bottom, !value, !value ? 0 : 0.3f, keepMargin: false);
+        }
+    }
+
+    public class FadeInImageOnLoadProperty : AnimateBaseProperty<FadeInImageOnLoadProperty>
+    {
+        public override void OnValueUpdated(DependencyObject sender, object value)
+        {
+            // Make sure we have an image
+            if (!(sender is Image image))
+                return;
+
+            // If we want to animate in...
+            if ((bool)value)
+                // Listen for target change
+                image.TargetUpdated += Image_TargetUpdatedAsync;
+            // Otherwise
+            else
+                // Make sure we unhooked
+                image.TargetUpdated -= Image_TargetUpdatedAsync;
+        }
+
+        private async void Image_TargetUpdatedAsync(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            // Fade in image
+            await (sender as Image).FadeInAsync(false);
         }
     }
 }

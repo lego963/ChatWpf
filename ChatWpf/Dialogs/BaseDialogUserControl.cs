@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,8 +36,7 @@ namespace ChatWpf.Dialogs
             }
         }
 
-        public Task ShowDialog<T>(T viewModel)
-            where T : BaseDialogViewModel
+        public Task ShowDialog<T>(T viewModel) where T : BaseDialogViewModel
         {
             var tcs = new TaskCompletionSource<bool>();
 
@@ -57,6 +52,9 @@ namespace ChatWpf.Dialogs
                     mDialogWindow.ViewModel.Content = this;
 
                     DataContext = viewModel;
+
+                    mDialogWindow.Owner = Application.Current.MainWindow;
+                    mDialogWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
                     mDialogWindow.ShowDialog();
                 }

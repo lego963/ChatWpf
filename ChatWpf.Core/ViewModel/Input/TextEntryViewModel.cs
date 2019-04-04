@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Core.ViewModel.Input

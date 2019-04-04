@@ -1,5 +1,4 @@
 ﻿using System.Security;
-using ChatWpf.Core.ViewModel;
 using ChatWpf.Core.ViewModel.Application;
 using ChatWpf.Core.ViewModel.Base;
 
@@ -13,6 +12,11 @@ namespace ChatWpf.Pages
         public SecureString SecurePassword => PasswordText.SecurePassword;
 
         public LoginPage()
+        {
+            InitializeComponent();
+        }
+
+        public LoginPage(LoginViewModel specificViewModel) : base(specificViewModel)
         {
             InitializeComponent();
         }

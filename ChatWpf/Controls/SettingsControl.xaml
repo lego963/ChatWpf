@@ -82,6 +82,7 @@
                 <!-- Profile details -->
                 <StackPanel Grid.Column="1"
                             attachedProperties:TextEntryWidthMatcherProperty.Value="True">
+                    
                     <input:TextEntryControl DataContext="{Binding Name}" />
                     <input:TextEntryControl DataContext="{Binding Username}" />
                     <input:PasswordEntryControl DataContext="{Binding Password}" />

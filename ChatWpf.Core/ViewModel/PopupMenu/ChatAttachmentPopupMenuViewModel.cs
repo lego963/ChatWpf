@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ChatWpf.Core.DataModels;
-using ChatWpf.Core.ViewModel.Chat.Menu;
+using ChatWpf.Core.ViewModel.Menu;
 
 namespace ChatWpf.Core.ViewModel.PopupMenu
 {
