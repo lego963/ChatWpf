@@ -3,13 +3,15 @@
 namespace ChatWpf.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для SettingsControl.xaml
+    /// Interaction logic for SettingsControl.xaml
     /// </summary>
     public partial class SettingsControl : UserControl
     {
         public SettingsControl()
         {
             InitializeComponent();
+
+            // Set data context to settings view model
             DataContext = Core.IoC.Base.IoC.Settings;
         }
     }

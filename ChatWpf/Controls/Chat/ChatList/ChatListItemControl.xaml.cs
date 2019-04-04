@@ -3,7 +3,7 @@
 namespace ChatWpf.Controls.Chat.ChatList
 {
     /// <summary>
-    /// Логика взаимодействия для ChatListItemControl.xaml
+    /// Interaction logic for ChatListItemControl.xaml
     /// </summary>
     public partial class ChatListItemControl : UserControl
     {

@@ -2,7 +2,7 @@
 
 namespace ChatWpf.Core.ViewModel.Application.Design
 {
-    public class SettingsDesignModel:SettingsViewModel
+    public class SettingsDesignModel : SettingsViewModel
     {
         public static SettingsDesignModel Instance => new SettingsDesignModel();
 

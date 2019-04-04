@@ -14,7 +14,6 @@ namespace ChatWpf.AttachedProperties
             SetWidths(panel);
 
             RoutedEventHandler onLoaded = null;
-
             onLoaded = (s, ee) =>
             {
                 panel.Loaded -= onLoaded;
@@ -34,6 +33,7 @@ namespace ChatWpf.AttachedProperties
                     };
                 }
             };
+
             panel.Loaded += onLoaded;
         }
 
@@ -45,6 +45,7 @@ namespace ChatWpf.AttachedProperties
             {
                 if (!(child is TextEntryControl) && !(child is PasswordEntryControl))
                     continue;
+
                 var label = child is TextEntryControl ? (child as TextEntryControl).Label : (child as PasswordEntryControl).Label;
 
                 maxSize = Math.Max(maxSize, label.RenderSize.Width + label.Margin.Left + label.Margin.Right);

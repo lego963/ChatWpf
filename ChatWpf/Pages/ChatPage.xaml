@@ -3,20 +3,21 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:pages="clr-namespace:ChatWpf.Pages"
-      xmlns:chatMessage="clr-namespace:ChatWpf.Controls.Chat.ChatMessage"
       xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
-      xmlns:controls="clr-namespace:ChatWpf.Controls"
       xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-      xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
+      xmlns:pages="clr-namespace:ChatWpf.Pages"
+      xmlns:controls="clr-namespace:ChatWpf.Controls"
+      xmlns:chatMessage="clr-namespace:ChatWpf.Controls.Chat.ChatMessage"
       xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage;assembly=ChatWpf.Core"
+      xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
       mc:Ignorable="d" 
       x:Name="Page"
-      d:DesignHeight="700" 
-      d:DesignWidth="700"
-      d:DataContext="{x:Static design:ChatMessageListDesignModel.Instance}">
+      d:DesignHeight="700" d:DesignWidth="700"
+      d:DataContext="{x:Static design:ChatMessageListDesignModel.Instance}"
+      >
 
     <Grid>
+
         <Grid.RowDefinitions>
 
             <!-- Title bar -->
@@ -27,13 +28,15 @@
 
             <!-- Message Send Text box -->
             <RowDefinition Height="Auto" />
+
         </Grid.RowDefinitions>
 
         <!-- Popup Overlay -->
         <Border Background="Transparent" 
                 Grid.RowSpan="2"
                 Panel.ZIndex="1"
-                Visibility="{Binding AnyPopupVisible, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}">
+                Visibility="{Binding AnyPopupVisible, Converter={valueConverter:BooleanToVisiblityConverter}, ConverterParameter=True}"
+                >
             <Border.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding PopupClickawayCommand}" />
             </Border.InputBindings>
@@ -45,7 +48,22 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+
             </Grid.ColumnDefinitions>
+
+
+            <!-- Example Marquee Title -->
+            <!--<Border ClipToBounds="True">
+                <Border local:AnimateMarqueeProperty.Value="True">
+                    <TextBlock Text="Parnell" 
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontSize="{StaticResource FontSizeXLarge}"
+                       FontFamily="{StaticResource LatoRegular}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       />
+                </Border>
+            </Border>-->
 
             <!-- Title text -->
             <TextBlock Text="Parnell" 
@@ -54,7 +72,8 @@
                        FontSize="{StaticResource FontSizeXLarge}"
                        FontFamily="{StaticResource LatoRegular}"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center"
+                       />
 
             <!-- Main buttons -->
             <StackPanel Orientation="Horizontal" Grid.Column="1">
@@ -68,7 +87,8 @@
         <chatMessage:ChatMessageListControl 
             x:Name="ChatMessageList" 
             Grid.Row="1" 
-            DataContext="{Binding}" />
+            DataContext="{Binding}"
+            />
 
         <!-- Attachment Menu Popup -->
         <Border Grid.Row="1"
@@ -82,11 +102,12 @@
         </Border>
 
         <!-- Message Send Text box -->
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="2" 
               Panel.ZIndex="3"
               MinHeight="50"
               MaxHeight="114"
-              Background="{StaticResource ForegroundLightBrush}">
+              Background="{StaticResource ForegroundLightBrush}"
+              >
 
             <Grid.ColumnDefinitions>
                 <!-- Attach button -->
@@ -105,10 +126,11 @@
                     Content="{StaticResource FontAwesomePaperclipIcon}"
                     VerticalAlignment="Top"
                     Command="{Binding AttachmentButtonCommand}"
-                    Foreground="{StaticResource ForegroundDarkBrush}"/>
+                    Foreground="{StaticResource ForegroundDarkBrush}"
+                    />
 
             <!-- Message box -->
-            <TextBox x:Name="MessageText"
+            <TextBox x:Name="MessageText"    
                      Grid.Column="1" 
                      Tag="Write a message..."
                      attachedProperties:IsFocusedProperty.Value="True"
@@ -120,19 +142,22 @@
                      AcceptsReturn="True"
                      AcceptsTab="True"
                      VerticalScrollBarVisibility="Auto"
-                     PreviewKeyDown="MessageText_PreviewKeyDown"/>
+                     PreviewKeyDown="MessageText_PreviewKeyDown"
+                     />
 
             <!-- Additional buttons -->
             <StackPanel Grid.Column="2"
                         Orientation="Horizontal"
                         VerticalAlignment="Top"
-                        Margin="0 0 8 0">
+                        Margin="0 0 8 0"
+                        >
 
                 <!-- Emoji button -->
                 <Button Style="{StaticResource IconGrowButton}"
                     Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
                     Content="{StaticResource FontAwesomeEmojiIcon}"
-                    Foreground="{StaticResource WordTextHoverBrush}"/>
+                    Foreground="{StaticResource WordOrangeBrush}"
+                    />
 
                 <!-- Send button -->
                 <Button Content="Send"
@@ -140,8 +165,9 @@
                         IsDefault="True"
                         Focusable="False"
                         Command="{Binding SendCommand}"
-                        Background="{StaticResource WordTextHoverBrush}"
-                        FontSize="{StaticResource FontSizeRegular}"/>
+                        Background="{StaticResource WordGreenBrush}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        />
 
             </StackPanel>
 

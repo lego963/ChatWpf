@@ -43,12 +43,12 @@
                                    Padding="{TemplateBinding Padding}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                   Foreground="{StaticResource ForegroundVeryDarkBrush}">
+                                   Foreground="{StaticResource ForegroundVeryDarkBrush}"
+                                   >
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Collapsed" />
                                     <Style.Triggers>
-                                        <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                         <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
@@ -111,10 +111,11 @@
                                    FontFamily="{StaticResource LatoThin}"
                                    FontSize="{TemplateBinding FontSize}"
                                    Padding="{TemplateBinding Padding}"
-                                   Visibility="{TemplateBinding attachedProperties:HasTextProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
+                                   Visibility="{TemplateBinding attachedProperties:HasTextProperty.Value, Converter={valueConverter:BooleanToVisiblityConverter}}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                   Foreground="{StaticResource ForegroundVeryDarkBrush}">
+                                   Foreground="{StaticResource ForegroundVeryDarkBrush}"
+                                   >
                         </TextBlock>
 
                     </Grid>

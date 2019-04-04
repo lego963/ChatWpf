@@ -3,7 +3,7 @@ using ChatWpf.Core.DataModels;
 
 namespace ChatWpf.Core.ViewModel.Menu.Design
 {
-    public class MenuDesignModel: MenuViewModel
+    public class MenuDesignModel : MenuViewModel
     {
         public static MenuDesignModel Instance => new MenuDesignModel();
 

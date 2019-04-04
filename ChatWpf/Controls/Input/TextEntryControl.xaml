@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Input.Design;assembly=ChatWpf.Core"
              xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Input.Design;assembly=ChatWpf.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static core:TextEntryDesignModel.Instance}">
+             d:DataContext="{x:Static design:TextEntryDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"
@@ -57,7 +57,8 @@
                        Margin="15 12"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       FontFamily="{StaticResource LatoRegular}"/>
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
 
             <!-- Edit Content -->
             <TextBox Text="{Binding EditedText, UpdateSourceTrigger=PropertyChanged}"
@@ -67,7 +68,8 @@
                      attachedProperties:FocusAndSelectProperty.Value="{Binding Editing}"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
-                     Margin="10 10 15 8"/>
+                     Margin="10 10 15 8"
+                     />
 
             <!-- Content -->
             <TextBlock Text="{Binding OriginalText}" 
@@ -75,7 +77,8 @@
                        attachedProperties:AnimateFadeInProperty.Value="{Binding Editing, Converter={valueConverter:BooleanInvertConverter}}"
                        Margin="15 8"
                        VerticalAlignment="Center"
-                       ToolTip="{Binding OriginalText}"/>
+                       ToolTip="{Binding OriginalText}"
+                       />
 
             <!-- Edit button container -->
             <Grid Grid.Column="2" 
@@ -107,7 +110,7 @@
                         IsDefault="True"
                         Cursor="Hand"
                         Command="{Binding SaveCommand}"
-                        Background="{StaticResource WordBlueHoverBrush}"
+                        Background="{StaticResource WordGreenBrush}"
                         Padding="8 5"
                         Margin="0 0 5 0"
                         VerticalAlignment="Center"
@@ -121,7 +124,7 @@
                         IsCancel="True"
                         Cursor="Hand"
                         Command="{Binding CancelCommand}"
-                        Background="{StaticResource WordBlueHoverBrush}"
+                        Background="{StaticResource WordOrangeBrush}"
                         Padding="8 5"
                         Margin="0"
                         VerticalAlignment="Center"

@@ -5,10 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              xmlns:input="clr-namespace:ChatWpf.Controls.Input"
-             xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Application.Design;assembly=ChatWpf.Core"
-             d:DataContext="{x:Static core:SettingsDesignModel.Instance}"
-             mc:Ignorable="d">
-
+             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Application.Design;assembly=ChatWpf.Core"
+             d:DataContext="{x:Static design:SettingsDesignModel.Instance}"
+             mc:Ignorable="d" >
     <Border Background="{StaticResource ForegroundLightBrush}" 
             Padding="15">
         <Grid>
@@ -23,26 +22,27 @@
 
                 <!-- Back button -->
                 <Button Style="{StaticResource IconGrowButton}"
-                        Height="40"
-                        Content="{StaticResource FontAwesomeArrowLeftIcon}"
-                        FontFamily="{StaticResource FontAwesome}"
-                        Foreground="{StaticResource ForegroundDarkBrush}"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Command="{Binding CloseCommand}"/>
+                    Height="40"
+                    Content="{StaticResource FontAwesomeArrowLeftIcon}"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Foreground="{StaticResource ForegroundDarkBrush}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Command="{Binding CloseCommand}"
+                    />
 
                 <!-- Settings header -->
                 <TextBlock FontSize="{StaticResource FontSizeLarge}"
-                           Foreground="{StaticResource ForegroundVeryDarkBrush}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
-                    <!-- Cog icon -->
-                    <Run FontFamily="{StaticResource FontAwesome}"
-                         Text="{StaticResource FontAwesomeCogIcon}"
-                         Foreground="{StaticResource WordBlueHoverBrush}" />
-                    <!-- Settings text -->
-                    <Run Text="Settings"
-                         FontFamily="{StaticResource LatoRegular}" />
+                       Foreground="{StaticResource ForegroundVeryDarkBrush}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                <!-- Cog icon -->
+                <Run FontFamily="{StaticResource FontAwesome}"
+                     Text="{StaticResource FontAwesomeCogIcon}"
+                     Foreground="{StaticResource WordOrangeBrush}" />
+                <!-- Settings text -->
+                <Run Text="Settings"
+                     FontFamily="{StaticResource LatoRegular}" />
                 </TextBlock>
 
             </Grid>
@@ -50,7 +50,8 @@
             <!-- Main Content -->
             <Grid Grid.Row="1"
                   Width="600"
-                  VerticalAlignment="Top">
+                  VerticalAlignment="Top"
+                  >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="260" />
@@ -66,7 +67,8 @@
                     <!-- Mask for rounded corners-->
                     <Border CornerRadius="8"
                             Name="Mask"
-                            Background="White"/>
+                            Background="White"
+                            />
 
                     <!-- Image -->
                     <Grid>
@@ -81,8 +83,9 @@
 
                 <!-- Profile details -->
                 <StackPanel Grid.Column="1"
-                            attachedProperties:TextEntryWidthMatcherProperty.Value="True">
-                    
+                            attachedProperties:TextEntryWidthMatcherProperty.Value="True"
+                            >
+
                     <input:TextEntryControl DataContext="{Binding Name}" />
                     <input:TextEntryControl DataContext="{Binding Username}" />
                     <input:PasswordEntryControl DataContext="{Binding Password}" />
@@ -91,10 +94,14 @@
                     <Button Content="{Binding LogoutButtonText}"
                             Command="{Binding LogoutCommand}"
                             FontSize="{StaticResource FontSizeRegular}"
-/>
+                            
+                            />
+
                 </StackPanel>
 
+
             </Grid>
+
 
         </Grid>
     </Border>

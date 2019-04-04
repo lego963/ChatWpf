@@ -29,6 +29,7 @@ namespace ChatWpf.Core.ViewModel.Input
         public void Edit()
         {
             EditedText = OriginalText;
+
             Editing = true;
         }
 

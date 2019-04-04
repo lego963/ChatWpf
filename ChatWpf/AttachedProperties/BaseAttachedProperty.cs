@@ -3,40 +3,41 @@ using System.Windows;
 
 namespace ChatWpf.AttachedProperties
 {
-    public abstract class BaseAttachedProperty<TParent, TProperty> where TParent : new()
+    public abstract class BaseAttachedProperty<Parent, Property>
+        where Parent : new()
     {
         public event Action<DependencyObject, DependencyPropertyChangedEventArgs> ValueChanged = (sender, e) => { };
 
         public event Action<DependencyObject, object> ValueUpdated = (sender, value) => { };
 
-        public static TParent Instance { get; private set; } = new TParent();
+        public static Parent Instance { get; private set; } = new Parent();
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
             "Value",
-            typeof(TProperty),
-            typeof(BaseAttachedProperty<TParent, TProperty>),
+            typeof(Property),
+            typeof(BaseAttachedProperty<Parent, Property>),
             new UIPropertyMetadata(
-                default(TProperty), 
+                default(Property),
                 new PropertyChangedCallback(OnValuePropertyChanged),
-                new CoerceValueCallback(OnValuePropertyUpdated)));
+                new CoerceValueCallback(OnValuePropertyUpdated)
+                ));
 
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueChanged(d, e);
-
-            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueChanged(d, e);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.OnValueChanged(d, e);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.ValueChanged(d, e);
         }
 
         private static object OnValuePropertyUpdated(DependencyObject d, object value)
         {
-            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueUpdated(d, value);
-            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.OnValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<Parent, Property>)?.ValueUpdated(d, value);
             return value;
         }
 
-        public static TProperty GetValue(DependencyObject d) => (TProperty)d.GetValue(ValueProperty);
+        public static Property GetValue(DependencyObject d) => (Property)d.GetValue(ValueProperty);
 
-        public static void SetValue(DependencyObject d, TProperty value) => d.SetValue(ValueProperty, value);
+        public static void SetValue(DependencyObject d, Property value) => d.SetValue(ValueProperty, value);
 
         public virtual void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) { }
 

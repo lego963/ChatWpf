@@ -139,8 +139,8 @@
     <Compile Include="ValueConverter\ApplicationPageHelpers.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="ValueConverter\BooleanInvertConverter.cs" />
-    <Compile Include="ValueConverter\BooleanToVisibilityConverter.cs" />
-    <Compile Include="ValueConverter\BooleanToVisibilityGoneConverter.cs" />
+    <Compile Include="ValueConverter\BooleanToVisiblityConverter.cs" />
+    <Compile Include="ValueConverter\BooleanToVisiblityGoneConverter.cs" />
     <Compile Include="ValueConverter\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverter\IconTypeToFontAwesomeConverter.cs" />
     <Compile Include="ValueConverter\MenuItemTypeVisibilityConverter.cs" />
@@ -153,8 +153,6 @@
     <Compile Include="ViewModels\DialogWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
-    <Compile Include="Window\MonitorOptions.cs" />
-    <Compile Include="Window\WindowDockPosition.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="Controls\BubbleContent.xaml">
       <SubType>Designer</SubType>

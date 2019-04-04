@@ -5,13 +5,13 @@ namespace ChatWpf.Core.ViewModel.Base
 {
     public class RelayCommand : ICommand
     {
-        private Action _mAction;
+        private Action mAction;
 
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 
         public RelayCommand(Action action)
         {
-            _mAction = action;
+            mAction = action;
         }
 
         public bool CanExecute(object parameter)
@@ -21,8 +21,7 @@ namespace ChatWpf.Core.ViewModel.Base
 
         public void Execute(object parameter)
         {
-            _mAction();
+            mAction();
         }
-
     }
 }

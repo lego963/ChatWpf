@@ -33,7 +33,7 @@ namespace ChatWpf.AttachedProperties
         {
             if (sender is TextBoxBase control)
             {
-                if ((bool) e.NewValue)
+                if ((bool)e.NewValue)
                 {
                     control.Focus();
                     control.SelectAll();

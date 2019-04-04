@@ -3,7 +3,7 @@
 namespace ChatWpf.Controls.Menu
 {
     /// <summary>
-    /// Логика взаимодействия для VerticalMenu.xaml
+    /// Interaction logic for VerticalMenu.xaml
     /// </summary>
     public partial class VerticalMenu : UserControl
     {

@@ -1,6 +1,6 @@
 ﻿namespace ChatWpf.Core.ViewModel.Input.Design
 {
-    public class PasswordEntryDesignModel:PasswordEntryViewModel
+    public class PasswordEntryDesignModel : PasswordEntryViewModel
     {
         public static PasswordEntryDesignModel Instance => new PasswordEntryDesignModel();
 
@@ -9,6 +9,5 @@
             Label = "Name";
             FakePassword = "********";
         }
-
     }
 }

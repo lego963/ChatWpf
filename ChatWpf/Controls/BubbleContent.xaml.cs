@@ -3,7 +3,7 @@
 namespace ChatWpf.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для BubbleContent.xaml
+    /// Interaction logic for BubbleContent.xaml
     /// </summary>
     public partial class BubbleContent : UserControl
     {

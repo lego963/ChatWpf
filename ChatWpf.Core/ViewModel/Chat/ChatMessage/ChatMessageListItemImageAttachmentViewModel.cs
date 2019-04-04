@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
 {
-    public class ChatMessageListItemImageAttachmentViewModel:BaseViewModel
+    public class ChatMessageListItemImageAttachmentViewModel : BaseViewModel
     {
         private string mThumbnailUrl;
 
@@ -22,9 +18,11 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
             get => mThumbnailUrl;
             set
             {
+                // If value hasn't changed, return
                 if (value == mThumbnailUrl)
                     return;
 
+                // Update value
                 mThumbnailUrl = value;
 
                 // TODO: Download image from website
@@ -32,12 +30,10 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
                 //       Set LocalFilePath value
                 //
                 //       For now, just set the file path directly
-                Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Samples/rusty.jpg");
+                Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Samples/user.png");
             }
         }
 
         public string LocalFilePath { get; set; }
-
-        public bool ImageLoaded => LocalFilePath != null;
     }
 }

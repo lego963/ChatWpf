@@ -19,21 +19,27 @@ namespace ChatWpf.Core.ViewModel.Input
         public string ConfirmPasswordHintText { get; set; }
 
         public SecureString CurrentPassword { get; set; }
+
         public SecureString NewPassword { get; set; }
+
         public SecureString ConfirmPassword { get; set; }
 
         public bool Editing { get; set; }
 
         public ICommand EditCommand { get; set; }
+
         public ICommand CancelCommand { get; set; }
+
         public ICommand SaveCommand { get; set; }
 
         public PasswordEntryViewModel()
         {
+            // Create commands
             EditCommand = new RelayCommand(Edit);
             CancelCommand = new RelayCommand(Cancel);
             SaveCommand = new RelayCommand(Save);
 
+            // Set default hints
             // TODO: Replace with localization text
             CurrentPasswordHintText = "Current Password";
             NewPasswordHintText = "New Password";
@@ -59,10 +65,14 @@ namespace ChatWpf.Core.ViewModel.Input
         {
             // Make sure current password is correct
             // TODO: This will come from the real back-end store of this users password
+            //       or via asking the web server to confirm it
             var storedPassword = "Testing";
 
+            // Confirm current password is a match
+            // NOTE: Typically this isn't done here, it's done on the server
             if (storedPassword != CurrentPassword.Unsecure())
             {
+                // Let user know
                 IoC.Base.IoC.UI.ShowMessage(new MessageBoxDialogViewModel
                 {
                     Title = "Wrong password",
@@ -72,8 +82,10 @@ namespace ChatWpf.Core.ViewModel.Input
                 return;
             }
 
+            // Now check that the new and confirm password match
             if (NewPassword.Unsecure() != ConfirmPassword.Unsecure())
             {
+                // Let user know
                 IoC.Base.IoC.UI.ShowMessage(new MessageBoxDialogViewModel
                 {
                     Title = "Password mismatch",
@@ -83,8 +95,10 @@ namespace ChatWpf.Core.ViewModel.Input
                 return;
             }
 
+            // Check we actually have a password
             if (NewPassword.Unsecure().Length == 0)
             {
+                // Let user know
                 IoC.Base.IoC.UI.ShowMessage(new MessageBoxDialogViewModel
                 {
                     Title = "Password too short",
@@ -93,6 +107,8 @@ namespace ChatWpf.Core.ViewModel.Input
 
                 return;
             }
+
+            // Set the edited password to the current value
             CurrentPassword = new SecureString();
             foreach (var c in NewPassword.Unsecure().ToCharArray())
                 CurrentPassword.AppendChar(c);

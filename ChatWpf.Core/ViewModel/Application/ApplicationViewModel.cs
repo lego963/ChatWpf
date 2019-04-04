@@ -15,15 +15,21 @@ namespace ChatWpf.Core.ViewModel.Application
 
         public void GoToPage(ApplicationPage page, BaseViewModel viewModel = null)
         {
+            // Always hide settings page if we are changing pages
             SettingsMenuVisible = false;
 
+            // Set the view model
             CurrentPageViewModel = viewModel;
 
+            // Set the current page
             CurrentPage = page;
 
+            // Fire off a CurrentPage changed event
             OnPropertyChanged(nameof(CurrentPage));
 
+            // Show side menu or not?
             SideMenuVisible = page == ApplicationPage.Chat;
+
         }
     }
 }

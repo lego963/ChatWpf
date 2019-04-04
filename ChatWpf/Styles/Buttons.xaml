@@ -3,7 +3,6 @@
                     xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
                     xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter">
 
-
     <ResourceDictionary.MergedDictionaries>
         <!-- Order is important -->
         <ResourceDictionary Source="Colors.xaml" />
@@ -79,11 +78,10 @@
 
     </Style>
 
-
     <!-- Regular button -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
 
-        <Setter Property="Background" Value="{StaticResource WordBlueBrush}" />
+        <Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
@@ -104,27 +102,29 @@
                             SnapsToDevicePixels="True">
                         <Grid>
                             <TextBlock Text="{TemplateBinding Content}" 
-                                       Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
-                                       Focusable="False" 
-                                       FontFamily="{TemplateBinding FontFamily}"
-                                       FontSize="{TemplateBinding FontSize}"
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                       Margin="{TemplateBinding Padding}" 
-                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisiblityConverter}}"
+                                   Focusable="False" 
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   Margin="{TemplateBinding Padding}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
                             <TextBlock Style="{StaticResource SpinningText}" 
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                       FontSize="{TemplateBinding FontSize}"
-                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                       Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}" />
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   FontSize="{TemplateBinding FontSize}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisiblityConverter}, ConverterParameter=True}"
+                                   />
+
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation To="{StaticResource WordBlueHover}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                    <ColorAnimation To="{StaticResource WordBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -143,7 +143,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 
     <!-- Text button -->
     <Style x:Key="TextButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
@@ -176,7 +175,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource WordTextHoverBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource WordOrangeBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}"/>
@@ -225,7 +224,7 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation To="{StaticResource WordBlueHover}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                    <ColorAnimation To="{StaticResource WordLightBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -313,4 +312,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

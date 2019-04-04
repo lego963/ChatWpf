@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using ChatWpf.Animation;
 
 namespace ChatWpf.AttachedProperties
 {
-    public abstract class AnimateBaseProperty<TParent> : BaseAttachedProperty<TParent, bool> where TParent : BaseAttachedProperty<TParent, bool>, new()
+    public abstract class AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool>
+        where Parent : BaseAttachedProperty<Parent, bool>, new()
     {
         protected Dictionary<DependencyObject, bool> mAlreadyLoaded = new Dictionary<DependencyObject, bool>();
+
         protected Dictionary<DependencyObject, bool> mFirstLoadValue = new Dictionary<DependencyObject, bool>();
 
         public override void OnValueUpdated(DependencyObject sender, object value)
@@ -18,7 +19,6 @@ namespace ChatWpf.AttachedProperties
 
             if ((bool)sender.GetValue(ValueProperty) == (bool)value && mAlreadyLoaded.ContainsKey(sender))
                 return;
-
 
             if (!mAlreadyLoaded.ContainsKey(sender))
             {
@@ -36,7 +36,6 @@ namespace ChatWpf.AttachedProperties
                     DoAnimation(element, mFirstLoadValue.ContainsKey(sender) ? mFirstLoadValue[sender] : (bool)value, true);
 
                     mAlreadyLoaded[sender] = true;
-
                 };
 
                 element.Loaded += onLoaded;
@@ -72,6 +71,14 @@ namespace ChatWpf.AttachedProperties
         }
     }
 
+    public class AnimateSlideInFromBottomOnLoadProperty : AnimateBaseProperty<AnimateSlideInFromBottomOnLoadProperty>
+    {
+        protected override async void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            await element.SlideAndFadeInAsync(AnimationSlideInDirection.Bottom, !value, !value ? 0 : 0.3f, keepMargin: false);
+        }
+    }
+
     public class AnimateSlideInFromBottomMarginProperty : AnimateBaseProperty<AnimateSlideInFromBottomMarginProperty>
     {
         protected override async void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
@@ -99,40 +106,6 @@ namespace ChatWpf.AttachedProperties
         protected override void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
         {
             element.MarqueeAsync(firstLoad ? 0 : 3f);
-        }
-    }
-
-    public class AnimateSlideInFromBottomOnLoadProperty : AnimateBaseProperty<AnimateSlideInFromBottomOnLoadProperty>
-    {
-        protected override async void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
-        {
-            // Animate in
-            await element.SlideAndFadeInAsync(AnimationSlideInDirection.Bottom, !value, !value ? 0 : 0.3f, keepMargin: false);
-        }
-    }
-
-    public class FadeInImageOnLoadProperty : AnimateBaseProperty<FadeInImageOnLoadProperty>
-    {
-        public override void OnValueUpdated(DependencyObject sender, object value)
-        {
-            // Make sure we have an image
-            if (!(sender is Image image))
-                return;
-
-            // If we want to animate in...
-            if ((bool)value)
-                // Listen for target change
-                image.TargetUpdated += Image_TargetUpdatedAsync;
-            // Otherwise
-            else
-                // Make sure we unhooked
-                image.TargetUpdated -= Image_TargetUpdatedAsync;
-        }
-
-        private async void Image_TargetUpdatedAsync(object sender, System.Windows.Data.DataTransferEventArgs e)
-        {
-            // Fade in image
-            await (sender as Image).FadeInAsync(false);
         }
     }
 }

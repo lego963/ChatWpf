@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ChatWpf.Core.DataModels;
@@ -17,7 +16,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
 
         public string Initials { get; set; }
 
-        public string ProfilePictureRgb { get; set; }
+        public string ProfilePictureRGB { get; set; }
 
         public bool NewContentAvailable { get; set; }
 
@@ -27,6 +26,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
 
         public ChatListItemViewModel()
         {
+            // Create commands
             OpenMessageCommand = new RelayCommand(OpenMessage);
         }
 
@@ -50,7 +50,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         Message = Message,
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF00FF",
+                        ProfilePictureRGB = "FF00FF",
                         SenderName = "Luke",
                         SentByMe = true,
                     },
@@ -59,7 +59,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF0000",
+                        ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -68,7 +68,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF0000",
+                        ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -77,7 +77,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         Message = Message,
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF00FF",
+                        ProfilePictureRGB = "FF00FF",
                         SenderName = "Luke",
                         SentByMe = true,
                     },
@@ -86,7 +86,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF0000",
+                        ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -99,13 +99,12 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
                         },
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRgb = "FF0000",
+                        ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
                 }
             });
         }
-
     }
 }

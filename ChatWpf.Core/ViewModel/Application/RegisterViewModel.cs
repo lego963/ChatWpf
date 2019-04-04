@@ -17,6 +17,7 @@ namespace ChatWpf.Core.ViewModel.Application
 
         public RegisterViewModel()
         {
+            // Create commands
             RegisterCommand = new RelayParameterizedCommand(async (parameter) => await RegisterAsync(parameter));
             LoginCommand = new RelayCommand(async () => await LoginAsync());
         }
@@ -31,6 +32,7 @@ namespace ChatWpf.Core.ViewModel.Application
 
         public async Task LoginAsync()
         {
+            // Go to register page?
             IoC.Base.IoC.Application.GoToPage(ApplicationPage.Login);
 
             await Task.Delay(1);

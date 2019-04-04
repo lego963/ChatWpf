@@ -8,7 +8,7 @@ namespace ChatWpf.Core.IoC.Base
     {
         public static IKernel Kernel { get; private set; } = new StandardKernel();
 
-        public static IUIManager UI => Get<IUIManager>();
+        public static IUIManager UI => IoC.Get<IUIManager>();
 
         public static ApplicationViewModel Application => IoC.Get<ApplicationViewModel>();
 
@@ -16,13 +16,16 @@ namespace ChatWpf.Core.IoC.Base
 
         public static void Setup()
         {
+            // Bind all required view models
             BindViewModels();
         }
 
         private static void BindViewModels()
         {
+            // Bind to a single instance of Application view model
             Kernel.Bind<ApplicationViewModel>().ToConstant(new ApplicationViewModel());
 
+            // Bind to a single instance of Settings view model
             Kernel.Bind<SettingsViewModel>().ToConstant(new SettingsViewModel());
         }
 

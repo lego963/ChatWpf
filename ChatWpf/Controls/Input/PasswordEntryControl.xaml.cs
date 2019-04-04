@@ -6,9 +6,6 @@ using ChatWpf.Core.ViewModel.Input;
 
 namespace ChatWpf.Controls.Input
 {
-    /// <summary>
-    /// Логика взаимодействия для PasswordEntryControl.xaml
-    /// </summary>
     public partial class PasswordEntryControl : UserControl
     {
         public GridLength LabelWidth
@@ -31,7 +28,7 @@ namespace ChatWpf.Controls.Input
             {
                 (d as PasswordEntryControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Debugger.Break();
 
@@ -41,18 +38,21 @@ namespace ChatWpf.Controls.Input
 
         private void CurrentPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            // Update view model
             if (DataContext is PasswordEntryViewModel viewModel)
                 viewModel.CurrentPassword = CurrentPassword.SecurePassword;
         }
 
         private void NewPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            // Update view model
             if (DataContext is PasswordEntryViewModel viewModel)
                 viewModel.NewPassword = NewPassword.SecurePassword;
         }
 
         private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            // Update view model
             if (DataContext is PasswordEntryViewModel viewModel)
                 viewModel.ConfirmPassword = ConfirmPassword.SecurePassword;
         }

@@ -3,7 +3,7 @@
 namespace ChatWpf.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для SideMenuControl.xaml
+    /// Interaction logic for SideMenuControl.xaml
     /// </summary>
     public partial class SideMenuControl : UserControl
     {

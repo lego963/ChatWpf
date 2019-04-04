@@ -22,6 +22,7 @@ namespace ChatWpf.Core.Expressions
 
             // Set the property value
             propertyInfo.SetValue(target, value);
+
         }
     }
 }

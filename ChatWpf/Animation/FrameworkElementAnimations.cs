@@ -90,12 +90,10 @@ namespace ChatWpf.Animation
                 {
                     var width = 0d;
                     var innerWidth = 0d;
-
                     try
                     {
                         if (element == null || unloaded)
                             break;
-
                         width = element.ActualWidth;
                         innerWidth = ((element as Border).Child as FrameworkElement).ActualWidth;
                     }
@@ -110,14 +108,11 @@ namespace ChatWpf.Animation
                         sb.Begin(element);
                         element.Visibility = Visibility.Visible;
                     });
-
                     await Task.Delay((int)seconds * 1000);
-
                     if (seconds == 0)
                         break;
                 }
             });
         }
     }
-
 }

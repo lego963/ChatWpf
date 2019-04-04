@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:ChatWpf.ViewModels"
+             xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" 
-             d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
@@ -41,7 +40,8 @@
                         <!-- Settings button -->
                         <Button Grid.Column="2"
                                 Foreground="{StaticResource WordDarkBlueBrush}"
-                                Command="{Binding SettingsViewModel.OpenCommand, Source={x:Static local:ViewModelLocator.Instance}}"
+                                Command="{Binding SettingsViewModel.OpenCommand, 
+                                     Source={x:Static viewModels:ViewModelLocator.Instance}}"
                                 Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeCogIcon}" />
 
                     </Grid>
@@ -59,4 +59,5 @@
 
         </ControlTemplate>
     </UserControl.Template>
+
 </UserControl>

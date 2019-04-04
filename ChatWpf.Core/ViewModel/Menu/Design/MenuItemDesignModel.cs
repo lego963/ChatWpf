@@ -11,6 +11,5 @@ namespace ChatWpf.Core.ViewModel.Menu.Design
             Text = "Hello World";
             Icon = IconType.File;
         }
-
     }
 }

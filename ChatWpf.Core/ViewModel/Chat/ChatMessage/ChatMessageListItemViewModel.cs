@@ -3,7 +3,7 @@ using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
 {
-    public class ChatMessageListItemViewModel: BaseViewModel
+    public class ChatMessageListItemViewModel : BaseViewModel
     {
         public string SenderName { get; set; }
 
@@ -11,7 +11,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
 
         public string Initials { get; set; }
 
-        public string ProfilePictureRgb { get; set; }
+        public string ProfilePictureRGB { get; set; }
 
         public bool IsSelected { get; set; }
 

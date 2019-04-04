@@ -3,7 +3,7 @@ using ChatWpf.Core.ViewModel.Base;
 
 namespace ChatWpf.Core.ViewModel.Menu
 {
-    public class MenuItemViewModel:BaseViewModel
+    public class MenuItemViewModel : BaseViewModel
     {
         public string Text { get; set; }
 

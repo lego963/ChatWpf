@@ -1,7 +1,7 @@
 ﻿namespace ChatWpf.Dialogs
 {
     /// <summary>
-    /// Логика взаимодействия для DialogMessageBox.xaml
+    /// Interaction logic for DialogMessageBox.xaml
     /// </summary>
     public partial class DialogMessageBox : BaseDialogUserControl
     {
