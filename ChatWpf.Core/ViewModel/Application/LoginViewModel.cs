@@ -25,12 +25,12 @@ namespace ChatWpf.Core.ViewModel.Application
             RegisterCommand = new RelayCommand(async () => await RegisterAsync());
         }
 
-        public async Task LoginAsync(object parameter)
+        public async System.Threading.Tasks.Task LoginAsync(object parameter)
         {
             await RunCommandAsync(() => LoginIsRunning, async () =>
             {
                 // TODO: Fake a login...
-                await Task.Delay(1000);
+                await System.Threading.Tasks.Task.Delay(1000);
 
                 // OK successfully logged in... now get users data
                 // TODO: Ask server for users info
@@ -49,12 +49,12 @@ namespace ChatWpf.Core.ViewModel.Application
             });
         }
 
-        public async Task RegisterAsync()
+        public async System.Threading.Tasks.Task RegisterAsync()
         {
             // Go to register page?
             IoC.Base.IoC.Application.GoToPage(ApplicationPage.Register);
 
-            await Task.Delay(1);
+            await System.Threading.Tasks.Task.Delay(1);
         }
     }
 }

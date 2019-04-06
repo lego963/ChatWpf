@@ -43,6 +43,7 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatList
 
             IoC.Base.IoC.Application.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
             {
+                DisplayTitle = "Parnell, Me",
                 Items = new ObservableCollection<ChatMessageListItemViewModel>
                 {
                     new ChatMessageListItemViewModel

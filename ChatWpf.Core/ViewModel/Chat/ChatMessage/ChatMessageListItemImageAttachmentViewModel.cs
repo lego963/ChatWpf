@@ -30,10 +30,12 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage
                 //       Set LocalFilePath value
                 //
                 //       For now, just set the file path directly
-                Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Samples/user.png");
+                System.Threading.Tasks.Task.Delay(2000).ContinueWith(t => LocalFilePath = "/Images/Samples/user.png");
             }
         }
 
         public string LocalFilePath { get; set; }
+
+        public bool ImageLoaded => LocalFilePath != null;
     }
 }

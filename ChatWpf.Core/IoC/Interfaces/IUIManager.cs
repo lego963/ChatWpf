@@ -5,6 +5,6 @@ namespace ChatWpf.Core.IoC.Interfaces
 {
     public interface IUIManager
     {
-        Task ShowMessage(MessageBoxDialogViewModel viewModel);
+        System.Threading.Tasks.Task ShowMessage(MessageBoxDialogViewModel viewModel);
     }
 }

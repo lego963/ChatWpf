@@ -22,20 +22,20 @@ namespace ChatWpf.Core.ViewModel.Application
             LoginCommand = new RelayCommand(async () => await LoginAsync());
         }
 
-        public async Task RegisterAsync(object parameter)
+        public async System.Threading.Tasks.Task RegisterAsync(object parameter)
         {
             await RunCommandAsync(() => RegisterIsRunning, async () =>
             {
-                await Task.Delay(5000);
+                await System.Threading.Tasks.Task.Delay(5000);
             });
         }
 
-        public async Task LoginAsync()
+        public async System.Threading.Tasks.Task LoginAsync()
         {
             // Go to register page?
             IoC.Base.IoC.Application.GoToPage(ApplicationPage.Login);
 
-            await Task.Delay(1);
+            await System.Threading.Tasks.Task.Delay(1);
         }
     }
 }

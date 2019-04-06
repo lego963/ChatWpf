@@ -28,7 +28,7 @@ namespace ChatWpf.Controls.Input
             {
                 (d as PasswordEntryControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Debugger.Break();
 

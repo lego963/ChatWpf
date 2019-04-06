@@ -15,7 +15,7 @@ namespace ChatWpf.Core.ViewModel.Base
             PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        protected async Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<Task> action)
+        protected async System.Threading.Tasks.Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<System.Threading.Tasks.Task> action)
         {
             // Check if the flag property is true (meaning the function is already running)
             if (updatingFlag.GetPropertyValue())

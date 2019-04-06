@@ -55,7 +55,8 @@ namespace ChatWpf.Animation
             if (seconds != 0)
                 element.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
-            element.Visibility = Visibility.Hidden;
+            if (element.Opacity == 0)
+                element.Visibility = Visibility.Hidden;
         }
 
         public static async Task FadeInAsync(this FrameworkElement element, bool firstLoad, float seconds = 0.3f)
@@ -84,7 +85,7 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             var unloaded = false;
             element.Unloaded += (s, e) => unloaded = true;
-            Task.Run(async () =>
+            Core.IoC.Base.IoC.Task.Run(async () =>
             {
                 while (element != null && !unloaded)
                 {

@@ -28,8 +28,7 @@
                     Foreground="{StaticResource ForegroundDarkBrush}"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Command="{Binding CloseCommand}"
-                    />
+                    Command="{Binding CloseCommand}"/>
 
                 <!-- Settings header -->
                 <TextBlock FontSize="{StaticResource FontSizeLarge}"

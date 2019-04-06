@@ -9,6 +9,8 @@ namespace ChatWpf.Core.ViewModel.Chat.ChatMessage.Design
 
         public ChatMessageListDesignModel()
         {
+            DisplayTitle = "Parnell";
+
             Items = new ObservableCollection<ChatMessageListItemViewModel>
             {
                 new ChatMessageListItemViewModel
