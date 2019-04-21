@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
-        Icon="Images/Logo/logo-small.png"
+        Icon="Images/Logo/chat-logo.png"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
         Title="{Binding Title}">
@@ -72,7 +72,7 @@
 
                                         <!-- Icon -->
                                         <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-                                            <Image Source="/Images/Logo/logo-small.png" />
+                                            <Image Source="/Images/Logo/chat-logo.png" />
                                         </Button>
 
                                         <!-- Title -->

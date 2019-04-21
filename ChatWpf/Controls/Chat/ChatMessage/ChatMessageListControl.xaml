@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              xmlns:chatMessage="clr-namespace:ChatWpf.Controls.Chat.ChatMessage"
-             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Chat.ChatMessage.Design;assembly=ChatWpf.Core"
+             xmlns:design="clr-namespace:ChatWpf.ViewModel.Chat.ChatMessage.Design"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
 

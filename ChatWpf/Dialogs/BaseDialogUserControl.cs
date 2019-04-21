@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using ChatWpf.Core.ViewModel.Base;
-using ChatWpf.Core.ViewModel.Dialogs;
-using ChatWpf.ViewModels;
+using ChatWpf.ViewModel.Base;
+using ChatWpf.ViewModel.Dialogs;
+using ChatWpf.WPFViewModels;
 
 namespace ChatWpf.Dialogs
 {

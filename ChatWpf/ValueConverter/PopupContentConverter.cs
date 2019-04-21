@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using ChatWpf.Controls.Menu;
-using ChatWpf.Core.ViewModel.Base;
-using ChatWpf.Core.ViewModel.PopupMenu;
+using ChatWpf.ViewModel.Base;
+using ChatWpf.ViewModel.PopupMenu;
 
 namespace ChatWpf.ValueConverter
 {

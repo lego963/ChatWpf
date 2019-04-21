@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ChatWpf.Core.DI;
 using ChatWpf.Core.Logging.Core;
 
 namespace ChatWpf.Core.Logging.Implementation
@@ -23,7 +24,7 @@ namespace ChatWpf.Core.Logging.Implementation
 
             var timeLogString = LogTime ? $"[{ currentTime}] " : "";
 
-            IoC.Base.IoC.File.WriteTextToFileAsync($"{timeLogString}{message}{Environment.NewLine}", FilePath, append: true);
+            CoreDI.FileManager.WriteTextToFileAsync($"{timeLogString}{message}{Environment.NewLine}", FilePath, append: true);
         }
 
     }

@@ -3,14 +3,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChatWpf.Web.Server.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
+        #region Public Properties
+
+        /// <summary>
+        /// The settings for the application
+        /// </summary>
         public DbSet<SettingsDataModel> Settings { get; set; }
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor, expecting database options passed in
+        /// </summary>
+        /// <param name="options">The database context options</param>
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
+
+        #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

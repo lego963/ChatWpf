@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using ChatWpf.Core.DataModels;
-using ChatWpf.Core.ViewModel.Application;
-using ChatWpf.Core.ViewModel.Chat.ChatMessage;
 using ChatWpf.Pages;
+using ChatWpf.ViewModel.Application;
+using ChatWpf.ViewModel.Chat.ChatMessage;
 
 namespace ChatWpf.ValueConverter
 {

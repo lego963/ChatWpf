@@ -1,57 +1,65 @@
-﻿using System.Windows;
-using ChatWpf.Core.File;
-using ChatWpf.Core.IoC.Interfaces;
-using ChatWpf.Core.Logging.Core;
-using ChatWpf.Core.Logging.Implementation;
-using ChatWpf.Core.Task;
-using ChatWpf.IoC;
+﻿using System.Threading.Tasks;
+using System.Windows;
+using ChatWpf.Core.DataModels;
+using ChatWpf.DI;
+using ChatWpf.Relational;
 using Dna;
-using FileLogger = ChatWpf.Core.Logging.Implementation.FileLogger;
+using static Dna.FrameworkDI;
+using static ChatWpf.DI.DI;
 
 namespace ChatWpf
 {
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        /// <summary>
+        /// Custom startup so we load our IoC immediately before anything else
+        /// </summary>
+        /// <param name="e"></param>
+        protected override async void OnStartup(StartupEventArgs e)
         {
             // Let the base application do what it needs
             base.OnStartup(e);
 
             // Setup the main application 
-            ApplicationSetup();
+            await ApplicationSetupAsync();
 
             // Log it
-            Core.IoC.Base.IoC.Logger.Log("Application starting...", LogLevel.Debug);
+            Logger.LogDebugSource("Application starting...");
+
+            ViewModelApplication.GoToPage(
+                // If we are logged in...
+                await ClientDataStore.HasCredentialsAsync() ?
+                    // Go to chat page
+                    ApplicationPage.Chat :
+                    // Otherwise, go to login page
+                    ApplicationPage.Login);
 
             // Show the main window
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
         }
 
-        private void ApplicationSetup()
+        /// <summary>
+        /// Configures our application ready for use
+        /// </summary>
+        private async Task ApplicationSetupAsync()
         {
-            Framework.Startup();
+            // Setup the Dna Framework
+            Framework.Construct<DefaultFrameworkConstruction>()
+                .AddFileLogger()
+                .AddClientDataStore()
+                .AddChatViewModels()
+                .AddChatClientServices()
+                .Build();
 
-            // Setup IoC
-            Core.IoC.Base.IoC.Setup();
+            // Ensure the client data store 
+            await ClientDataStore.EnsureDataStoreAsync();
 
-            // Bind a logger
-            Core.IoC.Base.IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory(
-                new[]
-                {
-                // TODO: Add ApplicationSettings so we can set/edit a log location
-                //       For now just log to the path where this application is running
-                new FileLogger("Oldlog.txt"),
-            }));
-
-            // Add our task manager
-            Core.IoC.Base.IoC.Kernel.Bind<ITaskManager>().ToConstant(new TaskManager());
-
-            // Bind a file manager
-            Core.IoC.Base.IoC.Kernel.Bind<IFileManager>().ToConstant(new FileManager());
-
-            // Bind a UI Manager
-            Core.IoC.Base.IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
+            // Load new settings
+            await ViewModelSettings.LoadAsync();
         }
     }
 }

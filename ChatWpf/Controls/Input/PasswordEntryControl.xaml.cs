@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using ChatWpf.Core.ViewModel.Input;
+using ChatWpf.ViewModel.Input;
 
 namespace ChatWpf.Controls.Input
 {

@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ChatWpf.Animation;
-using ChatWpf.Core.ViewModel.Base;
+using ChatWpf.ViewModel.Base;
+using Dna;
 
 namespace ChatWpf.Pages
 {
@@ -188,8 +189,12 @@ namespace ChatWpf.Pages
         /// </summary>
         public BasePage() : base()
         {
-            // Create a default view model
-            ViewModel = Core.IoC.Base.IoC.Get<VM>();
+            if (DesignerProperties.GetIsInDesignMode(this))
+                // Just use a new instance of the VM
+                ViewModel = new VM();
+            else
+                // Create a default view model
+                ViewModel = Framework.Service<VM>() ?? new VM();
         }
 
         /// <summary>
@@ -202,8 +207,17 @@ namespace ChatWpf.Pages
             if (specificViewModel != null)
                 ViewModel = specificViewModel;
             else
-                // Create a default view model
-                ViewModel = Core.IoC.Base.IoC.Get<VM>();
+            {
+                // If in design time mode...
+                if (DesignerProperties.GetIsInDesignMode(this))
+                    // Just use a new instance of the VM
+                    ViewModel = new VM();
+                else
+                {
+                    // Create a default view model
+                    ViewModel = Framework.Service<VM>() ?? new VM();
+                }
+            }
         }
 
         #endregion

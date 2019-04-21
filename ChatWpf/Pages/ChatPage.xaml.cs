@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using ChatWpf.Animation;
-using ChatWpf.Core.ViewModel.Chat.ChatMessage;
+using ChatWpf.ViewModel.Chat.ChatMessage;
 
 namespace ChatWpf.Pages
 {

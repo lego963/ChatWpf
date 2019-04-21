@@ -43,6 +43,8 @@ namespace ChatWpf.AttachedProperties
 
                     await Task.Delay(5);
 
+                    firstLoadReference = mFirstLoadValue.FirstOrDefault(f => f.Key.Target == sender);
+
                     DoAnimation(element, firstLoadReference.Key != null ? firstLoadReference.Value : (bool)value, true);
 
                     mAlreadyLoaded[weakReference] = true;

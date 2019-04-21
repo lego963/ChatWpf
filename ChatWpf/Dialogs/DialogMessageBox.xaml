@@ -4,7 +4,7 @@
                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                              xmlns:dialogs="clr-namespace:ChatWpf.Dialogs"
-                             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.Dialogs.Design;assembly=ChatWpf.Core"
+                             xmlns:design="clr-namespace:ChatWpf.ViewModel.Dialogs.Design"
                              mc:Ignorable="d">
     <StackPanel d:DataContext="{x:Static design:MessageBoxDialogDesignModel.Instance}"
                 Background="{StaticResource ForegroundLightBrush}"

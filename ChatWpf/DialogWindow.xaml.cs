@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using ChatWpf.ViewModels;
+using ChatWpf.WPFViewModels;
 
 namespace ChatWpf
 {
@@ -8,20 +8,8 @@ namespace ChatWpf
     /// </summary>
     public partial class DialogWindow : System.Windows.Window
     {
-        #region Private Members
-
-        /// <summary>
-        /// The view model for this window
-        /// </summary>
         private DialogWindowViewModel mViewModel;
 
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// The view model for this window
-        /// </summary>
         public DialogWindowViewModel ViewModel
         {
             get => mViewModel;
@@ -35,18 +23,9 @@ namespace ChatWpf
             }
         }
 
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
         public DialogWindow()
         {
             InitializeComponent();
         }
-
-        #endregion
     }
 }

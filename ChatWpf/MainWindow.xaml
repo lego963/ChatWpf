@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
         xmlns:chatWpf="clr-namespace:ChatWpf"
-        xmlns:viewModels="clr-namespace:ChatWpf.ViewModels"
         xmlns:controls="clr-namespace:ChatWpf.Controls"
         xmlns:chatList="clr-namespace:ChatWpf.Controls.Chat.ChatList"
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+        xmlns:wpfViewModels="clr-namespace:ChatWpf.WPFViewModels"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -145,7 +145,7 @@
             <!-- Settings page -->
             <controls:SettingsControl Grid.ColumnSpan="2"
                                    Panel.ZIndex="9"
-                                   attachedProperties:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static viewModels:ViewModelLocator.Instance}}"
+                                   attachedProperties:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static wpfViewModels:ViewModelLocator.Instance}}"
                                    />
 
             <!-- Dimmed overlay -->
@@ -159,16 +159,16 @@
 
             <controls:PageHost Grid.Column="1" 
                    CurrentPage="{Binding ApplicationViewModel.CurrentPage,
-                                        Source={x:Static viewModels:ViewModelLocator.Instance}}"
+                                        Source={x:Static wpfViewModels:ViewModelLocator.Instance}}"
                    CurrentPageViewModel="{Binding ApplicationViewModel.CurrentPageViewModel,
-                                        Source={x:Static viewModels:ViewModelLocator.Instance}}"                            
+                                        Source={x:Static wpfViewModels:ViewModelLocator.Instance}}"                            
                             />
 
             <!-- Side Menu -->
             <controls:SideMenuControl 
                 Width="300" 
                 attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
-                                     Source={x:Static viewModels:ViewModelLocator.Instance}}">
+                                     Source={x:Static wpfViewModels:ViewModelLocator.Instance}}">
 
                 <chatList:ChatListControl />
 

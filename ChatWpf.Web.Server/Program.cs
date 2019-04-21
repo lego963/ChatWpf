@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Dna;
+using Dna.AspNet;
 
 namespace ChatWpf.Web.Server
 {
@@ -14,11 +9,22 @@ namespace ChatWpf.Web.Server
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder()
+                // Add Dna Framework
+                .UseDnaFramework(construct =>
+                {
+                    // Configure framework
+
+                    // Add file logger
+                    construct.AddFileLogger();
+                })
+                .UseStartup<Startup>()
+                .Build();
+        }
     }
 }

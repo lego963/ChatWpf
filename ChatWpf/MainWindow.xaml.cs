@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using ChatWpf.ViewModels;
+using ChatWpf.WPFViewModels;
 
 namespace ChatWpf
 {

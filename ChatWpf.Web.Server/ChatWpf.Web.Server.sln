@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatWpf.Web.Server", "ChatWpf.Web.Server\ChatWpf.Web.Server.csproj", "{90D17B13-A664-4CFE-BF23-05EDB4B38143}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatWpf.Core", "..\ChatWpf.Core\ChatWpf.Core.csproj", "{D06BAEAB-2AFA-42D8-89C1-4DD4432C7687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D17B13-A664-4CFE-BF23-05EDB4B38143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D17B13-A664-4CFE-BF23-05EDB4B38143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D17B13-A664-4CFE-BF23-05EDB4B38143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D17B13-A664-4CFE-BF23-05EDB4B38143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D06BAEAB-2AFA-42D8-89C1-4DD4432C7687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06BAEAB-2AFA-42D8-89C1-4DD4432C7687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06BAEAB-2AFA-42D8-89C1-4DD4432C7687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06BAEAB-2AFA-42D8-89C1-4DD4432C7687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BA785D2-FA08-4CBE-9D3A-76C517256668}
+	EndGlobalSection
+EndGlobal

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:design="clr-namespace:ChatWpf.Core.ViewModel.PopupMenu.Design;assembly=ChatWpf.Core"
+             xmlns:design="clr-namespace:ChatWpf.ViewModel.PopupMenu.Design"
              mc:Ignorable="d" 
              d:DataContext="{x:Static design:ChatAttachmentPopupMenuDesignModel.Instance}">
 

@@ -3,59 +3,36 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ChatWpf.Core.DataModels;
-using ChatWpf.Core.ViewModel.Base;
 using ChatWpf.Pages;
 using ChatWpf.ValueConverter;
+using ChatWpf.ViewModel.Base;
+using static ChatWpf.DI.DI;
 
 namespace ChatWpf.Controls
 {
-    /// <summary>
-    /// Interaction logic for PageHost.xaml
-    /// </summary>
     public partial class PageHost : UserControl
     {
-        #region Dependency Properties
-
-        /// <summary>
-        /// The current page to show in the page host
-        /// </summary>
         public ApplicationPage CurrentPage
         {
             get => (ApplicationPage)GetValue(CurrentPageProperty);
             set => SetValue(CurrentPageProperty, value);
         }
 
-        /// <summary>
-        /// Registers <see cref="CurrentPage"/> as a dependency property
-        /// </summary>
         public static readonly DependencyProperty CurrentPageProperty =
             DependencyProperty.Register(nameof(CurrentPage), typeof(ApplicationPage), typeof(PageHost), new UIPropertyMetadata(default(ApplicationPage), null, CurrentPagePropertyChanged));
 
 
-        /// <summary>
-        /// The current page to show in the page host
-        /// </summary>
         public BaseViewModel CurrentPageViewModel
         {
             get => (BaseViewModel)GetValue(CurrentPageViewModelProperty);
             set => SetValue(CurrentPageViewModelProperty, value);
         }
 
-        /// <summary>
-        /// Registers <see cref="CurrentPageViewModel"/> as a dependency property
-        /// </summary>
         public static readonly DependencyProperty CurrentPageViewModelProperty =
             DependencyProperty.Register(nameof(CurrentPageViewModel),
                 typeof(BaseViewModel), typeof(PageHost),
                 new UIPropertyMetadata());
 
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
         public PageHost()
         {
             InitializeComponent();
@@ -63,22 +40,13 @@ namespace ChatWpf.Controls
             // If we are in DesignMode, show the current page
             // as the dependency property does not fire
             if (DesignerProperties.GetIsInDesignMode(this))
-                NewPage.Content = Core.IoC.Base.IoC.Application.CurrentPage.ToBasePage();
+                NewPage.Content = ViewModelApplication.CurrentPage.ToBasePage();
         }
 
-        #endregion
-
-        #region Property Changed Events
-
-        /// <summary>
-        /// Called when the <see cref="CurrentPage"/> value has changed
-        /// </summary>
-        /// <param name="d"></param>
-        /// <param name="e"></param>
         private static object CurrentPagePropertyChanged(DependencyObject d, object value)
         {
             // Get current values
-            var currentPage = (ApplicationPage)d.GetValue(CurrentPageProperty);
+            var currentPage = (ApplicationPage)value;
             var currentPageViewModel = d.GetValue(CurrentPageViewModelProperty);
 
             // Get the frames
@@ -126,6 +94,5 @@ namespace ChatWpf.Controls
             return value;
         }
 
-        #endregion
     }
 }

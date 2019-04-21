@@ -1,0 +1,171 @@
+[2019-04-21 04:33:21] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2019-04-21 04:33:23] Request starting HTTP/1.1 GET http://localhost:44367/  
+[2019-04-21 04:33:23] Request starting HTTP/1.1 DEBUG http://localhost:23143/  0
+[2019-04-21 04:33:23] Request finished in 92.7392ms 200 
+[2019-04-21 04:33:24] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+[2019-04-21 04:33:25] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+[2019-04-21 04:33:25] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-21 04:33:37] Executed DbCommand (1,345ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [synthesis];
+[2019-04-21 04:33:38] Executed DbCommand (243ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [synthesis] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[2019-04-21 04:33:39] Executed DbCommand (673ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+[2019-04-21 04:33:39] Executed DbCommand (95ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+[2019-04-21 04:33:39] Executed DbCommand (131ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Settings] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Value] nvarchar(2048) NOT NULL,
+    CONSTRAINT [PK_Settings] PRIMARY KEY ([Id])
+);
+[2019-04-21 04:33:39] Executed DbCommand (101ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+[2019-04-21 04:33:39] Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+[2019-04-21 04:33:39] Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+[2019-04-21 04:33:39] Executed DbCommand (41ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+[2019-04-21 04:33:39] Executed DbCommand (101ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+[2019-04-21 04:33:39] Executed DbCommand (111ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+[2019-04-21 04:33:39] Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+[2019-04-21 04:33:39] Executed DbCommand (76ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+[2019-04-21 04:33:39] Executed DbCommand (90ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+[2019-04-21 04:33:40] Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+[2019-04-21 04:33:40] Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+[2019-04-21 04:33:40] Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+[2019-04-21 04:33:40] Executed DbCommand (49ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Settings_Name] ON [Settings] ([Name]);
+[2019-04-21 04:33:40] Executed DbCommand (183ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Settings] AS [s])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+[2019-04-21 04:33:40] Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Settings] AS [s]
+[2019-04-21 04:33:40] Query: '(from SettingsDataModel <generated>_1 in DbSet<SettingsDataModel> select [<generated>_1]).FirstOrDef...' uses First/FirstOrDefault/Last/LastOrDefault operation without OrderBy and filter which may lead to unpredictable results.
+[2019-04-21 04:33:40] Executed DbCommand (49ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Name], [s].[Value]
+FROM [Settings] AS [s]
+[2019-04-21 04:33:40] Executed DbCommand (212ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 256), @p2='?' (Size = 2048)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Settings] ([Id], [Name], [Value])
+VALUES (@p0, @p1, @p2);
+[2019-04-21 04:33:41] Executed DbCommand (76ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Settings] AS [s]
+[2019-04-21 04:33:41] Executed DbCommand (143ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Name], [s].[Value]
+FROM [Settings] AS [s]
+[2019-04-21 04:33:41] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16177.1ms.
+[2019-04-21 04:33:41] Executing ViewResult, running view Index.
+[2019-04-21 04:33:41] Executed ViewResult - view Index executed in 183.8789ms.
+[2019-04-21 04:33:41] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 17362.5892ms
+[2019-04-21 04:33:41] Request finished in 18047.2156ms 200 text/html; charset=utf-8
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/images/banner1.svg  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/css/site.css  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/images/banner2.svg  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/lib/jquery/dist/jquery.js  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/lib/bootstrap/dist/js/bootstrap.js  
+[2019-04-21 04:33:41] Sending file. Request path: '/images/banner1.svg'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\images\banner1.svg'
+[2019-04-21 04:33:41] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\css\site.css'
+[2019-04-21 04:33:41] Sending file. Request path: '/images/banner2.svg'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\images\banner2.svg'
+[2019-04-21 04:33:41] Request finished in 79.6504ms 200 image/svg+xml
+[2019-04-21 04:33:41] Request finished in 76.8012ms 200 text/css
+[2019-04-21 04:33:41] Request finished in 100.0301ms 200 image/svg+xml
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/images/banner3.svg  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0  
+[2019-04-21 04:33:41] Request starting HTTP/1.1 GET http://localhost:44367/lib/bootstrap/dist/css/bootstrap.css  
+[2019-04-21 04:33:42] Sending file. Request path: '/images/banner3.svg'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\images\banner3.svg'
+[2019-04-21 04:33:42] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\js\site.js'
+[2019-04-21 04:33:42] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\lib\bootstrap\dist\js\bootstrap.js'
+[2019-04-21 04:33:42] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+[2019-04-21 04:33:42] Request finished in 301.8283ms 200 application/javascript
+[2019-04-21 04:33:42] Request finished in 296.4065ms 200 image/svg+xml
+[2019-04-21 04:33:42] Request finished in 336.3812ms 200 text/css
+[2019-04-21 04:33:42] Request finished in 419.942ms 200 application/javascript
+[2019-04-21 04:33:42] Sending file. Request path: '/lib/jquery/dist/jquery.js'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\lib\jquery\dist\jquery.js'
+[2019-04-21 04:33:42] Request finished in 672.9729ms 200 application/javascript
+[2019-04-21 04:33:42] Request starting HTTP/1.1 GET http://localhost:44367/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2  
+[2019-04-21 04:33:42] Sending file. Request path: '/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2'
+[2019-04-21 04:33:42] Request finished in 31.6734ms 200 font/woff2
+[2019-04-21 04:33:42] Request starting HTTP/1.1 GET http://localhost:44367/favicon.ico  
+[2019-04-21 04:33:42] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\favicon.ico'
+[2019-04-21 04:33:42] Request finished in 24.0022ms 200 image/x-icon
+[2019-04-21 04:34:52] Request starting HTTP/1.1 POST http://127.0.0.1:29788/iisintegration  0
+[2019-04-21 04:34:52] Request finished in 14.8325ms 202 

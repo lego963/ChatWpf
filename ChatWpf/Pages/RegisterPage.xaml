@@ -1,11 +1,11 @@
-﻿<pages:BasePage x:TypeArguments="core:RegisterViewModel" x:Class="ChatWpf.Pages.RegisterPage"
+﻿<pages:BasePage x:TypeArguments="registerVm:RegisterViewModel" x:Class="ChatWpf.Pages.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
       xmlns:pages="clr-namespace:ChatWpf.Pages"
-      xmlns:core="clr-namespace:ChatWpf.Core.ViewModel.Application;assembly=ChatWpf.Core"
+      xmlns:registerVm="clr-namespace:ChatWpf.ViewModel.Application"
       mc:Ignorable="d" 
       x:Name="Page"
       d:DesignHeight="700" d:DesignWidth="700"
@@ -43,10 +43,15 @@
                                        Margin="0 0 0 20"
                                        />
 
+                            <!-- Username -->
+                            <TextBox 
+                                Text="{Binding Username}" 
+                                attachedProperties:IsFocusedProperty.Value="True"
+                                Tag="Username" />
+
                             <!-- Email -->
                             <TextBox 
                                 Text="{Binding Email}" 
-                                attachedProperties:IsFocusedProperty.Value="True"
                                 Tag="Email" />
 
                             <!-- Password -->

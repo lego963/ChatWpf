@@ -1,10 +1,12 @@
 ﻿using System;
+using Dna;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ChatWpf.Core.Logging.Core;
+using static Dna.FrameworkDI;
 
 namespace ChatWpf.Core.Async
 {
@@ -68,7 +70,7 @@ namespace ChatWpf.Core.Async
             {
                 var error = ex.Message;
 
-                IoC.Base.IoC.Logger.Log($"Crash in {nameof(AwaitAsync)}. {ex.Message}", LogLevel.Debug);
+                Logger.LogDebugSource($"Crash in {nameof(AwaitAsync)}. {ex.Message}");
 
                 Debugger.Break();
 

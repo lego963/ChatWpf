@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using static ChatWpf.DI.DI;
 
 namespace ChatWpf.Controls
 {
@@ -12,7 +13,7 @@ namespace ChatWpf.Controls
             InitializeComponent();
 
             // Set data context to settings view model
-            DataContext = Core.IoC.Base.IoC.Settings;
+            DataContext = ViewModelSettings;
         }
     }
 }

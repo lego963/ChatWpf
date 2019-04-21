@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using static ChatWpf.Core.DI.CoreDI;
 
 namespace ChatWpf.Animation
 {
@@ -85,7 +86,7 @@ namespace ChatWpf.Animation
             var sb = new Storyboard();
             var unloaded = false;
             element.Unloaded += (s, e) => unloaded = true;
-            Core.IoC.Base.IoC.Task.Run(async () =>
+            TaskManager.Run(async () =>
             {
                 while (element != null && !unloaded)
                 {
