@@ -2,6 +2,9 @@
 
 namespace ChatWpf.Web.Server.Data
 {
+    /// <summary>
+    /// Our Settings database table representational model
+    /// </summary>
     public class SettingsDataModel
     {
         /// <summary>

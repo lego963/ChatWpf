@@ -1,11 +1,14 @@
-﻿using ChatWpf.Core.IoC.Interfaces;
+﻿using ChatWpf.Core.DI.Interfaces;
 using ChatWpf.Web.Server.Data;
 using Dna;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ChatWpf.Web.Server.IoC
 {
-    public class DI
+    /// <summary>
+    /// A shorthand access class to get DI services with nice clean short code
+    /// </summary>
+    public static class DI
     {
         /// <summary>
         /// The scoped instance of the <see cref="ApplicationDbContext"/>

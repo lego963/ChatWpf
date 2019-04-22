@@ -3,26 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
+             xmlns:local="clr-namespace:ChatWpf.ViewModel.Chat.ChatMessage.Design"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:design="clr-namespace:ChatWpf.ViewModel.Chat.ChatMessage.Design"
+             xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              mc:Ignorable="d" d:DesignWidth="300">
-
     <Border Padding="5" 
-            d:DataContext="{x:Static design:ChatMessageListItemDesignModel.Instance}">
+            d:DataContext="{x:Static local:ChatMessageListItemDesignModel.Instance}"
+            >
         <Grid>
 
             <!-- Profile picture -->
             <Border VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Margin="0 7.5 0 7.5"
-                    Visibility="{Binding SentByMe, Converter={valueConverter:BooleanToVisiblityConverter}}"
+                    Visibility="{Binding SentByMe, Converter={valueConverter:BooleanToVisibilityConverter}}"
                     CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                     Width="35"
                     Background="Green"
                     BorderBrush="{StaticResource ForegroundLightBrush}"
-                    BorderThickness="1">
+                    BorderThickness="1"
+                    >
                 <TextBlock Text="{Binding Initials}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -74,10 +75,11 @@
                             VerticalAlignment="Top">
 
                         <TextBlock Style="{StaticResource SpinningText}"
-                                   Foreground="{StaticResource ForegroundLightBrush}"
-                                   Padding="20"
-                                   DataContext="{Binding ImageAttachment}"
-                                   Visibility="{Binding ImageLoaded, Converter={valueConverter:BooleanToVisiblityGoneConverter}, ConverterParameter=True, FallbackValue=Collapsed}"/>
+                               Foreground="{StaticResource ForegroundLightBrush}"
+                               Padding="20"
+                               DataContext="{Binding ImageAttachment}"
+                               Visibility="{Binding ImageLoaded, Converter={valueConverter:BooleanToVisibilityGoneConverter}, ConverterParameter=True, FallbackValue=Collapsed}"
+                               />
 
                     </Border>
 
@@ -96,7 +98,7 @@
                     <!-- Chat Message Text Bubble -->
                     <Grid Grid.Row="1"
                           HorizontalAlignment="{Binding SentByMe, Converter={valueConverter:SentByMeToAlignmentConverter}}"
-                          Visibility="{Binding HasMessage, Converter={valueConverter:BooleanToVisiblityGoneConverter}}">
+                          Visibility="{Binding HasMessage, Converter={valueConverter:BooleanToVisibilityGoneConverter}}">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />

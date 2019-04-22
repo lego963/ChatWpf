@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:design="clr-namespace:ChatWpf.ViewModel.Menu.Design"
+             xmlns:word="clr-namespace:ChatWpf.ViewModel.Menu.Design"
              mc:Ignorable="d">
-    <ItemsControl d:DataContext="{x:Static design:MenuDesignModel.Instance}"
+    <ItemsControl d:DataContext="{x:Static word:MenuDesignModel.Instance}"
                   ItemsSource="{Binding Items}"
                   Background="White">
 
@@ -17,7 +17,7 @@
                 <Grid>
 
                     <!-- Header -->
-                    <Grid Visibility="{Binding Type, Converter={valueConverter:MenuItemTypeVisiblityConverter}, ConverterParameter=Header}">
+                    <Grid Visibility="{Binding Type, Converter={valueConverter:MenuItemTypeVisibilityConverter}, ConverterParameter=Header}">
 
                         <!-- Header line -->
                         <Border Height="0.5" Background="{StaticResource ForegroundDarkBrush}" />
@@ -38,7 +38,7 @@
                     <Border Background="{StaticResource ForegroundLightBrush}"
                             CornerRadius="8"
                             Padding="5"
-                            Visibility="{Binding Type, Converter={valueConverter:MenuItemTypeVisiblityConverter}, ConverterParameter=TextAndIcon}"
+                            Visibility="{Binding Type, Converter={valueConverter:MenuItemTypeVisibilityConverter}, ConverterParameter=TextAndIcon}"
                             >
 
                         <Border.Triggers>

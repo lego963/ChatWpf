@@ -1,19 +1,16 @@
-﻿using System.Windows.Controls;
-using static ChatWpf.DI.DI;
+﻿using System.ComponentModel;
+using System.Windows.Controls;
+using ChatWpf.ViewModel.Application;
 
 namespace ChatWpf.Controls
 {
-    /// <summary>
-    /// Interaction logic for SettingsControl.xaml
-    /// </summary>
     public partial class SettingsControl : UserControl
     {
         public SettingsControl()
         {
             InitializeComponent();
 
-            // Set data context to settings view model
-            DataContext = ViewModelSettings;
+            DataContext = DesignerProperties.GetIsInDesignMode(this) ? new SettingsViewModel() : DI.Di.ViewModelSettings;
         }
     }
 }

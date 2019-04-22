@@ -1,25 +1,19 @@
-﻿using System.Windows;
-using ChatWpf.WPFViewModels;
+﻿using ChatWpf.WPFViewModels;
 
 namespace ChatWpf
 {
-    /// <summary>
-    /// Interaction logic for DialogWindow.xaml
-    /// </summary>
     public partial class DialogWindow : System.Windows.Window
     {
-        private DialogWindowViewModel mViewModel;
+        private DialogWindowViewModel _viewModel;
 
         public DialogWindowViewModel ViewModel
         {
-            get => mViewModel;
+            get => _viewModel;
             set
             {
-                // Set new value
-                mViewModel = value;
+                _viewModel = value;
 
-                // Update data context
-                DataContext = mViewModel;
+                DataContext = _viewModel;
             }
         }
 

@@ -276,14 +276,15 @@
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="ValueConverter\BooleanInvertConverter.cs" />
     <Compile Include="ValueConverter\BooleanToBorderThicknessConverter.cs" />
-    <Compile Include="ValueConverter\BooleanToVisiblityConverter.cs" />
-    <Compile Include="ValueConverter\BooleanToVisiblityGoneConverter.cs" />
+    <Compile Include="ValueConverter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ValueConverter\BooleanToVisibilityGoneConverter.cs" />
     <Compile Include="ValueConverter\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverter\IconTypeToFontAwesomeConverter.cs" />
     <Compile Include="ValueConverter\MenuItemTypeVisibilityConverter.cs" />
     <Compile Include="ValueConverter\PopupContentConverter.cs" />
     <Compile Include="ValueConverter\SentByMeToAlignmentConverter.cs" />
     <Compile Include="ValueConverter\SentByMeToBackgroundConverter.cs" />
+    <Compile Include="ValueConverter\SideMenuContentConverter.cs" />
     <Compile Include="ValueConverter\StringRGBToBrushConverter.cs" />
     <Compile Include="ValueConverter\TimeToDisplayTimeConverter.cs" />
     <Compile Include="ValueConverter\TimeToReadTimeConverter.cs" />

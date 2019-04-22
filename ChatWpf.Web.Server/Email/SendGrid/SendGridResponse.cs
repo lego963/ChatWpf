@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ChatWpf.Web.Server.Email.SendGrid
 {
+    /// <summary>
+    /// A response to a SendGrid SendMessage call
+    /// </summary>
     public class SendGridResponse
     {
         /// <summary>

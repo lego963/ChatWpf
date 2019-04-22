@@ -11,7 +11,7 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
         public string Initials { get; set; }
 
-        public string ProfilePictureRGB { get; set; }
+        public string ProfilePictureRgb { get; set; }
 
         public bool IsSelected { get; set; }
 

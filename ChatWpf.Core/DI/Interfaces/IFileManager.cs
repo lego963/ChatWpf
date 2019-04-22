@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace ChatWpf.Core.IoC.Interfaces
+﻿namespace ChatWpf.Core.DI.Interfaces
 {
     public interface IFileManager
     {

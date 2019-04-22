@@ -9,25 +9,25 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 {
     public class ChatMessageListViewModel : BaseViewModel
     {
-        protected string mLastSearchText;
+        private string _lastSearchText;
 
-        protected string mSearchText;
+        private string _searchText;
 
-        protected ObservableCollection<ChatMessageListItemViewModel> mItems;
+        private ObservableCollection<ChatMessageListItemViewModel> _items;
 
-        protected bool mSearchIsOpen;
+        private bool _searchIsOpen;
 
         public ObservableCollection<ChatMessageListItemViewModel> Items
         {
-            get => mItems;
+            get => _items;
             set
             {
-                if (mItems == value)
+                if (_items == value)
                     return;
 
-                mItems = value;
+                _items = value;
 
-                FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(mItems);
+                FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(_items);
             }
         }
 
@@ -45,13 +45,13 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
         public string SearchText
         {
-            get => mSearchText;
+            get => _searchText;
             set
             {
-                if (mSearchText == value)
+                if (_searchText == value)
                     return;
 
-                mSearchText = value;
+                _searchText = value;
 
                 if (string.IsNullOrEmpty(SearchText))
                     Search();
@@ -60,15 +60,15 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
         public bool SearchIsOpen
         {
-            get => mSearchIsOpen;
+            get => _searchIsOpen;
             set
             {
-                if (mSearchIsOpen == value)
+                if (_searchIsOpen == value)
                     return;
 
-                mSearchIsOpen = value;
+                _searchIsOpen = value;
 
-                if (!mSearchIsOpen)
+                if (!_searchIsOpen)
                     SearchText = string.Empty;
             }
         }
@@ -89,7 +89,6 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
         public ChatMessageListViewModel()
         {
-            // Create commands
             AttachmentButtonCommand = new RelayCommand(AttachmentButton);
             PopupClickawayCommand = new RelayCommand(PopupClickaway);
             SendCommand = new RelayCommand(Send);
@@ -98,19 +97,16 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
             CloseSearchCommand = new RelayCommand(CloseSearch);
             ClearSearchCommand = new RelayCommand(ClearSearch);
 
-            // Make a default menu
             AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
         }
 
         public void AttachmentButton()
         {
-            // Toggle menu visibility
             AttachmentMenuVisible ^= true;
         }
 
         public void PopupClickaway()
         {
-            // Hide attachment menu
             AttachmentMenuVisible = false;
         }
 
@@ -125,7 +121,6 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
             if (FilteredItems == null)
                 FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>();
 
-            // Fake send a new message
             var message = new ChatMessageListItemViewModel
             {
                 Initials = "LM",
@@ -144,24 +139,25 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
         public void Search()
         {
-            if ((string.IsNullOrEmpty(mLastSearchText) && string.IsNullOrEmpty(SearchText)) ||
-                string.Equals(mLastSearchText, SearchText))
+            if (string.IsNullOrEmpty(_lastSearchText) && string.IsNullOrEmpty(SearchText) ||
+                string.Equals(_lastSearchText, SearchText))
                 return;
 
             if (string.IsNullOrEmpty(SearchText) || Items == null || Items.Count <= 0)
             {
                 FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(Items ?? Enumerable.Empty<ChatMessageListItemViewModel>());
 
-                mLastSearchText = SearchText;
+                _lastSearchText = SearchText;
 
                 return;
             }
 
+            // Find all items that contain the given text
             // TODO: Make more efficient search
             FilteredItems = new ObservableCollection<ChatMessageListItemViewModel>(
                 Items.Where(item => item.Message.ToLower().Contains(SearchText)));
 
-            mLastSearchText = SearchText;
+            _lastSearchText = SearchText;
         }
 
         public void ClearSearch()

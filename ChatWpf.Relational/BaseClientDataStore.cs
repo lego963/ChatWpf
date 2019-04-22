@@ -1,18 +1,17 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using ChatWpf.Core.DataModels;
-using ChatWpf.Core.IoC.Interfaces;
+using ChatWpf.Core.DI.Interfaces;
 
 namespace ChatWpf.Relational
 {
     public class BaseClientDataStore : IClientDataStore
     {
-        protected ClientDataStoreDbContext mDbContext;
+        private readonly ClientDataStoreDbContext _dbContext;
 
         public BaseClientDataStore(ClientDataStoreDbContext dbContext)
         {
-            // Set local member
-            mDbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<bool> HasCredentialsAsync()
@@ -22,26 +21,28 @@ namespace ChatWpf.Relational
 
         public async Task EnsureDataStoreAsync()
         {
-            // Make sure the database exists and is created
-            await mDbContext.Database.EnsureCreatedAsync();
+            await _dbContext.Database.EnsureCreatedAsync();
         }
 
         public Task<LoginCredentialsDataModel> GetLoginCredentialsAsync()
         {
-            // Get the first column in the login credentials table, or null if none exist
-            return Task.FromResult(mDbContext.LoginCredentials.FirstOrDefault());
+            return Task.FromResult(_dbContext.LoginCredentials.FirstOrDefault());
         }
 
         public async Task SaveLoginCredentialsAsync(LoginCredentialsDataModel loginCredentials)
         {
-            // Clear all entries
-            mDbContext.LoginCredentials.RemoveRange(mDbContext.LoginCredentials);
+            _dbContext.LoginCredentials.RemoveRange(_dbContext.LoginCredentials);
 
-            // Add new one
-            mDbContext.LoginCredentials.Add(loginCredentials);
+            _dbContext.LoginCredentials.Add(loginCredentials);
 
-            // Save changes
-            await mDbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task ClearAllLoginCredentialsAsync()
+        {
+            _dbContext.LoginCredentials.RemoveRange(_dbContext.LoginCredentials);
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace ChatWpf.Animation
             };
 
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -29,7 +30,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(-offset, 0, keepMargin ? offset : 0, 0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -42,7 +45,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -55,6 +60,7 @@ namespace ChatWpf.Animation
                 To = new Thickness(keepMargin ? offset : 0, 0, -offset, 0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
 
             storyboard.Children.Add(animation);
@@ -69,7 +75,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -82,7 +90,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(0, -offset, 0, keepMargin ? offset : 0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -95,7 +105,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -108,7 +120,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(0, keepMargin ? offset : 0, 0, -offset),
                 DecelerationRatio = decelerationRatio
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -124,6 +138,7 @@ namespace ChatWpf.Animation
                 animation.From = 0;
 
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -134,7 +149,9 @@ namespace ChatWpf.Animation
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
                 To = 0,
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+
             storyboard.Children.Add(animation);
         }
 
@@ -147,7 +164,9 @@ namespace ChatWpf.Animation
                 To = new Thickness(-contentOffset, 0, contentOffset, 0),
                 RepeatBehavior = RepeatBehavior.Forever
             };
+
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+
             storyboard.Children.Add(animation);
         }
     }

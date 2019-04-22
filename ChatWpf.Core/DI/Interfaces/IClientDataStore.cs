@@ -1,15 +1,18 @@
-﻿using ChatWpf.Core.DataModels;
+﻿using System.Threading.Tasks;
+using ChatWpf.Core.DataModels;
 
-namespace ChatWpf.Core.IoC.Interfaces
+namespace ChatWpf.Core.DI.Interfaces
 {
     public interface IClientDataStore
     {
-        System.Threading.Tasks.Task<bool> HasCredentialsAsync();
+        Task<bool> HasCredentialsAsync();
 
         System.Threading.Tasks.Task EnsureDataStoreAsync();
 
-        System.Threading.Tasks.Task<LoginCredentialsDataModel> GetLoginCredentialsAsync();
+        Task<LoginCredentialsDataModel> GetLoginCredentialsAsync();
 
         System.Threading.Tasks.Task SaveLoginCredentialsAsync(LoginCredentialsDataModel loginCredentials);
+
+        System.Threading.Tasks.Task ClearAllLoginCredentialsAsync();
     }
 }

@@ -7,12 +7,9 @@ using ChatWpf.ViewModel.Chat.ChatMessage;
 
 namespace ChatWpf.Pages
 {
-    /// <summary>
-    /// Interaction logic for ChatPage.xaml
-    /// </summary>
     public partial class ChatPage : BasePage<ChatMessageListViewModel>
     {
-        public ChatPage() : base()
+        public ChatPage()
         {
             InitializeComponent();
         }
@@ -28,7 +25,7 @@ namespace ChatWpf.Pages
                 return;
 
             var storyboard = new Storyboard();
-            storyboard.AddFadeIn(1, from: true);
+            storyboard.AddFadeIn(1, @from: true);
             storyboard.Begin(ChatMessageList);
 
             MessageText.Focus();
@@ -38,23 +35,22 @@ namespace ChatWpf.Pages
         {
             var textbox = sender as TextBox;
 
-            if (e.Key == Key.Enter)
+            if (e.Key != Key.Enter) return;
+            if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
-                if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+                if (textbox != null)
                 {
                     var index = textbox.CaretIndex;
-
                     textbox.Text = textbox.Text.Insert(index, Environment.NewLine);
-
                     textbox.CaretIndex = index + Environment.NewLine.Length;
-
-                    e.Handled = true;
                 }
-                else
-                    ViewModel.Send();
 
                 e.Handled = true;
             }
+            else
+                ViewModel.Send();
+
+            e.Handled = true;
         }
     }
 }

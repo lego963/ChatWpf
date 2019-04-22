@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
-             xmlns:chatListVm="clr-namespace:ChatWpf.ViewModel.Chat.ChatList.Design"
+             xmlns:local="clr-namespace:ChatWpf.ViewModel.Chat.ChatList.Design"
              mc:Ignorable="d" 
              d:DesignWidth="300">
 
@@ -35,7 +35,7 @@
                                 <Border Background="Red" 
                                     Width="4"
                                     HorizontalAlignment="Left"
-                                    Visibility="{Binding NewContentAvailable, Converter={valueConverter:BooleanToVisiblityConverter}, ConverterParameter=True}"
+                                    Visibility="{Binding NewContentAvailable, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}"
                                     />
 
                                 <!-- Profile picture padding -->
@@ -43,7 +43,7 @@
                                     Padding="8 15"
                                     >
                                     <!-- Profile picture background -->
-                                    <Border Background="{Binding ProfilePictureRGB, Converter={valueConverter:StringRGBToBrushConverter}}" 
+                                    <Border Background="{Binding ProfilePictureRGB, Converter={valueConverter:StringRgbToBrushConverter}}" 
                                         Height="40"
                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
@@ -53,8 +53,7 @@
                                                HorizontalAlignment="Center"
                                                Foreground="{StaticResource ForegroundLightBrush}"
                                                FontSize="{StaticResource FontSizeLarge}"
-                                               FontFamily="{StaticResource LatoRegular}"
-                                               />
+                                               FontFamily="{StaticResource LatoRegular}"/>
                                     </Border>
                                 </Border>
 
@@ -73,8 +72,7 @@
                                                Padding="0 2 0 0"
                                                Foreground="{StaticResource ForegroundDarkBrush}"
                                                TextTrimming="CharacterEllipsis"
-                                               FontFamily="{StaticResource LatoRegular}"
-                                               />
+                                               FontFamily="{StaticResource LatoRegular}"/>
 
                                     </StackPanel>
                                 </Border>
@@ -114,7 +112,7 @@
         </Style>
     </UserControl.Resources>
 
-    <ContentControl d:DataContext="{x:Static chatListVm:ChatListItemDesignModel.Instance}"
+    <ContentControl d:DataContext="{x:Static local:ChatListItemDesignModel.Instance}"
                     Style="{StaticResource ContentStyle}" />
 
 </UserControl>

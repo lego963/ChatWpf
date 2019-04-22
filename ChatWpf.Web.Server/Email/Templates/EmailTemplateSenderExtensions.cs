@@ -1,8 +1,11 @@
-﻿using ChatWpf.Core.IoC.Interfaces;
+﻿using ChatWpf.Core.DI.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ChatWpf.Web.Server.Email.Templates
 {
+    /// <summary>
+    /// Extension methods for any EmailTemplateSender classes
+    /// </summary>
     public static class EmailTemplateSenderExtensions
     {
         /// <summary>

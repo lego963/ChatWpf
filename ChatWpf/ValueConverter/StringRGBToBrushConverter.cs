@@ -4,10 +4,7 @@ using System.Windows.Media;
 
 namespace ChatWpf.ValueConverter
 {
-    /// <summary>
-    /// A converter that takes in an RGB string such as FF00FF and converts it to a WPF brush
-    /// </summary>
-    public class StringRGBToBrushConverter : BaseValueConverter<StringRGBToBrushConverter>
+    public class StringRgbToBrushConverter : BaseValueConverter<StringRgbToBrushConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

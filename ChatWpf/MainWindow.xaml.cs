@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Windows;
 using ChatWpf.WPFViewModels;
 
 namespace ChatWpf
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
@@ -18,14 +14,12 @@ namespace ChatWpf
 
         private void AppWindow_Deactivated(object sender, EventArgs e)
         {
-            // Show overlay if we lose focus
-            (DataContext as WindowViewModel).DimmableOverlayVisible = true;
+            ((WindowViewModel) DataContext).DimmableOverlayVisible = true;
         }
 
         private void AppWindow_Activated(object sender, EventArgs e)
         {
-            // Hide overlay if we are focused
-            (DataContext as WindowViewModel).DimmableOverlayVisible = false;
+            ((WindowViewModel) DataContext).DimmableOverlayVisible = false;
         }
     }
 }

@@ -7,11 +7,10 @@ namespace ChatWpf.AttachedProperties
     {
         public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var frame = (sender as Frame);
-
+            if (!(sender is Frame frame)) return;
             frame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
 
-            frame.Navigated += (ss, ee) => ((Frame)ss).NavigationService.RemoveBackEntry();
+            frame.Navigated += (ss, ee) => ((Frame) ss).NavigationService.RemoveBackEntry();
         }
     }
 }

@@ -1,56 +1,93 @@
-﻿using ChatWpf.Core.ApiModels;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
+using ChatWpf.Core.ApiModels.UserProfile;
 using ChatWpf.Core.DataModels;
+using ChatWpf.Core.DI;
 using ChatWpf.ViewModel.Base;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.ViewModel.Application
 {
     public class ApplicationViewModel : BaseViewModel
     {
+        private bool _settingsMenuVisible;
+
         public ApplicationPage CurrentPage { get; private set; } = ApplicationPage.Login;
 
         public BaseViewModel CurrentPageViewModel { get; set; }
 
-        public bool SideMenuVisible { get; set; } = false;
+        public bool SideMenuVisible { get; set; }
 
-        public bool SettingsMenuVisible { get; set; }
+        public bool SettingsMenuVisible
+        {
+            get => _settingsMenuVisible;
+            set
+            {
+                if (_settingsMenuVisible == value)
+                    return;
+
+                _settingsMenuVisible = value;
+
+                if (value)
+                    CoreDi.TaskManager.RunAndForget(DI.Di.ViewModelSettings.LoadAsync);
+            }
+        }
+
+        public SideMenuContent CurrentSideMenuContent { get; set; } = SideMenuContent.Chat;
+
+        public bool ServerReachable { get; set; } = true;
+
+        public ICommand OpenChatCommand { get; set; }
+
+        public ICommand OpenContactsCommand { get; set; }
+
+        public ICommand OpenMediaCommand { get; set; }
+
+        public ApplicationViewModel()
+        {
+            OpenChatCommand = new RelayCommand(OpenChat);
+            OpenContactsCommand = new RelayCommand(OpenContacts);
+            OpenMediaCommand = new RelayCommand(OpenMedia);
+        }
+
+        public void OpenChat()
+        {
+            CurrentSideMenuContent = SideMenuContent.Chat;
+        }
+
+        public void OpenContacts()
+        {
+            CurrentSideMenuContent = SideMenuContent.Contacts;
+        }
+
+        public void OpenMedia()
+        {
+            CurrentSideMenuContent = SideMenuContent.Media;
+        }
 
         public void GoToPage(ApplicationPage page, BaseViewModel viewModel = null)
         {
-            // Always hide settings page if we are changing pages
             SettingsMenuVisible = false;
 
-            // Set the view model
             CurrentPageViewModel = viewModel;
 
-            // Set the current page
+            var different = CurrentPage != page;
+
             CurrentPage = page;
 
-            // Fire off a CurrentPage changed event
-            OnPropertyChanged(nameof(CurrentPage));
+            if (!different)
+                OnPropertyChanged(nameof(CurrentPage));
 
-            // Show side menu or not?
             SideMenuVisible = page == ApplicationPage.Chat;
 
         }
 
-        public async System.Threading.Tasks.Task HandleSuccessfulLoginAsync(LoginResultApiModel loginResult)
+        public async Task HandleSuccessfulLoginAsync(UserProfileDetailsApiModel loginResult)
         {
-            // Store this in the client data store
-            await ClientDataStore.SaveLoginCredentialsAsync(new LoginCredentialsDataModel
-            {
-                Email = loginResult.Email,
-                FirstName = loginResult.FirstName,
-                LastName = loginResult.LastName,
-                Username = loginResult.Username,
-                Token = loginResult.Token
-            });
+            await DI.Di.ClientDataStore.SaveLoginCredentialsAsync(loginResult.ToLoginCredentialsDataModel());
 
-            // Load new settings
-            await ViewModelSettings.LoadAsync();
+            await DI.Di.ViewModelSettings.LoadAsync();
 
-            // Go to chat page
-            ViewModelApplication.GoToPage(ApplicationPage.Chat);
+            DI.Di.ViewModelApplication.GoToPage(ApplicationPage.Chat);
         }
     }
 }

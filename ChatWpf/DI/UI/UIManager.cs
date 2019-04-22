@@ -1,22 +1,29 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using ChatWpf.Dialogs;
 using ChatWpf.ViewModel.Dialogs;
 
 namespace ChatWpf.DI.UI
 {
-    /// <summary>
-    /// The applications implementation of the <see cref="IUIManager"/>
-    /// </summary>
-    public class UIManager : IUIManager
+    public class UiManager : IUiManager
     {
-        /// <summary>
-        /// Displays a single message box to the user
-        /// </summary>
-        /// <param name="viewModel">The view model</param>
-        /// <returns></returns>
         public Task ShowMessage(MessageBoxDialogViewModel viewModel)
         {
-            return new DialogMessageBox().ShowDialog(viewModel);
+            var tcs = new TaskCompletionSource<bool>();
+
+            Application.Current.Dispatcher.Invoke(async () =>
+            {
+                try
+                {
+                    await new DialogMessageBox().ShowDialog(viewModel);
+                }
+                finally
+                {
+                    tcs.SetResult(true);
+                }
+            });
+
+            return tcs.Task;
         }
     }
 }

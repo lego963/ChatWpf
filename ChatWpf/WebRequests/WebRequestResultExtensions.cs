@@ -1,47 +1,46 @@
-﻿using ChatWpf.Core.ApiModels;
+﻿using System.Threading.Tasks;
+using ChatWpf.Core.ApiModels;
 using ChatWpf.ViewModel.Dialogs;
 using Dna;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.WebRequests
 {
     public static class WebRequestResultExtensions
     {
-        public static async System.Threading.Tasks.Task<bool> DisplayErrorIfFailedAsync<T>(this WebRequestResult<ApiResponse<T>> response, string title)
+        public static async Task<bool> HandleErrorIfFailedAsync(this WebRequestResult response, string title)
         {
-            // If there was no response, bad data, or a response with a error message...
-            if (response == null || response.ServerResponse == null || !response.ServerResponse.Successful)
+            if (response == null || response.ServerResponse == null || (response.ServerResponse as ApiResponse)?.Successful == false)
             {
                 // Default error message
                 // TODO: Localize strings
                 var message = "Unknown error from server call";
 
-                // If we got a response from the server...
-                if (response?.ServerResponse != null)
-                    // Set message to servers response
-                    message = response.ServerResponse.ErrorMessage;
-                // If we have a result but deserialize failed...
+                if (response?.ServerResponse is ApiResponse apiResponse)
+                    message = apiResponse.ErrorMessage;
                 else if (!string.IsNullOrWhiteSpace(response?.RawServerResponse))
-                    // Set error message
                     message = $"Unexpected response from server. {response.RawServerResponse}";
-                // If we have a result but no server response details at all...
                 else if (response != null)
-                    // Set message to standard HTTP server response details
-                    message = $"Failed to communicate with server. Status code {response.StatusCode}. {response.StatusDescription}";
+                    message = response.ErrorMessage ?? $"Server responded with {response.StatusDescription} ({response.StatusCode})";
 
-                // Display error
-                await UI.ShowMessage(new MessageBoxDialogViewModel
+                if (response?.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    // TODO: Localize strings
-                    Title = title,
-                    Message = message
-                });
+                    FrameworkDI.Logger.LogInformationSource("Logging user out due to unauthorized response from server");
 
-                // Return that we had an error
+                    await DI.Di.ViewModelSettings.LogoutAsync();
+                }
+                else
+                {
+                    await DI.Di.Ui.ShowMessage(new MessageBoxDialogViewModel
+                    {
+                        // TODO: Localize strings
+                        Title = title,
+                        Message = message
+                    });
+                }
+
                 return true;
             }
 
-            // All was OK, so return false for no error
             return false;
         }
     }

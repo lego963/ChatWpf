@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using ChatWpf.Core.DI.Interfaces;
 using ChatWpf.Core.Email;
-using ChatWpf.Core.IoC.Interfaces;
-using ChatWpf.Web.Server.IoC;
+using Dna;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using static Dna.FrameworkDI;
 
 namespace ChatWpf.Web.Server.Email.SendGrid
 {
+    /// <summary>
+    /// Sends emails using the SendGrid service
+    /// </summary>
     public class SendGridEmailSender : IEmailSender
     {
         public async Task<SendEmailResponse> SendEmailAsync(SendEmailDetails details)
         {
             // Get the SendGrid key
-            var apiKey = Configuration["SendGridKey"];
+            var apiKey = FrameworkDI.Configuration["SendGridKey"];
 
             // Create a new SendGrid client
             var client = new SendGridClient(apiKey);
@@ -73,7 +75,7 @@ namespace ChatWpf.Web.Server.Email.SendGrid
                 if (errorResponse.Errors == null || errorResponse.Errors.Count == 0)
                     // Add an unknown error
                     // TODO: Localization
-                    errorResponse.Errors = new List<string>(new[] { "Unknown error from email sending service. Please contact Fasetto support." });
+                    errorResponse.Errors = new List<string>(new[] { "Unknown error from email sending service. Please contact Synthesis support." });
 
                 // Return the response
                 return errorResponse;

@@ -1,12 +1,9 @@
 ﻿using System;
-using Dna;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ChatWpf.Core.Logging.Core;
-using static Dna.FrameworkDI;
+using Dna;
 
 namespace ChatWpf.Core.Async
 {
@@ -30,16 +27,20 @@ namespace ChatWpf.Core.Async
                 SelfLock.Release();
             }
 
+            // NOTE: We never remove semaphores after creating them, so this will never be null
             var semaphore = Semaphores[key];
 
+            // Await this semaphore
             await semaphore.WaitAsync();
 
             try
             {
+                // Perform the job
                 return await task();
             }
             finally
             {
+                // Release the semaphore
                 semaphore.Release();
             }
         }
@@ -50,6 +51,7 @@ namespace ChatWpf.Core.Async
 
             try
             {
+                // Create semaphore if it doesn't already exist
                 if (!Semaphores.ContainsKey(key))
                     Semaphores.Add(key, new SemaphoreSlim(maxAccessCount, maxAccessCount));
             }
@@ -58,19 +60,22 @@ namespace ChatWpf.Core.Async
                 SelfLock.Release();
             }
 
+            // NOTE: We never remove semaphores after creating them, so this will never be null
             var semaphore = Semaphores[key];
 
+            // Await this semaphore
             await semaphore.WaitAsync();
 
             try
             {
+                // Perform the job
                 await task();
             }
             catch (Exception ex)
             {
                 var error = ex.Message;
 
-                Logger.LogDebugSource($"Crash in {nameof(AwaitAsync)}. {ex.Message}");
+                FrameworkDI.Logger.LogDebugSource($"Crash in {nameof(AwaitAsync)}. {ex.Message}");
 
                 Debugger.Break();
 

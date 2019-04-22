@@ -4,8 +4,16 @@ using ChatWpf.ViewModel.Menu;
 
 namespace ChatWpf.ViewModel.PopupMenu
 {
+    /// <summary>
+    /// A view model for any popup menus
+    /// </summary>
     public class ChatAttachmentPopupMenuViewModel : BasePopupViewModel
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ChatAttachmentPopupMenuViewModel()
         {
             Content = new MenuViewModel
@@ -18,5 +26,7 @@ namespace ChatWpf.ViewModel.PopupMenu
                 })
             };
         }
+
+        #endregion
     }
 }

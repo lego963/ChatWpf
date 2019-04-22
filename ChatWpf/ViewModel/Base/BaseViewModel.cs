@@ -1,12 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using ChatWpf.Core.Expressions;
 
 namespace ChatWpf.ViewModel.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        private readonly object _propertyValueCheckLock = new object();
+
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 
         public void OnPropertyChanged(string name)
@@ -14,23 +17,41 @@ namespace ChatWpf.ViewModel.Base
             PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        protected async System.Threading.Tasks.Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<System.Threading.Tasks.Task> action)
+        protected async Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<Task> action)
         {
-            // Check if the flag property is true (meaning the function is already running)
-            if (updatingFlag.GetPropertyValue())
-                return;
-
-            // Set the property flag to true to indicate we are running
-            updatingFlag.SetPropertyValue(true);
+            lock (_propertyValueCheckLock)
+            {
+                if (updatingFlag.GetPropertyValue())
+                    return;
+                updatingFlag.SetPropertyValue(true);
+            }
 
             try
             {
-                // Run the passed in action
                 await action();
             }
             finally
             {
-                // Set the property flag back to false now it's finished
+                updatingFlag.SetPropertyValue(false);
+            }
+        }
+
+        protected async Task<T> RunCommandAsync<T>(Expression<Func<bool>> updatingFlag, Func<Task<T>> action, T defaultValue = default(T))
+        {
+            lock (_propertyValueCheckLock)
+            {
+                if (updatingFlag.GetPropertyValue())
+                    return defaultValue;
+
+                updatingFlag.SetPropertyValue(true);
+            }
+
+            try
+            {
+                return await action();
+            }
+            finally
+            {
                 updatingFlag.SetPropertyValue(false);
             }
         }

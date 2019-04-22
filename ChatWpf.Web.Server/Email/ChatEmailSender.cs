@@ -1,11 +1,14 @@
 ﻿using System.Threading.Tasks;
 using ChatWpf.Core.Email;
 using ChatWpf.Web.Server.IoC;
-using static Dna.FrameworkDI;
+using Dna;
 
 namespace ChatWpf.Web.Server.Email
 {
-    public static class ChatEmailSender
+    /// <summary>
+    /// Handles sending emails specific to the Synthesis Word server
+    /// </summary>
+    public static class SynthesisEmailSender
     {
         /// <summary>
         /// Sends a verification email to the specified user
@@ -19,12 +22,12 @@ namespace ChatWpf.Web.Server.Email
             return await DI.EmailTemplateSender.SendGeneralEmailAsync(new SendEmailDetails
                 {
                     IsHTML = true,
-                    FromEmail = Configuration["SynthesisSettings:SendEmailFromEmail"],
-                    FromName = Configuration["SynthesisSettings:SendEmailFromName"],
+                    FromEmail = FrameworkDI.Configuration["SynthesisSettings:SendEmailFromEmail"],
+                    FromName = FrameworkDI.Configuration["SynthesisSettings:SendEmailFromName"],
                     ToEmail = email,
                     ToName = displayName,
                     Subject = "Verify Your Email - Synthesis"
-            },
+                },
                 "Verify Email",
                 $"Hi {displayName ?? "stranger"},",
                 "Thanks for creating an account with us.<br/>To continue please verify your email with us.",

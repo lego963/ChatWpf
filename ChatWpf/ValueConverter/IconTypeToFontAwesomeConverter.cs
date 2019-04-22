@@ -5,10 +5,6 @@ using ChatWpf.Core.Icons;
 
 namespace ChatWpf.ValueConverter
 {
-    /// <summary>
-    /// A converter that takes in a <see cref="IconType"/> and returns 
-    /// the FontAwesome string for that icon
-    /// </summary>
     public class IconTypeToFontAwesomeConverter : BaseValueConverter<IconTypeToFontAwesomeConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

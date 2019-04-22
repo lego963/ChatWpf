@@ -5,7 +5,6 @@ using ChatWpf.Core.DataModels;
 using ChatWpf.ViewModel.Application;
 using ChatWpf.ViewModel.Base;
 using ChatWpf.ViewModel.Chat.ChatMessage;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.ViewModel.Chat.ChatList
 {
@@ -17,7 +16,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
 
         public string Initials { get; set; }
 
-        public string ProfilePictureRGB { get; set; }
+        public string ProfilePictureRgb { get; set; }
 
         public bool NewContentAvailable { get; set; }
 
@@ -27,7 +26,6 @@ namespace ChatWpf.ViewModel.Chat.ChatList
 
         public ChatListItemViewModel()
         {
-            // Create commands
             OpenMessageCommand = new RelayCommand(OpenMessage);
         }
 
@@ -35,16 +33,17 @@ namespace ChatWpf.ViewModel.Chat.ChatList
         {
             if (Name == "Jesse")
             {
-                ViewModelApplication.GoToPage(ApplicationPage.Login, new LoginViewModel
+                DI.Di.ViewModelApplication.GoToPage(ApplicationPage.Login, new LoginViewModel
                 {
                     Email = "jesse@helloworld.com"
                 });
                 return;
             }
 
-            ViewModelApplication.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
+            DI.Di.ViewModelApplication.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
             {
                 DisplayTitle = "Parnell, Me",
+
                 Items = new ObservableCollection<ChatMessageListItemViewModel>
                 {
                     new ChatMessageListItemViewModel
@@ -52,7 +51,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         Message = Message,
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF00FF",
+                        ProfilePictureRgb = "FF00FF",
                         SenderName = "Luke",
                         SentByMe = true,
                     },
@@ -61,7 +60,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF0000",
+                        ProfilePictureRgb = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -70,7 +69,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF0000",
+                        ProfilePictureRgb = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -79,7 +78,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         Message = Message,
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF00FF",
+                        ProfilePictureRgb = "FF00FF",
                         SenderName = "Luke",
                         SentByMe = true,
                     },
@@ -88,7 +87,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         Message = "A received message",
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF0000",
+                        ProfilePictureRgb = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },
@@ -101,7 +100,7 @@ namespace ChatWpf.ViewModel.Chat.ChatList
                         },
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
-                        ProfilePictureRGB = "FF0000",
+                        ProfilePictureRgb = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
                     },

@@ -2,28 +2,32 @@
 using System.Windows.Input;
 using ChatWpf.ViewModel.Base;
 using ChatWpf.Window;
+using Point = System.Windows.Point;
 
 namespace ChatWpf.WPFViewModels
 {
     public class WindowViewModel : BaseViewModel
     {
-        private System.Windows.Window mWindow;
+        private readonly System.Windows.Window _window;
 
-        private WindowResizer mWindowResizer;
+        private readonly WindowResizer _windowResizer;
 
-        private Thickness mOuterMarginSize = new Thickness(5);
+        private Thickness _outerMarginSize = new Thickness(5);
 
-        private int mWindowRadius = 10;
+        private int _windowRadius = 10;
 
-        private WindowDockPosition mDockPosition = WindowDockPosition.Undocked;
+        private WindowDockPosition _dockPosition = WindowDockPosition.Undocked;
 
         public double WindowMinimumWidth { get; set; } = 800;
 
         public double WindowMinimumHeight { get; set; } = 500;
 
-        public bool Borderless => (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked);
+        public bool BeingMoved { get; set; }
 
-        public int ResizeBorder => mWindow.WindowState == WindowState.Maximized ? 0 : 4;
+
+        public bool Borderless => (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked);
+
+        public int ResizeBorder => _window.WindowState == WindowState.Maximized ? 0 : 4;
 
         public Thickness ResizeBorderThickness => new Thickness(OuterMarginSize.Left + ResizeBorder,
                                                                 OuterMarginSize.Top + ResizeBorder,
@@ -34,17 +38,17 @@ namespace ChatWpf.WPFViewModels
 
         public Thickness OuterMarginSize
         {
-            get => mWindow.WindowState == WindowState.Maximized ? mWindowResizer.CurrentMonitorMargin : (Borderless ? new Thickness(0) : mOuterMarginSize);
-            set => mOuterMarginSize = value;
+            get => _window.WindowState == WindowState.Maximized ? _windowResizer.CurrentMonitorMargin : (Borderless ? new Thickness(0) : _outerMarginSize);
+            set => _outerMarginSize = value;
         }
 
         public int WindowRadius
         {
-            get => Borderless ? 0 : mWindowRadius;
-            set => mWindowRadius = value;
+            get => Borderless ? 0 : _windowRadius;
+            set => _windowRadius = value;
         }
 
-        public int FlatBorderThickness => Borderless && mWindow.WindowState != WindowState.Maximized ? 1 : 0;
+        public int FlatBorderThickness => Borderless && _window.WindowState != WindowState.Maximized ? 1 : 0;
 
         public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
 
@@ -53,8 +57,6 @@ namespace ChatWpf.WPFViewModels
         public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
 
         public bool DimmableOverlayVisible { get; set; }
-
-        public bool BeingMoved { get; set; }
 
         public ICommand MinimizeCommand { get; set; }
 
@@ -66,44 +68,44 @@ namespace ChatWpf.WPFViewModels
 
         public WindowViewModel(System.Windows.Window window)
         {
-            mWindow = window;
+            _window = window;
 
-            mWindow.StateChanged += (sender, e) =>
+            _window.StateChanged += (sender, e) =>
             {
                 WindowResized();
             };
 
-            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
-            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => mWindow.Close());
-            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            MinimizeCommand = new RelayCommand(() => _window.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => _window.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => _window.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_window, GetMousePosition()));
 
-            mWindowResizer = new WindowResizer(mWindow);
+            _windowResizer = new WindowResizer(_window);
 
-            mWindowResizer.WindowDockChanged += (dock) =>
+            _windowResizer.WindowDockChanged += (dock) =>
             {
-                mDockPosition = dock;
+                _dockPosition = dock;
 
                 WindowResized();
             };
 
-            mWindowResizer.WindowStartedMove += () =>
+            _windowResizer.WindowStartedMove += () =>
             {
-                // Update being moved flag
                 BeingMoved = true;
             };
 
-            mWindowResizer.WindowFinishedMove += () =>
+            _windowResizer.WindowFinishedMove += () =>
             {
                 BeingMoved = false;
-                if (mDockPosition == WindowDockPosition.Undocked && mWindow.Top == mWindowResizer.CurrentScreenSize.Top)
-                    mWindow.Top = -OuterMarginSize.Top;
+
+                if (_dockPosition == WindowDockPosition.Undocked && _window.Top == _windowResizer.CurrentScreenSize.Top)
+                    _window.Top = -OuterMarginSize.Top;
             };
         }
 
         private Point GetMousePosition()
         {
-            return mWindowResizer.GetCursorPosition();
+            return _windowResizer.GetCursorPosition();
         }
 
         private void WindowResized()

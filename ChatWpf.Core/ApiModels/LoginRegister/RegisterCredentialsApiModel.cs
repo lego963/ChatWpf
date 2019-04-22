@@ -1,4 +1,4 @@
-﻿namespace ChatWpf.Core.ApiModels
+﻿namespace ChatWpf.Core.ApiModels.LoginRegister
 {
     public class RegisterCredentialsApiModel
     {

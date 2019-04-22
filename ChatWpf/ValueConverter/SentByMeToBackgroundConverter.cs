@@ -4,10 +4,6 @@ using System.Windows;
 
 namespace ChatWpf.ValueConverter
 {
-    /// <summary>
-    /// A converter that takes in a boolean if a message was sent by me, and returns the
-    /// correct background color
-    /// </summary>
     public class SentByMeToBackgroundConverter : BaseValueConverter<SentByMeToBackgroundConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

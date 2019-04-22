@@ -5,8 +5,8 @@ using System.Windows.Controls;
 using ChatWpf.Core.DataModels;
 using ChatWpf.Pages;
 using ChatWpf.ValueConverter;
+using ChatWpf.ViewModel.Application;
 using ChatWpf.ViewModel.Base;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.Controls
 {
@@ -37,62 +37,46 @@ namespace ChatWpf.Controls
         {
             InitializeComponent();
 
-            // If we are in DesignMode, show the current page
-            // as the dependency property does not fire
             if (DesignerProperties.GetIsInDesignMode(this))
-                NewPage.Content = ViewModelApplication.CurrentPage.ToBasePage();
+                NewPage.Content = new ApplicationViewModel().CurrentPage.ToBasePage();
         }
+
 
         private static object CurrentPagePropertyChanged(DependencyObject d, object value)
         {
-            // Get current values
             var currentPage = (ApplicationPage)value;
             var currentPageViewModel = d.GetValue(CurrentPageViewModelProperty);
 
-            // Get the frames
-            var newPageFrame = (d as PageHost).NewPage;
-            var oldPageFrame = (d as PageHost).OldPage;
+            var newPageFrame = ((PageHost) d).NewPage;
+            var oldPageFrame = ((PageHost) d).OldPage;
 
-            // If the current page hasn't changed
-            // just update the view model
             if (newPageFrame.Content is BasePage page &&
                 page.ToApplicationPage() == currentPage)
             {
-                // Just update the view model
                 page.ViewModelObject = currentPageViewModel;
 
                 return value;
             }
 
-            // Store the current page content as the old page
             var oldPageContent = newPageFrame.Content;
 
-            // Remove current page from new page frame
             newPageFrame.Content = null;
 
-            // Move the previous page into the old page frame
             oldPageFrame.Content = oldPageContent;
 
-            // Animate out previous page when the Loaded event fires
-            // right after this call due to moving frames
             if (oldPageContent is BasePage oldPage)
             {
-                // Tell old page to animate out
                 oldPage.ShouldAnimateOut = true;
 
-                // Once it is done, remove it
                 Task.Delay((int)(oldPage.SlideSeconds * 1000)).ContinueWith((t) =>
                 {
-                    // Remove old page
                     Application.Current.Dispatcher.Invoke(() => oldPageFrame.Content = null);
                 });
             }
 
-            // Set the new page content
             newPageFrame.Content = currentPage.ToBasePage(currentPageViewModel);
 
             return value;
         }
-
     }
 }

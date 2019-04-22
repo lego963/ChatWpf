@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ChatWpf.Web.Server.Email.SendGrid
+﻿namespace ChatWpf.Web.Server.Email.SendGrid
 {
+    /// <summary>
+    /// An error response for a <see cref="SendGridResponse"/>
+    /// </summary>
     public class SendGridResponseError
     {
         /// <summary>

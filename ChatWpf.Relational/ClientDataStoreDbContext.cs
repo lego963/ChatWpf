@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChatWpf.Core.DataModels;
+﻿using ChatWpf.Core.DataModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatWpf.Relational
@@ -16,12 +13,6 @@ namespace ChatWpf.Relational
         {
             base.OnModelCreating(modelBuilder);
 
-            // Fluent API
-
-            // Configure LoginCredentials
-            // --------------------------
-            //
-            // Set Id as primary key
             modelBuilder.Entity<LoginCredentialsDataModel>().HasKey(a => a.Id);
 
             // TODO: Set up limits

@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChatWpf.Web.Server.Data
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
+    /// <summary>
+    /// The database representational model for our application
+    /// </summary>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         #region Public Properties
 

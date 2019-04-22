@@ -8,10 +8,12 @@ namespace ChatWpf.ViewModel.Application.Design
 
         public SettingsDesignModel()
         {
-            Name = new TextEntryViewModel { Label = "Name", OriginalText = "Luke Malpass" };
-            Username = new TextEntryViewModel { Label = "Username", OriginalText = "luke" };
+            FirstName = new TextEntryViewModel { Label = "Fist Name", OriginalText = "Rodion" };
+            LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = "Gyrbu" };
+            Username = new TextEntryViewModel { Label = "Username", OriginalText = "rgyrbu" };
             Password = new PasswordEntryViewModel { Label = "Password", FakePassword = "********" };
-            Email = new TextEntryViewModel { Label = "Email", OriginalText = "contact@angelsix.com" };
+            Email = new TextEntryViewModel { Label = "Email", OriginalText = "fpsoff@outlook.com" };
         }
+
     }
 }

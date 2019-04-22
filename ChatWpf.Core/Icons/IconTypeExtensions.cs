@@ -6,7 +6,6 @@ namespace ChatWpf.Core.Icons
     {
         public static string ToFontAwesome(this IconType type)
         {
-            // Return a FontAwesome string based on the icon type
             switch (type)
             {
                 case IconType.File:
@@ -15,7 +14,6 @@ namespace ChatWpf.Core.Icons
                 case IconType.Picture:
                     return "\uf1c5";
 
-                // If none found, return null
                 default:
                     return null;
             }

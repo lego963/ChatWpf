@@ -20,7 +20,7 @@ namespace ChatWpf.AttachedProperties
 
         private void Control_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            (sender as ScrollViewer).ScrollToBottom();
+            (sender as ScrollViewer)?.ScrollToBottom();
         }
     }
 
@@ -40,9 +40,7 @@ namespace ChatWpf.AttachedProperties
 
         private void Control_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            var scroll = sender as ScrollViewer;
-
-            if (scroll.ScrollableHeight - scroll.VerticalOffset < 20)
+            if (sender is ScrollViewer scroll && scroll.ScrollableHeight - scroll.VerticalOffset < 20)
                 scroll.ScrollToEnd();
         }
     }

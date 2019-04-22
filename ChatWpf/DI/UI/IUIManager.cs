@@ -1,9 +1,10 @@
-﻿using ChatWpf.ViewModel.Dialogs;
+﻿using System.Threading.Tasks;
+using ChatWpf.ViewModel.Dialogs;
 
 namespace ChatWpf.DI.UI
 {
-    public interface IUIManager
+    public interface IUiManager
     {
-        System.Threading.Tasks.Task ShowMessage(MessageBoxDialogViewModel viewModel);
+        Task ShowMessage(MessageBoxDialogViewModel viewModel);
     }
 }

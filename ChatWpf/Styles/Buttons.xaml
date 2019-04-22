@@ -84,7 +84,7 @@
         <Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXxLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
@@ -102,7 +102,7 @@
                             SnapsToDevicePixels="True">
                         <Grid>
                             <TextBlock Text="{TemplateBinding Content}" 
-                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisiblityConverter}}"
+                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}}"
                                    Focusable="False" 
                                    FontFamily="{TemplateBinding FontFamily}"
                                    FontSize="{TemplateBinding FontSize}"
@@ -115,7 +115,7 @@
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                    FontSize="{TemplateBinding FontSize}"
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisiblityConverter}, ConverterParameter=True}"
+                                   Visibility="{TemplateBinding attachedProperties:IsBusyProperty.Value, Converter={valueConverter:BooleanToVisibilityConverter}, ConverterParameter=True}"
                                    />
 
                         </Grid>
@@ -192,7 +192,7 @@
         <Setter Property="Background" Value="{StaticResource WordTransparentBlueBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXxLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
         <Setter Property="Padding" Value="30" />
         <Setter Property="Margin" Value="0" />
@@ -250,7 +250,7 @@
         <Setter Property="Background" Value="{StaticResource WordTransparentBlueBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXxLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
         <Setter Property="Padding" Value="30" />
         <Setter Property="Margin" Value="0" />

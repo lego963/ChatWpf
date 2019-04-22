@@ -36,6 +36,7 @@ namespace ChatWpf.AttachedProperties
                 if ((bool)e.NewValue)
                 {
                     control.Focus();
+
                     control.SelectAll();
                 }
             }
@@ -44,6 +45,7 @@ namespace ChatWpf.AttachedProperties
                 if ((bool)e.NewValue)
                 {
                     password.Focus();
+
                     password.SelectAll();
                 }
             }

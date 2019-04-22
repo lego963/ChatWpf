@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using ChatWpf.ViewModel.Base;
 
 namespace ChatWpf.ViewModel.Input
@@ -13,6 +15,10 @@ namespace ChatWpf.ViewModel.Input
 
         public bool Editing { get; set; }
 
+        public bool Working { get; set; }
+
+        public Func<Task<bool>> CommitAction { get; set; }
+
         public ICommand EditCommand { get; set; }
 
         public ICommand CancelCommand { get; set; }
@@ -21,6 +27,7 @@ namespace ChatWpf.ViewModel.Input
 
         public TextEntryViewModel()
         {
+            // Create commands
             EditCommand = new RelayCommand(Edit);
             CancelCommand = new RelayCommand(Cancel);
             SaveCommand = new RelayCommand(Save);
@@ -40,10 +47,32 @@ namespace ChatWpf.ViewModel.Input
 
         public void Save()
         {
-            // TODO: Save content
-            OriginalText = EditedText;
+            var result = default(bool);
 
-            Editing = false;
+            var currentSavedValue = OriginalText;
+
+            RunCommandAsync(() => Working, async () =>
+            {
+                Editing = false;
+
+                OriginalText = EditedText;
+
+                result = CommitAction == null || await CommitAction();
+
+            }).ContinueWith(t =>
+            {
+                // If we succeeded...
+                // Nothing to do
+                // If we fail...
+                if (!result)
+                {
+                    // Restore original value
+                    OriginalText = currentSavedValue;
+
+                    // Go back into edit mode
+                    Editing = true;
+                }
+            });
         }
     }
 }

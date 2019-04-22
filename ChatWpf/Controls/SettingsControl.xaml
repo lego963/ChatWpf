@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ChatWpf.ViewModel.Application.Design"
              xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
              xmlns:input="clr-namespace:ChatWpf.Controls.Input"
-             xmlns:design="clr-namespace:ChatWpf.ViewModel.Application.Design"
-             d:DataContext="{x:Static design:SettingsDesignModel.Instance}"
+             d:DataContext="{x:Static local:SettingsDesignModel.Instance}"
              mc:Ignorable="d" >
     <Border Background="{StaticResource ForegroundLightBrush}" 
             Padding="15">
@@ -24,11 +24,11 @@
                 <Button Style="{StaticResource IconGrowButton}"
                     Height="40"
                     Content="{StaticResource FontAwesomeArrowLeftIcon}"
-                    FontFamily="{StaticResource FontAwesome}"
                     Foreground="{StaticResource ForegroundDarkBrush}"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Command="{Binding CloseCommand}"/>
+                    Command="{Binding CloseCommand}"
+                    />
 
                 <!-- Settings header -->
                 <TextBlock FontSize="{StaticResource FontSizeLarge}"
@@ -85,7 +85,8 @@
                             attachedProperties:TextEntryWidthMatcherProperty.Value="True"
                             >
 
-                    <input:TextEntryControl DataContext="{Binding Name}" />
+                    <input:TextEntryControl DataContext="{Binding FirstName}" />
+                    <input:TextEntryControl DataContext="{Binding LastName}" />
                     <input:TextEntryControl DataContext="{Binding Username}" />
                     <input:PasswordEntryControl DataContext="{Binding Password}" />
                     <input:TextEntryControl DataContext="{Binding Email}" />

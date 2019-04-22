@@ -1,9 +1,8 @@
-﻿using System.Security;
+﻿using System;
+using System.Security;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using ChatWpf.Core.Security;
 using ChatWpf.ViewModel.Base;
-using ChatWpf.ViewModel.Dialogs;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.ViewModel.Input
 {
@@ -27,6 +26,10 @@ namespace ChatWpf.ViewModel.Input
 
         public bool Editing { get; set; }
 
+        public bool Working { get; set; }
+
+        public Func<Task<bool>> CommitAction { get; set; }
+
         public ICommand EditCommand { get; set; }
 
         public ICommand CancelCommand { get; set; }
@@ -35,7 +38,6 @@ namespace ChatWpf.ViewModel.Input
 
         public PasswordEntryViewModel()
         {
-            // Create commands
             EditCommand = new RelayCommand(Edit);
             CancelCommand = new RelayCommand(Cancel);
             SaveCommand = new RelayCommand(Save);
@@ -49,11 +51,9 @@ namespace ChatWpf.ViewModel.Input
 
         public void Edit()
         {
-            // Clear all password
             NewPassword = new SecureString();
             ConfirmPassword = new SecureString();
 
-            // Go into edit mode
             Editing = true;
         }
 
@@ -64,57 +64,25 @@ namespace ChatWpf.ViewModel.Input
 
         public void Save()
         {
-            // Make sure current password is correct
-            // TODO: This will come from the real back-end store of this users password
-            //       or via asking the web server to confirm it
-            var storedPassword = "Testing";
+            var result = default(bool);
 
-            // Confirm current password is a match
-            // NOTE: Typically this isn't done here, it's done on the server
-            if (storedPassword != CurrentPassword.Unsecure())
+            RunCommandAsync(() => Working, async () =>
             {
-                // Let user know
-                UI.ShowMessage(new MessageBoxDialogViewModel
-                {
-                    Title = "Wrong password",
-                    Message = "The current password is invalid"
-                });
+                Editing = false;
 
-                return;
-            }
+                result = CommitAction == null ? true : await CommitAction();
 
-            // Now check that the new and confirm password match
-            if (NewPassword.Unsecure() != ConfirmPassword.Unsecure())
+            }).ContinueWith(t =>
             {
-                // Let user know
-                UI.ShowMessage(new MessageBoxDialogViewModel
+                // If we succeeded...
+                // Nothing to do
+                // If we fail...
+                if (!result)
                 {
-                    Title = "Password mismatch",
-                    Message = "The new and confirm password do not match"
-                });
-
-                return;
-            }
-
-            // Check we actually have a password
-            if (NewPassword.Unsecure().Length == 0)
-            {
-                // Let user know
-                UI.ShowMessage(new MessageBoxDialogViewModel
-                {
-                    Title = "Password too short",
-                    Message = "You must enter a password!"
-                });
-
-                return;
-            }
-
-            // Set the edited password to the current value
-            CurrentPassword = new SecureString();
-            foreach (var c in NewPassword.Unsecure().ToCharArray())
-                CurrentPassword.AppendChar(c);
-
-            Editing = false;
+                    // Go back into edit mode
+                    Editing = true;
+                }
+            });
         }
     }
 }

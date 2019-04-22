@@ -1,13 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using ChatWpf.Core.Routes;
 using ChatWpf.Web.Server.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChatWpf.Web.Server.Controllers
 {
+    /// <summary>
+    /// Manages the standard web server pages
+    /// </summary>
     public class HomeController : Controller
     {
         #region Protected Members
@@ -55,35 +57,6 @@ namespace ChatWpf.Web.Server.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            // Make sure we have the database
-            mContext.Database.EnsureCreated();
-
-            // If we have no settings already...
-            if (!mContext.Settings.Any())
-            {
-                // Add a new setting
-                mContext.Settings.Add(new SettingsDataModel
-                {
-                    Name = "BackgroundColor",
-                    Value = "Red"
-                });
-
-                // Check to show the new setting is currently only local and not in the database
-                var settingsLocally = mContext.Settings.Local.Count();
-                var settingsDatabase = mContext.Settings.Count();
-                var firstLocal = mContext.Settings.Local.FirstOrDefault();
-                var firstDatabase = mContext.Settings.FirstOrDefault();
-
-                // Commit setting to database
-                mContext.SaveChanges();
-
-                // Recheck to show its now in local and the actual database
-                settingsLocally = mContext.Settings.Local.Count();
-                settingsDatabase = mContext.Settings.Count();
-                firstLocal = mContext.Settings.Local.FirstOrDefault();
-                firstDatabase = mContext.Settings.FirstOrDefault();
-            }
-
             return View();
         }
 
@@ -91,7 +64,7 @@ namespace ChatWpf.Web.Server.Controllers
         /// Creates our single user for now
         /// </summary>
         /// <returns></returns>
-        [Route("create")]
+        [Route(WebRoutes.CreateUser)]
         public async Task<IActionResult> CreateUserAsync()
         {
             var result = await mUserManager.CreateAsync(new ApplicationUser
@@ -109,21 +82,10 @@ namespace ChatWpf.Web.Server.Controllers
         }
 
         /// <summary>
-        /// Private area. No peeking
-        /// </summary>
-        /// <returns></returns>
-        [Authorize]
-        [Route("private")]
-        public IActionResult Private()
-        {
-            return Content($"This is a private area. Welcome {HttpContext.User.Identity.Name}", "text/html");
-        }
-
-        /// <summary>
         /// Log the user out
         /// </summary>
         /// <returns></returns>
-        [Route("logout")]
+        [Route(WebRoutes.Logout)]
         public async Task<IActionResult> SignOutAsync()
         {
             await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
@@ -135,7 +97,7 @@ namespace ChatWpf.Web.Server.Controllers
         /// </summary>
         /// <param name="returnUrl">The url to return to if successfully logged in</param>
         /// <returns></returns>
-        [Route("login")]
+        [Route(WebRoutes.Login)]
         public async Task<IActionResult> LoginAsync(string returnUrl)
         {
             // Sign out any previous sessions
@@ -157,12 +119,6 @@ namespace ChatWpf.Web.Server.Controllers
             }
 
             return Content("Failed to login", "text/html");
-        }
-
-        [Route("test")]
-        public SettingsDataModel Test([FromBody]SettingsDataModel model)
-        {
-            return new SettingsDataModel { Id = "some id", Name = "Luke", Value = "10" };
         }
     }
 }

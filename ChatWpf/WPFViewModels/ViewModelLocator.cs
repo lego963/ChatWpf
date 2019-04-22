@@ -1,5 +1,4 @@
 ﻿using ChatWpf.ViewModel.Application;
-using static ChatWpf.DI.DI;
 
 namespace ChatWpf.WPFViewModels
 {
@@ -13,17 +12,17 @@ namespace ChatWpf.WPFViewModels
         /// <summary>
         /// Singleton instance of the locator
         /// </summary>
-        public static ViewModelLocator Instance { get; private set; } = new ViewModelLocator();
+        public static ViewModelLocator Instance { get; } = new ViewModelLocator();
 
         /// <summary>
         /// The application view model
         /// </summary>
-        public static ApplicationViewModel ApplicationViewModel => ViewModelApplication;
+        public ApplicationViewModel ApplicationViewModel => DI.Di.ViewModelApplication;
 
         /// <summary>
         /// The settings view model
         /// </summary>
-        public static SettingsViewModel SettingsViewModel => ViewModelSettings;
+        public SettingsViewModel SettingsViewModel => DI.Di.ViewModelSettings;
 
         #endregion
     }

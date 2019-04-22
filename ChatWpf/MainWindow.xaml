@@ -3,12 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
-        xmlns:chatWpf="clr-namespace:ChatWpf"
-        xmlns:controls="clr-namespace:ChatWpf.Controls"
-        xmlns:chatList="clr-namespace:ChatWpf.Controls.Chat.ChatList"
+        xmlns:local="clr-namespace:ChatWpf"
         xmlns:valueConverter="clr-namespace:ChatWpf.ValueConverter"
+        xmlns:attachedProperties="clr-namespace:ChatWpf.AttachedProperties"
         xmlns:wpfViewModels="clr-namespace:ChatWpf.WPFViewModels"
+        xmlns:controls="clr-namespace:ChatWpf.Controls"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -22,7 +21,7 @@
         Title="Welcome, friend!" Height="600" Width="900">
 
     <Window.Resources>
-        <Style TargetType="{x:Type chatWpf:MainWindow}">
+        <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
@@ -64,6 +63,9 @@
                                         <!-- Title Bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
 
+                                        <!-- Internet Connection Bar -->
+                                        <RowDefinition Height="Auto" />
+
                                         <!-- Window Content -->
                                         <RowDefinition Height="*" />
 
@@ -90,9 +92,7 @@
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
                                             <StackPanel>
-                                                <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeLarge}" Margin="0,0,0,-5">
-                                                    <Run Text="Synthesis" Foreground="{StaticResource WordBlueBrush}" />
-                                                </TextBlock>
+                                                <TextBlock Text="Synthesis" Foreground="{StaticResource WordOrangeBrush}" />
                                             </StackPanel>
                                         </Viewbox>
 
@@ -105,8 +105,29 @@
 
                                     </Grid>
 
+                                    <!-- No Internet Connection Bar -->
+                                    <Border 
+                                        attachedProperties:AnimateSlideInFromTopProperty.Value="{Binding 
+                                            ApplicationViewModel.ServerReachable, 
+                                            Source={x:Static wpfViewModels:ViewModelLocator.Instance},
+                                            Converter={valueConverter:BooleanInvertConverter}}"
+                                        Background="{StaticResource WordOrangeBrush}"
+                                        Grid.Row="1"
+                                        Padding="10"
+                                        Panel.ZIndex="1">
+
+                                        <Label 
+                                            HorizontalAlignment="Center"
+                                            FontFamily="{StaticResource LatoBold}"
+                                            Foreground="{StaticResource ForegroundLightBrush}"
+                                            >
+                                            No Internet connection. Please check your network
+                                        </Label>
+
+                                    </Border>
+
                                     <!-- Page Content -->
-                                    <Border Grid.Row="1" Padding="{Binding InnerContentPadding}" ClipToBounds="True">
+                                    <Border Grid.Row="2" Padding="{Binding InnerContentPadding}" ClipToBounds="True">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
 
@@ -153,8 +174,7 @@
                     Panel.ZIndex="10"
                     Opacity="0.3">
                 <Border Background="{StaticResource ForegroundVeryDarkBrush}"
-                        attachedProperties:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"
-                        />
+                        attachedProperties:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"/>
             </Border>
 
             <controls:PageHost Grid.Column="1" 
@@ -165,14 +185,12 @@
                             />
 
             <!-- Side Menu -->
-            <controls:SideMenuControl 
+            <controls:SideMenuControl
+                Grid.Column="0"
+                DataContext="{Binding ApplicationViewModel, Source={x:Static wpfViewModels:ViewModelLocator.Instance}}"
                 Width="300" 
-                attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
-                                     Source={x:Static wpfViewModels:ViewModelLocator.Instance}}">
-
-                <chatList:ChatListControl />
-
-            </controls:SideMenuControl>
+                attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding SideMenuVisible}"
+                Content="{Binding CurrentSideMenuContent, Converter={valueConverter:SideMenuContentConverter}}"/>
 
         </Grid>
     </Border>

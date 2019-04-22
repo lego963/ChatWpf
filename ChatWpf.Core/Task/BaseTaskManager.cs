@@ -2,9 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using ChatWpf.Core.IoC.Interfaces;
-using ChatWpf.Core.Logging.Core;
-using static Dna.FrameworkDI;
+using ChatWpf.Core.DI.Interfaces;
 using Dna;
 
 namespace ChatWpf.Core.Task
@@ -22,10 +20,19 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
-
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath,
+                    lineNumber: lineNumber);
                 throw;
             }
+        }
+
+        public async void RunAndForget(Func<System.Threading.Tasks.Task> function, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
+        {
+            try
+            {
+                await Run(function, origin, filePath, lineNumber);
+            }
+            catch { }
         }
 
         public async Task<TResult> Run<TResult>(Func<Task<TResult>> function, CancellationToken cancellationToken, [CallerMemberName]string origin = "", [CallerFilePath]string filePath = "", [CallerLineNumber]int lineNumber = 0)
@@ -36,7 +43,7 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
@@ -50,7 +57,7 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
@@ -64,7 +71,7 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
@@ -78,7 +85,7 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
@@ -92,10 +99,19 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
+        }
+
+        public async void RunAndForget(Func<System.Threading.Tasks.Task> function, CancellationToken cancellationToken, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
+        {
+            try
+            {
+                await Run(function, origin, filePath, lineNumber);
+            }
+            catch { }
         }
 
         public async System.Threading.Tasks.Task Run(Action action, CancellationToken cancellationToken, [CallerMemberName]string origin = "", [CallerFilePath]string filePath = "", [CallerLineNumber]int lineNumber = 0)
@@ -106,10 +122,18 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
+        }
+        public async void RunAndForget(Action action, CancellationToken cancellationToken, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
+        {
+            try
+            {
+                await Run(action, origin, filePath, lineNumber);
+            }
+            catch { }
         }
 
         public async System.Threading.Tasks.Task Run(Action action, [CallerMemberName]string origin = "", [CallerFilePath]string filePath = "", [CallerLineNumber]int lineNumber = 0)
@@ -120,10 +144,19 @@ namespace ChatWpf.Core.Task
             }
             catch (Exception ex)
             {
-                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
+                FrameworkDI.Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 throw;
             }
+        }
+
+        public async void RunAndForget(Action action, [CallerMemberName] string origin = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0)
+        {
+            try
+            {
+                await Run(action, origin, filePath, lineNumber);
+            }
+            catch { }
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using ChatWpf.Core.IoC.Interfaces;
+﻿using ChatWpf.Core.DI.Interfaces;
 using Dna;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ChatWpf.Relational
@@ -13,16 +12,14 @@ namespace ChatWpf.Relational
             // Inject our SQLite EF data store
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
             {
-                // Setup connection string
-                options.UseSqlite(construction.Configuration.GetConnectionString("ClientDataStoreConnection"));
-            });
 
-            // Add client data store for easy access/use of the backing data store
-            // Make it scoped so we can inject the scoped DbContext
-            construction.Services.AddScoped<IClientDataStore>(
+                options.UseSqlite("Data Source = Synthesis.db");
+                //construction.Configuration.GetConnectionString("ClientDataStoreConnection") == Data Source = synthesis.db!!!!!!!!!!!!!!!
+            }, contextLifetime: ServiceLifetime.Transient);
+
+            construction.Services.AddTransient<IClientDataStore>(
                 provider => new BaseClientDataStore(provider.GetService<ClientDataStoreDbContext>()));
 
-            // Return framework for chaining
             return construction;
         }
     }

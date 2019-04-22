@@ -2,8 +2,8 @@
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ChatWpf.Core.DI.Interfaces;
 using ChatWpf.Core.Email;
-using ChatWpf.Core.IoC.Interfaces;
 using ChatWpf.Web.Server.IoC;
 
 namespace ChatWpf.Web.Server.Email.Templates
@@ -16,7 +16,7 @@ namespace ChatWpf.Web.Server.Email.Templates
 
             // Read the general template from file
             // TODO: Replace with IoC Flat data provider
-            using (var reader = new StreamReader(Assembly.GetEntryAssembly().GetManifestResourceStream("ChatWpf.Word.Web.Server.Email.Templates.GeneralTemplate.htm"), Encoding.UTF8))
+            using (var reader = new StreamReader(Assembly.GetEntryAssembly().GetManifestResourceStream("ChatWpf.Web.Server.Email.Templates.GeneralTemplate.htm"), Encoding.UTF8))
             {
                 // Read file contents
                 templateText = await reader.ReadToEndAsync();

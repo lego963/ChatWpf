@@ -6,23 +6,32 @@ namespace ChatWpf.Core.Expressions
 {
     public static class ExpressionHelpers
     {
-        public static T GetPropertyValue<T>(this Expression<Func<T>> lamba)
+        public static T GetPropertyValue<T>(this Expression<Func<T>> lambda)
         {
-            return lamba.Compile().Invoke();
+            return lambda.Compile().Invoke();
         }
 
-        public static void SetPropertyValue<T>(this Expression<Func<T>> lamba, T value)
+        public static T GetPropertyValue<TIn, T>(this Expression<Func<TIn, T>> lambda, TIn input)
         {
-            // Converts a lamba () => some.Property, to some.Property
-            var expression = (lamba as LambdaExpression).Body as MemberExpression;
+            return lambda.Compile().Invoke(input);
+        }
 
-            // Get the property information so we can set it
+        public static void SetPropertyValue<T>(this Expression<Func<T>> lambda, T value)
+        {
+            if (!(lambda.Body is MemberExpression expression)) return;
             var propertyInfo = (PropertyInfo)expression.Member;
             var target = Expression.Lambda(expression.Expression).Compile().DynamicInvoke();
 
-            // Set the property value
             propertyInfo.SetValue(target, value);
+        }
 
+
+        public static void SetPropertyValue<TIn, T>(this Expression<Func<TIn, T>> lambda, T value, TIn input)
+        {
+            if (!(lambda.Body is MemberExpression expression)) return;
+            var propertyInfo = (PropertyInfo)expression.Member;
+
+            propertyInfo.SetValue(input, value);
         }
     }
 }
