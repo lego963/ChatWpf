@@ -321,6 +321,8 @@
     <Compile Include="ViewModel\PopupMenu\Design\ChatAttachmentPopupMenuDesignModel.cs" />
     <Compile Include="ViewModel\Application\ApplicationViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
+    <Compile Include="Window\MonitorOptions.cs" />
+    <Compile Include="Window\WindowDockPosition.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
     <Compile Include="WPFViewModels\WindowViewModel.cs" />
