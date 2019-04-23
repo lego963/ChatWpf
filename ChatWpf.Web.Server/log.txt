@@ -351,3 +351,77 @@ CREATE INDEX [IX_Settings_Name] ON [Settings] ([Name]);
 [2019-04-22 12:12:58] Executed ViewResult - view Index executed in 129.2644ms.
 [2019-04-22 12:12:58] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 393.9595ms
 [2019-04-22 12:12:58] Request finished in 998.1686ms 200 text/html; charset=utf-8
+[2019-04-22 09:50:16] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2019-04-22 09:50:17] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-22 09:50:18] Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+[2019-04-22 09:50:18] Failed to authenticate HTTPS connection.
+[2019-04-22 09:50:19] Request starting HTTP/1.1 GET https://localhost:5555/  
+[2019-04-22 09:50:20] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+[2019-04-22 09:50:20] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+[2019-04-22 09:50:20] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.1078ms.
+[2019-04-22 09:50:20] Executing ViewResult, running view Index.
+[2019-04-22 09:50:20] Executed ViewResult - view Index executed in 123.4799ms.
+[2019-04-22 09:50:20] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 285.112ms
+[2019-04-22 09:50:20] Request finished in 704.1539ms 200 text/html; charset=utf-8
+[2019-04-22 09:50:32] Connection id "0HLM7ADENN78Q" bad request data: "Invalid request line: '\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03\x8Dq\x99\xF5\xA1\xE3\x03\x8B\xAFi~\x91\x8B\xF5\xD8\xAF\x18\xA0\xE7\xAE\xA9\xC5\x93\xB3\x03\xDC\xC2\xC3\x10\xDE\x03\xDB \xEF\xC0d\x85K*X\xFE\xF6Y\x1C\x90-W\xC6-\xEB\x09\xDA\x11\xF5\xF6Q\xD9\xDA&\x05\xDB\xB9<\x11\x86\x00"\xDA\xDA\x13\x01\x13\x02\x13\x03\xC0+\xC0/\xC0,\xC00\xCC\xA9\xCC\xA8\xC0\x13\xC0\x14\x00\x9C\x00\x9D\x00/\x005\x00\x0A'"
+[2019-04-22 09:50:32] Connection id "0HLM7ADENN78P" bad request data: "Invalid request line: '\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03\xD6\x88\x07\x81Z+\xAB\xEA%*h @\xBC\x04\xFE&a~\xD8\x8E\x92\xE9\x96\xA6\xD3\xF8\xFA\xA0\xA6\x0D\xC1 *\x0E\xEE\x15\x94\xCD"\xAE\x83\x8B\xEB\xF1)\x04\xA9e\xD6\x01\x1CN\xC4\xFE'o\xCE\xFE\xA6n\x17Fky\x00"**\x13\x01\x13\x02\x13\x03\xC0+\xC0/\xC0,\xC00\xCC\xA9\xCC\xA8\xC0\x13\xC0\x14\x00\x9C\x00\x9D\x00/\x005\x00\x0A'"
+[2019-04-22 09:50:32] Connection id "0HLM7ADENN78R" bad request data: "Invalid request line: '\x16\x03\x01\x00\xC3\x01\x00\x00\xBF\x03\x038y\x89\x1B7\xFD>Pr\xA8ST\x80=F\x1D\x1D\xAC\xE0\x19\xF0\xF1\xFD@\x9A\xEC\xA2\xBF[\xE9n\xAA\x00\x00\x1C**\xC0+\xC0/\xC0,\xC00\xCC\xA9\xCC\xA8\xC0\x13\xC0\x14\x00\x9C\x00\x9D\x00/\x005\x00\x0A'"
+[2019-04-22 09:50:52] Failed to authenticate HTTPS connection.
+[2019-04-22 09:51:22] Failed to authenticate HTTPS connection.
+[2019-04-22 09:51:22] Failed to authenticate HTTPS connection.
+[2019-04-22 09:51:37] Failed to authenticate HTTPS connection.
+[2019-04-22 09:52:01] Request starting HTTP/1.1 GET https://localhost:5555/  
+[2019-04-22 09:52:01] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+[2019-04-22 09:52:01] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+[2019-04-22 09:52:01] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0977ms.
+[2019-04-22 09:52:01] Executing ViewResult, running view Index.
+[2019-04-22 09:52:01] Executed ViewResult - view Index executed in 79.8696ms.
+[2019-04-22 09:52:01] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 255.2081ms
+[2019-04-22 09:52:01] Request finished in 323.5622ms 200 text/html; charset=utf-8
+[2019-04-22 09:52:09] Request starting HTTP/1.1 GET https://localhost:5555/login  
+[2019-04-22 09:52:09] Route matched with {action = "LoginAsync", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server)
+[2019-04-22 09:52:10] Executing action method ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server) with arguments () - Validation state: Valid
+[2019-04-22 09:52:10] AuthenticationScheme: Identity.Application signed out.
+[2019-04-22 09:52:10] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-22 09:52:10] Executed DbCommand (110ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+[2019-04-22 09:52:10] Executed action method ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ContentResult in 374.3328ms.
+[2019-04-22 09:52:10] Executing ContentResult with HTTP Response ContentType of text/html
+[2019-04-22 09:52:10] Executed action ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server) in 451.0916ms
+[2019-04-22 09:52:10] Request finished in 515.0435ms 200 text/html
+[2019-04-22 09:52:54] Request starting HTTP/1.1 GET https://localhost:5555/register  
+[2019-04-22 09:52:54] Request finished in 28.9136ms 404 
+[2019-04-22 09:53:01] Request starting HTTP/1.1 GET https://localhost:5555/create  
+[2019-04-22 09:53:02] Request finished in 48.6508ms 404 
+[2019-04-23 04:06:34] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2019-04-23 04:06:37] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-23 04:06:38] Executed DbCommand (209ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+[2019-04-23 04:06:41] Request starting HTTP/1.1 GET https://localhost:5555/  
+[2019-04-23 04:06:42] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+[2019-04-23 04:06:42] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+[2019-04-23 04:06:42] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8515ms.
+[2019-04-23 04:06:42] Executing ViewResult, running view Index.
+[2019-04-23 04:06:47] Executed ViewResult - view Index executed in 4952.4569ms.
+[2019-04-23 04:06:47] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 5294.6867ms
+[2019-04-23 04:06:47] Request finished in 6073.0566ms 200 text/html; charset=utf-8
+[2019-04-23 04:06:55] Request starting HTTP/1.1 GET https://localhost:5555/login  
+[2019-04-23 04:06:55] Route matched with {action = "LoginAsync", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server)
+[2019-04-23 04:06:55] Executing action method ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server) with arguments () - Validation state: Valid
+[2019-04-23 04:06:55] AuthenticationScheme: Identity.Application signed out.
+[2019-04-23 04:06:55] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-23 04:06:56] Executed DbCommand (425ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+[2019-04-23 04:06:57] Executed action method ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ContentResult in 1048.0469ms.
+[2019-04-23 04:06:57] Executing ContentResult with HTTP Response ContentType of text/html
+[2019-04-23 04:06:57] Executed action ChatWpf.Web.Server.Controllers.HomeController.LoginAsync (ChatWpf.Web.Server) in 1574.775ms
+[2019-04-23 04:06:57] Request finished in 1822.4948ms 200 text/html
+[2019-04-23 04:07:01] Request starting HTTP/1.1 GET https://localhost:5555/create  
+[2019-04-23 04:07:01] Request finished in 10.4301ms 404 
+[2019-04-23 04:09:38] Authentication of the HTTPS connection timed out.
+[2019-04-23 04:09:38] Authentication of the HTTPS connection timed out.

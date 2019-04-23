@@ -7,12 +7,6 @@
         public string ErrorMessage { get; set; }
 
         public object Response { get; set; }
-
-        public ApiResponse()
-        {
-
-        }
-
     }
 
     public class ApiResponse<T> : ApiResponse

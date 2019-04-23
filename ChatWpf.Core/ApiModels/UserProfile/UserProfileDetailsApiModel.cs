@@ -14,11 +14,6 @@ namespace ChatWpf.Core.ApiModels.UserProfile
 
         public string Email { get; set; }
 
-        public UserProfileDetailsApiModel()
-        {
-
-        }
-
         public LoginCredentialsDataModel ToLoginCredentialsDataModel()
         {
             return new LoginCredentialsDataModel

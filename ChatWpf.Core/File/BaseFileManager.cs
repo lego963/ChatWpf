@@ -38,9 +38,7 @@ namespace ChatWpf.Core.File
                 // Replace any / with \
                 return path?.Replace('/', '\\').Trim();
             // If on Linux/Mac
-            else
-                // Replace any \ with /
-                return path?.Replace('\\', '/').Trim();
+            return path?.Replace('\\', '/').Trim();
         }
 
         public string ResolvePath(string path)

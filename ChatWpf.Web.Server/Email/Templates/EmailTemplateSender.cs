@@ -33,7 +33,7 @@ namespace ChatWpf.Web.Server.Email.Templates
             details.Content = templateText;
 
             // Send email
-            return await DI.EmailSender.SendEmailAsync(details);
+            return await Di.EmailSender.SendEmailAsync(details);
         }
     }
 }

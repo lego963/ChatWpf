@@ -26,14 +26,6 @@ namespace ChatWpf.Web.Server.Controllers
 
         protected SignInManager<ApplicationUser> mSignInManager;
 
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        /// <param name="context">The injected context</param>
-        /// <param name="signInManager">The Identity sign in manager</param>
-        /// <param name="userManager">The Identity user manager</param>
         public ApiController(
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
@@ -44,15 +36,6 @@ namespace ChatWpf.Web.Server.Controllers
             mSignInManager = signInManager;
         }
 
-        #endregion
-
-        #region Login / Register / Verify
-
-        /// <summary>
-        /// Tries to register for a new account on the server
-        /// </summary>
-        /// <param name="registerCredentials">The registration details</param>
-        /// <returns>Returns the result of the register request</returns>
         [AllowAnonymous]
         [Route(ApiRoutes.Register)]
         public async Task<ApiResponse<RegisterResultApiModel>> RegisterAsync([FromBody]RegisterCredentialsApiModel registerCredentials)
@@ -113,19 +96,14 @@ namespace ChatWpf.Web.Server.Controllers
                 };
             }
             // Otherwise if it failed...
-            else
-                // Return the failed response
-                return new ApiResponse<RegisterResultApiModel>
-                {
-                    // Aggregate all errors into a single error string
-                    ErrorMessage = result.Errors.AggregateErrors()
-                };
+
+            return new ApiResponse<RegisterResultApiModel>
+            {
+                // Aggregate all errors into a single error string
+                ErrorMessage = result.Errors.AggregateErrors()
+            };
         }
 
-        /// <summary>
-        /// Logs in a user using token-based authentication
-        /// </summary>
-        /// <returns>Returns the result of the login request</returns>
         [AllowAnonymous]
         [Route(ApiRoutes.Login)]
         public async Task<ApiResponse<UserProfileDetailsApiModel>> LogInAsync([FromBody]LoginCredentialsApiModel loginCredentials)
@@ -221,14 +199,6 @@ namespace ChatWpf.Web.Server.Controllers
             return Content("Invalid Email Verification Token :(");
         }
 
-        #endregion
-
-        #region User Profile
-
-        /// <summary>
-        /// Returns the users profile details based on the authenticated user
-        /// </summary>
-        /// <returns></returns>
         [Route(ApiRoutes.GetUserProfile)]
         public async Task<ApiResponse<UserProfileDetailsApiModel>> GetUserProfileAsync()
         {
@@ -238,7 +208,7 @@ namespace ChatWpf.Web.Server.Controllers
             // If we have no user...
             if (user == null)
                 // Return error
-                return new ApiResponse<UserProfileDetailsApiModel>()
+                return new ApiResponse<UserProfileDetailsApiModel>
                 {
                     // TODO: Localization
                     ErrorMessage = "User not found"
@@ -258,28 +228,13 @@ namespace ChatWpf.Web.Server.Controllers
             };
         }
 
-        /// <summary>
-        /// Attempts to update the users profile details
-        /// </summary>
-        /// <param name="model">The user profile details to update</param>
-        /// <returns>
-        ///     Returns successful response if the update was successful, 
-        ///     otherwise returns the error reasons for the failure
-        /// </returns>
         [Route(ApiRoutes.UpdateUserProfile)]
         public async Task<ApiResponse> UpdateUserProfileAsync([FromBody]UpdateUserProfileApiModel model)
         {
-            #region Declare Variables
-
-            // Make a list of empty errors
             var errors = new List<string>();
 
             // Keep track of email change
             var emailChanged = false;
-
-            #endregion
-
-            #region Get User
 
             // Get the current user
             var user = await mUserManager.GetUserAsync(HttpContext.User);
@@ -291,10 +246,6 @@ namespace ChatWpf.Web.Server.Controllers
                     // TODO: Localization
                     ErrorMessage = "User not found"
                 };
-
-            #endregion
-
-            #region Update Profile
 
             // If we have a first name...
             if (model.FirstName != null)
@@ -326,10 +277,6 @@ namespace ChatWpf.Web.Server.Controllers
                 // Update the profile details
                 user.UserName = model.Username;
 
-            #endregion
-
-            #region Save Profile
-
             // Attempt to commit changes to data store
             var result = await mUserManager.UpdateAsync(user);
 
@@ -338,49 +285,25 @@ namespace ChatWpf.Web.Server.Controllers
                 // Send email verification
                 await SendUserEmailVerificationAsync(user);
 
-            #endregion
-
-            #region Respond
-
             // If we were successful...
             if (result.Succeeded)
                 // Return successful response
                 return new ApiResponse();
             // Otherwise if it failed...
-            else
-                // Return the failed response
-                return new ApiResponse
-                {
-                    ErrorMessage = result.Errors.AggregateErrors()
-                };
+            return new ApiResponse
+            {
+                ErrorMessage = result.Errors.AggregateErrors()
+            };
 
-            #endregion
         }
 
-        /// <summary>
-        /// Attempts to update the users password
-        /// </summary>
-        /// <param name="model">The user password details to update</param>
-        /// <returns>
-        ///     Returns successful response if the update was successful, 
-        ///     otherwise returns the error reasons for the failure
-        /// </returns>
         [Route(ApiRoutes.UpdateUserPassword)]
         public async Task<ApiResponse> UpdateUserPasswordAsync([FromBody]UpdateUserPasswordApiModel model)
         {
-            #region Declare Variables
-
-            // Make a list of empty errors
             var errors = new List<string>();
 
-            #endregion
-
-            #region Get User
-
-            // Get the current user
             var user = await mUserManager.GetUserAsync(HttpContext.User);
 
-            // If we have no user...
             if (user == null)
                 return new ApiResponse
                 {
@@ -388,49 +311,25 @@ namespace ChatWpf.Web.Server.Controllers
                     ErrorMessage = "User not found"
                 };
 
-            #endregion
-
-            #region Update Password
 
             // Attempt to commit changes to data store
             var result = await mUserManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-
-            #endregion
-
-            #region Respond
 
             // If we were successful...
             if (result.Succeeded)
                 // Return successful response
                 return new ApiResponse();
             // Otherwise if it failed...
-            else
-                // Return the failed response
-                return new ApiResponse
-                {
-                    ErrorMessage = result.Errors.AggregateErrors()
-                };
+            return new ApiResponse
+            {
+                ErrorMessage = result.Errors.AggregateErrors()
+            };
 
-            #endregion
         }
 
-        #endregion
-
-        #region Contacts
-
-        /// <summary>
-        /// Searches all users for any users that match the search credentials
-        /// </summary>
-        /// <param name="model">The search credentials</param>
-        /// <returns>
-        ///     Returns a list of found contact details if successful, 
-        ///     otherwise returns the error reasons for the failure
-        /// </returns>
         [Route(ApiRoutes.SearchUsers)]
         public async Task<ApiResponse<SearchUsersResultsApiModel>> SearchUsersAsync([FromBody]SearchUsersApiModel model)
         {
-            #region Get User
-
             // Get the current user
             var user = await mUserManager.GetUserAsync(HttpContext.User);
 
@@ -441,10 +340,6 @@ namespace ChatWpf.Web.Server.Controllers
                     // TODO: Localization
                     ErrorMessage = "User not found"
                 };
-
-            #endregion
-
-            #region Check Valid Search Credentials
 
             // Check if the user provided both a first and last name
             var firstOrLastNameMissing = string.IsNullOrEmpty(model?.FirstName) || string.IsNullOrEmpty(model?.LastName);
@@ -468,10 +363,6 @@ namespace ChatWpf.Web.Server.Controllers
                     // TODO: Localization
                     ErrorMessage = "Please provide a first and last name, or an email, username or phone number"
                 };
-
-            #endregion
-
-            #region Find Users
 
             // Create a found user variable
             var foundUser = default(ApplicationUser);
@@ -551,19 +442,9 @@ namespace ChatWpf.Web.Server.Controllers
                 Response = results
             };
 
-            #endregion
         }
 
 
-        #endregion
-
-        #region Private Helpers
-
-        /// <summary>
-        /// Sends the given user a new verify email link
-        /// </summary>
-        /// <param name="user">The user to send the link to</param>
-        /// <returns></returns>
         private async Task SendUserEmailVerificationAsync(ApplicationUser user)
         {
             // Get the user details
@@ -579,6 +460,5 @@ namespace ChatWpf.Web.Server.Controllers
             await SynthesisEmailSender.SendUserVerificationEmailAsync(user.UserName, userIdentity.Email, confirmationUrl);
         }
 
-        #endregion
     }
 }
