@@ -16,6 +16,6 @@
 
         BottomLeft = 6,
 
-        BottomRight = 7,
+        BottomRight = 7
     }
 }

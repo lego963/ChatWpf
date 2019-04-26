@@ -131,7 +131,7 @@ namespace ChatWpf.Animation
             var animation = new DoubleAnimation
             {
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                To = 1,
+                To = 1
             };
 
             if (from)
@@ -147,7 +147,7 @@ namespace ChatWpf.Animation
             var animation = new DoubleAnimation
             {
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                To = 0,
+                To = 0
             };
 
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));

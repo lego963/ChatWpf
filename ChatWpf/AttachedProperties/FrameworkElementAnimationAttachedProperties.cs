@@ -20,9 +20,9 @@ namespace ChatWpf.AttachedProperties
             if (!(sender is FrameworkElement element))
                 return;
 
-            var alreadyLoadedReference = AlreadyLoaded.FirstOrDefault(f => f.Key.Target == sender);
+            var alreadyLoadedReference = AlreadyLoaded.FirstOrDefault(f => Equals(f.Key.Target, sender));
 
-            var firstLoadReference = FirstLoadValue.FirstOrDefault(f => f.Key.Target == sender);
+            var firstLoadReference = FirstLoadValue.FirstOrDefault(f => Equals(f.Key.Target, sender));
 
             if ((bool)sender.GetValue(ValueProperty) == (bool)value && alreadyLoadedReference.Key != null)
                 return;
@@ -42,7 +42,7 @@ namespace ChatWpf.AttachedProperties
 
                     await Task.Delay(5);
 
-                    firstLoadReference = FirstLoadValue.FirstOrDefault(f => f.Key.Target == sender);
+                    firstLoadReference = FirstLoadValue.FirstOrDefault(f => Equals(f.Key.Target, sender));
 
                     DoAnimation(element, firstLoadReference.Key != null ? firstLoadReference.Value : (bool)value, true);
 

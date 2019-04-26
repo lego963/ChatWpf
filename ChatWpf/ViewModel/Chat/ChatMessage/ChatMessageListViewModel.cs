@@ -123,11 +123,11 @@ namespace ChatWpf.ViewModel.Chat.ChatMessage
 
             var message = new ChatMessageListItemViewModel
             {
-                Initials = "LM",
+                Initials = "RG",
                 Message = PendingMessageText,
                 MessageSentTime = DateTime.UtcNow,
                 SentByMe = true,
-                SenderName = "Luke Malpass",
+                SenderName = "Rodion Gyrbu",
                 NewItem = true
             };
 

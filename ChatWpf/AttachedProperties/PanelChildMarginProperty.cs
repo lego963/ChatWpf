@@ -12,7 +12,7 @@ namespace ChatWpf.AttachedProperties
                 {
                     foreach (var child in panel.Children)
                         ((FrameworkElement) child).Margin =
-                            (Thickness) new ThicknessConverter().ConvertFromString(e.NewValue as string);
+                            (Thickness) new ThicknessConverter().ConvertFromString((string) e.NewValue);
                 };
         }
     }

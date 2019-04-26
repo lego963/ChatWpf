@@ -2,97 +2,62 @@
 
 namespace ChatWpf.ViewModel.Chat.ChatList.Design
 {
-    /// <summary>
-    /// The design-time data for a <see cref="ChatListViewModel"/>
-    /// </summary>
     public class ChatListDesignModel : ChatListViewModel
     {
-        #region Singleton
-
-        /// <summary>
-        /// A single instance of the design model
-        /// </summary>
         public static ChatListDesignModel Instance => new ChatListDesignModel();
 
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
         public ChatListDesignModel()
         {
             Items = new List<ChatListItemViewModel>
             {
                 new ChatListItemViewModel
                 {
-                    Name = "Luke",
-                    Initials = "LM",
-                    Message = "This chat app is awesome! I bet it will be fast too",
+                    Name = "Darya",
+                    Initials = "DS",
+                    Message = "Привет, как дела?",
                     ProfilePictureRgb = "3099c5",
                     NewContentAvailable = true
                 },
                 new ChatListItemViewModel
                 {
-                    Name = "Jesse",
-                    Initials = "JA",
-                    Message = "Hey dude, here are the new icons",
+                    Name = "Semen",
+                    Initials = "SL",
+                    Message = "HALO, HALO",
                     ProfilePictureRgb = "fe4503"
                 },
                 new ChatListItemViewModel
                 {
-                    Name = "Parnell",
-                    Initials = "PL",
-                    Message = "The new server is up, got 192.168.1.1",
+                    Name = "Anastasiya",
+                    Initials = "AG",
+                    Message = "Привет, нужна твоя консультация. Ответь, как будешь свободен.",
                     ProfilePictureRgb = "00d405",
                     IsSelected = true
                 },
                 new ChatListItemViewModel
                 {
-                    Name = "Luke",
-                    Initials = "LM",
-                    Message = "This chat app is awesome! I bet it will be fast too",
-                    ProfilePictureRgb = "3099c5"
+                    Name = "Egor",
+                    Initials = "EZ",
+                    Message = "Есть предложение, отпиши, как только сможешь!",
+                    ProfilePictureRgb = "00d405",
+                    IsSelected = true
                 },
                 new ChatListItemViewModel
                 {
-                    Name = "Jesse",
-                    Initials = "JA",
-                    Message = "Hey dude, here are the new icons",
-                    ProfilePictureRgb = "fe4503"
+                    Name = "Vladimir",
+                    Initials = "VV",
+                    Message = "FAST",
+                    ProfilePictureRgb = "00d405",
+                    IsSelected = true
                 },
                 new ChatListItemViewModel
                 {
-                    Name = "Parnell",
-                    Initials = "PL",
-                    Message = "The new server is up, got 192.168.1.1",
-                    ProfilePictureRgb = "00d405"
-                },
-                                new ChatListItemViewModel
-                {
-                    Name = "Luke",
-                    Initials = "LM",
-                    Message = "This chat app is awesome! I bet it will be fast too",
-                    ProfilePictureRgb = "3099c5"
-                },
-                new ChatListItemViewModel
-                {
-                    Name = "Jesse",
-                    Initials = "JA",
-                    Message = "Hey dude, here are the new icons",
-                    ProfilePictureRgb = "fe4503"
-                },
-                new ChatListItemViewModel
-                {
-                    Name = "Parnell",
-                    Initials = "PL",
-                    Message = "The new server is up, got 192.168.1.1",
-                    ProfilePictureRgb = "00d405"
-                },
+                    Name = "Kristina",
+                    Initials = "KK",
+                    Message = "Какие планы на выходные?",
+                    ProfilePictureRgb = "00d405",
+                    IsSelected = true
+                }
             };
         }
-
-        #endregion
     }
 }

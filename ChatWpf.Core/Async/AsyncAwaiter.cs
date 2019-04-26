@@ -9,9 +9,9 @@ namespace ChatWpf.Core.Async
 {
     public static class AsyncAwaiter
     {
-        private static SemaphoreSlim SelfLock = new SemaphoreSlim(1, 1);
+        private static readonly SemaphoreSlim SelfLock = new SemaphoreSlim(1, 1);
 
-        private static Dictionary<string, SemaphoreSlim> Semaphores = new Dictionary<string, SemaphoreSlim>();
+        private static readonly Dictionary<string, SemaphoreSlim> Semaphores = new Dictionary<string, SemaphoreSlim>();
 
         public static async Task<T> AwaitResultAsync<T>(string key, Func<Task<T>> task, int maxAccessCount = 1)
         {
@@ -73,8 +73,6 @@ namespace ChatWpf.Core.Async
             }
             catch (Exception ex)
             {
-                var error = ex.Message;
-
                 FrameworkDI.Logger.LogDebugSource($"Crash in {nameof(AwaitAsync)}. {ex.Message}");
 
                 Debugger.Break();

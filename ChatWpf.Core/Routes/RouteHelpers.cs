@@ -1,12 +1,11 @@
-﻿using Dna;
-
-namespace ChatWpf.Core.Routes
+﻿namespace ChatWpf.Core.Routes
 {
     public static class RouteHelpers
     {
         public static string GetAbsoluteRoute(string relativeUrl)
         {
-            var host = FrameworkDI.Configuration["SynthesisServer:HostUrl"];
+            var host = @"http://localhost:5000";
+            //FrameworkDI.Configuration["SynthesisServer:HostUrl"];
 
             if (string.IsNullOrEmpty(relativeUrl))
                 return host;
@@ -14,7 +13,8 @@ namespace ChatWpf.Core.Routes
             if (!relativeUrl.StartsWith("/"))
                 relativeUrl = $"/{relativeUrl}";
 
-            return FrameworkDI.Configuration["SynthesisServer:HostUrl"] + relativeUrl;
+            //return FrameworkDI.Configuration["SynthesisServer:HostUrl"] + relativeUrl;
+            return host + relativeUrl;
         }
     }
 }

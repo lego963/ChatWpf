@@ -13,7 +13,7 @@ namespace ChatWpf.Relational
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
             {
 
-                options.UseSqlite("Data Source = Synthesis.db");
+                options.UseSqlite(@"Data Source = C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Synthesis.db");
                 //construction.Configuration.GetConnectionString("ClientDataStoreConnection") == Data Source = synthesis.db!!!!!!!!!!!!!!!
             }, contextLifetime: ServiceLifetime.Transient);
 
