@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ChatWpf.Core.ApiModels.Contacts.SearchUsersResultApiModel">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ApiModels\Contacts\SearchUsersResultApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.Contacts.SearchUsersResultsApiModel">
+    <Position X="16.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiModels\Contacts\SearchUsersResultsApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.Contacts.SearchUsersApiModel">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ApiModels\Contacts\SerachUsersApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.LoginRegister.LoginCredentialsApiModel">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAAA=</HashCode>
+      <FileName>ApiModels\LoginRegister\LoginCredentialsApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.LoginRegister.RegisterCredentialsApiModel">
+    <Position X="18" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>ApiModels\LoginRegister\RegisterCredentialsApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.LoginRegister.RegisterResultApiModel" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiModels\LoginRegister\RegisterResultApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.UserProfile.UpdateUserPasswordApiModel">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ApiModels\UserProfile\UpdateUserPasswordApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.UserProfile.UpdateUserProfileApiModel">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ApiModels\UserProfile\UpdateUserProfileApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.UserProfile.UserProfileDetailsApiModel">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAQAAAAAAAAAAAABAAAAAAAABAAg=</HashCode>
+      <FileName>ApiModels\UserProfile\UserProfileDetailsApiModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.ApiResponse">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>ApiModels\ApiResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.ApiModels.ApiResponse&lt;T&gt;" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiModels\ApiResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Async.AsyncAwaiter">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAEAAAAAQAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Async\AsyncAwaiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.DataModels.LoginCredentialsDataModel">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAAAAAQAAAAAAAAAAAAAAAAAAAAABAAg=</HashCode>
+      <FileName>DataModels\LoginCredentialsDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.DI.CoreDi">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\CoreDI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Email.SendEmailDetails">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAgIAAAAAAIAAAAAEAgAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Email\SendEmailDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Email.SendEmailResponse">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Email\SendEmailResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Expressions.ExpressionHelpers">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\ExpressionHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.File.BaseFileManager" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>File\BaseFileManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Core.Icons.IconTypeExtensions">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Icons\IconTypeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Routes.ApiRoutes">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAKAAAAAAAAABABAAAQBAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Routes\ApiRoutes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Routes.RouteHelpers">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Routes\RouteHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Routes.WebRoutes">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Routes\WebRoutes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Security.SecureStringHelpers">
+    <Position X="18" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Security\SecureStringHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Core.Task.BaseTaskManager" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Task\BaseTaskManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ChatWpf.Core.DI.Interfaces.IClientDataStore">
+    <Position X="20" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAQAAAAAAAAAAAABAAACAAAAAAABAA=</HashCode>
+      <FileName>DI\Interfaces\IClientDataStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChatWpf.Core.DI.Interfaces.IEmailSender">
+    <Position X="21.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>DI\Interfaces\IEmailSender.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChatWpf.Core.DI.Interfaces.IEmailTemplateSender">
+    <Position X="23.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\Interfaces\IEmailTemplateSender.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChatWpf.Core.DI.Interfaces.IFileManager">
+    <Position X="25.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\Interfaces\IFileManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChatWpf.Core.DI.Interfaces.ITaskManager">
+    <Position X="27" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>DI\Interfaces\ITaskManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ChatWpf.Core.DataModels.ApplicationPage">
+    <Position X="20" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAAAAQAAAAAAA=</HashCode>
+      <FileName>DataModels\ApplicationPage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Core.DataModels.ElementHorizontalAlignment">
+    <Position X="21.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACQAAAIAAA=</HashCode>
+      <FileName>DataModels\ElementHorizontalAlignment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Core.DataModels.IconType">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>DataModels\IconType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Core.DataModels.MenuItemType">
+    <Position X="25.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAQAAAA=</HashCode>
+      <FileName>DataModels\MenuItemType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Core.DataModels.SideMenuContent">
+    <Position X="27" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>DataModels\SideMenuContent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

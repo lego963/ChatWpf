@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChatWpf.Animation.FrameworkElementAnimations" Collapsed="true">
+    <Position X="59.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAAAIBAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animation\FrameworkElementAnimations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Animation.PageAnimations" Collapsed="true">
+    <Position X="54" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAAAAA=</HashCode>
+      <FileName>Animation\PageAnimations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Animation.StoryboardHelpers" Collapsed="true">
+    <Position X="59.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAIAAAAAAAABABIAAAAAAAACBAAAAABAAAAAAIQAQ=</HashCode>
+      <FileName>Animation\StoryboardHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.App" Collapsed="true">
+    <Position X="52.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.DialogWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DialogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.BaseAttachedProperty&lt;TParent, TProperty&gt;" Collapsed="true">
+    <Position X="26.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAQAAgAAAAAQAAAAAEAEBAFAQAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\BaseAttachedProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.ClipFromBorderProperty" Collapsed="true">
+    <Position X="45.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAABAAAAEAAAAAAAAEAAA=</HashCode>
+      <FileName>AttachedProperties\BorderAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.IsBusyProperty" Collapsed="true">
+    <Position X="49.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\ButtonAttachedProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateBaseProperty&lt;TParent&gt;" Collapsed="true">
+    <Position X="12.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEIAAAAAAAAAAAAAAEAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.FadeInImageOnLoadProperty" Collapsed="true">
+    <Position X="2.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromLeftProperty" Collapsed="true">
+    <Position X="4.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromRightProperty" Collapsed="true">
+    <Position X="7" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromRightMarginProperty" Collapsed="true">
+    <Position X="9.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromTopProperty" Collapsed="true">
+    <Position X="11.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromBottomProperty" Collapsed="true">
+    <Position X="13.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromBottomOnLoadProperty" Collapsed="true">
+    <Position X="16" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateSlideInFromBottomMarginProperty" Collapsed="true">
+    <Position X="18.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateFadeInProperty" Collapsed="true">
+    <Position X="20.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AnimateMarqueeProperty" Collapsed="true">
+    <Position X="22.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\FrameworkElementAnimationAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.NoFrameHistory" Collapsed="true">
+    <Position X="25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\NoFrameHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.PanelChildMarginProperty" Collapsed="true">
+    <Position X="27.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\PanelChildMarginProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.MonitorPasswordProperty" Collapsed="true">
+    <Position X="29.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\PasswordBoxAttachedProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.HasTextProperty" Collapsed="true">
+    <Position X="31.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\PasswordBoxAttachedProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.ScrollToBottomOnLoadProperty" Collapsed="true">
+    <Position X="34" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\ScrollViewerAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.AutoScrollToBottomProperty" Collapsed="true">
+    <Position X="36.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\ScrollViewerAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.IsFocusedProperty" Collapsed="true">
+    <Position X="38.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\TextAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.FocusProperty" Collapsed="true">
+    <Position X="40.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\TextAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.FocusAndSelectProperty" Collapsed="true">
+    <Position X="43" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>AttachedProperties\TextAttachedProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.AttachedProperties.TextEntryWidthMatcherProperty" Collapsed="true">
+    <Position X="47.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQ=</HashCode>
+      <FileName>AttachedProperties\TextEntryWidthMatcherProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Controls.BubbleContent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\BubbleContent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.PageHost" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAEAAAAEAAAAgI=</HashCode>
+      <FileName>Controls\PageHost.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.SettingsControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\SettingsControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.SideMenuControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\SideMenuControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Chat.ChatList.ChatListControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Chat\ChatList\ChatListControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Chat.ChatList.ChatListItemControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Chat\ChatList\ChatListItemControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Chat.ChatMessage.ChatMessageListControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Chat\ChatMessage\ChatMessageListControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Chat.ChatMessage.ChatMessageListItemControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Input.PasswordEntryControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAIAAAACAAAAAYAAAAAAAAAAAAE=</HashCode>
+      <FileName>Controls\Input\PasswordEntryControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Input.TextEntryControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAACAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Input\TextEntryControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Controls.Menu.VerticalMenu" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Menu\VerticalMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.DI.Di" Collapsed="true">
+    <Position X="54" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwBAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\DI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.DI.FrameworkConstructionExtensions" Collapsed="true">
+    <Position X="57.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\FrameworkConstructionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.DI.UI.UiManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\UI\UIManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.Dialogs.BaseDialogUserControl" Collapsed="true">
+    <Position X="8.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAABEAAAAAAAEEAAAgAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Dialogs\BaseDialogUserControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Dialogs.DialogMessageBox" Collapsed="true">
+    <Position X="8.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dialogs\DialogMessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.Pages.BasePage" Collapsed="true">
+    <Position X="2.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAIQAAAAAAAgBEIAAAAAAAARAAAAACA=</HashCode>
+      <FileName>Pages\BasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Pages.BasePage&lt;TVm&gt;" Collapsed="true">
+    <Position X="2.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\BasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Pages.ChatPage" Collapsed="true">
+    <Position X="0.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\ChatPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.Pages.LoginPage" Collapsed="true">
+    <Position X="2.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\LoginPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.Pages.RegisterPage" Collapsed="true">
+    <Position X="5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\RegisterPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.Properties.Resources" Collapsed="true">
+    <Position X="52.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Properties.Settings" Collapsed="true">
+    <Position X="54" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.ApplicationPageHelpers" Collapsed="true">
+    <Position X="54" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\ApplicationPageHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.BaseValueConverter&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>ValueConverter\BaseValueConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.BooleanInvertConverter" Collapsed="true">
+    <Position X="8.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\BooleanInvertConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.BooleanToBorderThicknessConverter" Collapsed="true">
+    <Position X="12.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\BooleanToBorderThicknessConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.BooleanToVisibilityConverter" Collapsed="true">
+    <Position X="17.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\BooleanToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.BooleanToVisibilityGoneConverter" Collapsed="true">
+    <Position X="21.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\BooleanToVisibilityGoneConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.HorizontalAlignmentConverter" Collapsed="true">
+    <Position X="24" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\HorizontalAlignmentConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.IconTypeToFontAwesomeConverter" Collapsed="true">
+    <Position X="26.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\IconTypeToFontAwesomeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.MenuItemTypeVisibilityConverter" Collapsed="true">
+    <Position X="28.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\MenuItemTypeVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.PopupContentConverter" Collapsed="true">
+    <Position X="30.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\PopupContentConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.SentByMeToAlignmentConverter" Collapsed="true">
+    <Position X="1.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\SentByMeToAlignmentConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.SentByMeToBackgroundConverter" Collapsed="true">
+    <Position X="3.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\SentByMeToBackgroundConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.SideMenuContentConverter" Collapsed="true">
+    <Position X="6" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ValueConverter\SideMenuContentConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.StringRgbToBrushConverter" Collapsed="true">
+    <Position X="10.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\StringRGBToBrushConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.TimeToDisplayTimeConverter" Collapsed="true">
+    <Position X="15" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\TimeToDisplayTimeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ValueConverter.TimeToReadTimeConverter" Collapsed="true">
+    <Position X="19.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueConverter\TimeToReadTimeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Application.ApplicationViewModel" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAiAgAAAAAIAAAAgAACAAAAAgAAAAAAgBECCAAAo=</HashCode>
+      <FileName>ViewModel\Application\ApplicationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Application.LoginViewModel" Collapsed="true">
+    <Position X="19.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAAAAAAAAAAAAAACgAAAAAADAAAA=</HashCode>
+      <FileName>ViewModel\Application\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Application.RegisterViewModel" Collapsed="true">
+    <Position X="24.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAQAAAAAAAAAAAACgAAAAAACAQAA=</HashCode>
+      <FileName>ViewModel\Application\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Application.SettingsViewModel" Collapsed="true">
+    <Position X="31" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAFAMAgISgQJAAgAQQAAGAQBECAABACAAAQgACAKIg=</HashCode>
+      <FileName>ViewModel\Application\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Application.Design.SettingsDesignModel" Collapsed="true">
+    <Position X="31" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Application\Design\SettingsDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Base.BaseViewModel" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAIAAAAAAAgAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Base\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Base.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Base\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Base.RelayParameterizedCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Base\RelayParameterizedCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatList.ChatListItemViewModel" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAIAAAAAEAAAAACIAAQAAAAAAAAAAAQAIAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatList\ChatListItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatList.ChatListViewModel" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatList\ChatListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatList.Design.ChatListDesignModel" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatList\Design\ChatListDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatList.Design.ChatListItemDesignModel" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatList\Design\ChatListItemDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatMessage.ChatMessageListItemImageAttachmentViewModel" Collapsed="true">
+    <Position X="26.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEFAAAAAAAAAAAAAAAAAAAKAAABQAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatMessage\ChatMessageListItemImageAttachmentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatMessage.ChatMessageListItemViewModel" Collapsed="true">
+    <Position X="33.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAAgAAAAAAEREAAACAAAAAAAAAAAAAAGAEIAAgAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatMessage\ChatMessageListItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatMessage.ChatMessageListViewModel" Collapsed="true">
+    <Position X="35.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEgAAAAgiAAAMEAAgBAIExJEAJAACAAAAAogABA=</HashCode>
+      <FileName>ViewModel\Chat\ChatMessage\ChatMessageListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatMessage.Design.ChatMessageListDesignModel" Collapsed="true">
+    <Position X="35.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatMessage\Design\ChatMessageListDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Chat.ChatMessage.Design.ChatMessageListItemDesignModel" Collapsed="true">
+    <Position X="33.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Chat\ChatMessage\Design\ChatMessageListItemDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Dialogs.BaseDialogViewModel" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Dialogs\BaseDialogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Dialogs.MessageBoxDialogViewModel" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModel\Dialogs\MessageBoxDialogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Dialogs.Design.MessageBoxDialogDesignModel" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Dialogs\Design\MessageBoxDialogDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Input.Design.PasswordEntryDesignModel" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Input\Design\PasswordEntryDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Input.Design.TextEntryDesignModel" Collapsed="true">
+    <Position X="28.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Input\Design\TextEntryDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Input.PasswordEntryViewModel" Collapsed="true">
+    <Position X="22" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAUQAAQAAAgBAAAAAABAAAAAACGAAJACAEIAA=</HashCode>
+      <FileName>ViewModel\Input\PasswordEntryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Input.TextEntryViewModel" Collapsed="true">
+    <Position X="28.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAUAAAQAAAAAAAAgAABAgAAAACAAAIACAEAAA=</HashCode>
+      <FileName>ViewModel\Input\TextEntryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Menu.Design.MenuDesignModel" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Menu\Design\MenuDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Menu.Design.MenuItemDesignModel" Collapsed="true">
+    <Position X="1.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Menu\Design\MenuItemDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Menu.MenuItemViewModel" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACAEAAAA=</HashCode>
+      <FileName>ViewModel\Menu\MenuItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.Menu.MenuViewModel" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Menu\MenuViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.PopupMenu.BasePopupViewModel" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PopupMenu\BasePopupViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.PopupMenu.ChatAttachmentPopupMenuViewModel" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PopupMenu\ChatAttachmentPopupMenuViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.ViewModel.PopupMenu.Design.ChatAttachmentPopupMenuDesignModel" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PopupMenu\Design\ChatAttachmentPopupMenuDesignModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.WebRequests.WebRequestResultExtensions" Collapsed="true">
+    <Position X="57.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>WebRequests\WebRequestResultExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Window.WindowResizer" Collapsed="true">
+    <Position X="59.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABDAAAQAhAgAAICAIAAIEAsABgACAAAACQIEBAAAAA=</HashCode>
+      <FileName>Window\WindowResizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.Window.Monitorinfo" Collapsed="true">
+    <Position X="52.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAABgAAACAAAAAAAAAA=</HashCode>
+      <FileName>Window\WindowResizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.WPFViewModels.DialogWindowViewModel" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WPFViewModels\DialogWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.WPFViewModels.ViewModelLocator" Collapsed="true">
+    <Position X="55.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAABAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>WPFViewModels\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatWpf.WPFViewModels.WindowViewModel" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQkACQEAFggIBAAAgAEBQEAAAAAAAAIAAJAhAAAGAAA=</HashCode>
+      <FileName>WPFViewModels\WindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ChatWpf.Window.Rectangle" Collapsed="true">
+    <Position X="55.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>Window\WindowResizer.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChatWpf.Window.Minmaxinfo" Collapsed="true">
+    <Position X="52.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAABAAAAAAAAAAAACCAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Window\WindowResizer.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChatWpf.Window.Point" Collapsed="true">
+    <Position X="54" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Window\WindowResizer.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="ChatWpf.DI.UI.IUiManager" Collapsed="true">
+    <Position X="54" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DI\UI\IUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChatWpf.ViewModel.Base.IHavePassword" Collapsed="true">
+    <Position X="52.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Base\IHavePassword.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ChatWpf.Animation.AnimationSlideInDirection" Collapsed="true">
+    <Position X="52.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>Animation\AnimationSlideInDirection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Animation.PageAnimation" Collapsed="true">
+    <Position X="55.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Animation\PageAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Window.MonitorOptions" Collapsed="true">
+    <Position X="54" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Window\MonitorOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChatWpf.Window.WindowDockPosition" Collapsed="true">
+    <Position X="57.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAABAAAABAAAAAAAIAAAAACACAAAAAAEA=</HashCode>
+      <FileName>Window\WindowDockPosition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

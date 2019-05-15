@@ -960,3 +960,114 @@ WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
 [2019-04-26 05:21:57] Executed action ChatWpf.Web.Server.Controllers.ApiController.RegisterAsync (ChatWpf.Web.Server) in 7096.5985ms
 [2019-04-26 05:21:57] An unhandled exception has occurred while executing the request.
 [2019-04-26 05:21:58] Request finished in 7748.4956ms 500 text/html; charset=utf-8
+[2019-04-26 08:29:13] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2019-04-26 08:29:14] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-26 08:29:14] Executed DbCommand (166ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+[2019-04-26 08:29:15] Failed to authenticate HTTPS connection.
+[2019-04-26 08:29:18] Request starting HTTP/1.1 GET https://localhost:5555/  
+[2019-04-26 08:29:18] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+[2019-04-26 08:29:19] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+[2019-04-26 08:29:19] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.7026ms.
+[2019-04-26 08:29:19] Executing ViewResult, running view Index.
+[2019-04-26 08:29:19] Executed ViewResult - view Index executed in 248.5093ms.
+[2019-04-26 08:29:19] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 977.8009ms
+[2019-04-26 08:29:19] Request finished in 1707.3928ms 200 text/html; charset=utf-8
+[2019-04-26 08:32:09] Request starting HTTP/1.1 POST http://localhost:5000/api/login application/json 64
+[2019-04-26 08:32:09] Request finished in 198.8132ms 307 
+[2019-04-26 08:32:09] Connection id "0HLMADIQ2P5J4", Request id "0HLMADIQ2P5J4:00000001": the application completed without reading the entire request body.
+[2019-04-26 08:32:09] Request starting HTTP/1.1 POST https://localhost:5555/api/login application/json 64
+[2019-04-26 08:32:09] Route matched with {action = "LogInAsync", controller = "Api"}. Executing action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server)
+[2019-04-26 08:32:10] Executing action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) with arguments (ChatWpf.Core.ApiModels.LoginRegister.LoginCredentialsApiModel) - Validation state: Valid
+[2019-04-26 08:32:10] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+[2019-04-26 08:32:10] Executed DbCommand (124ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+[2019-04-26 08:32:10] Executed action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 613.4276ms.
+[2019-04-26 08:32:10] Executing ObjectResult, writing value of type 'ChatWpf.Core.ApiModels.ApiResponse`1[[ChatWpf.Core.ApiModels.UserProfile.UserProfileDetailsApiModel, ChatWpf.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2019-04-26 08:32:10] Executed action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) in 1039.9608ms
+[2019-04-26 08:32:10] Request finished in 1140.397ms 200 application/json; charset=utf-8
+[2019-04-26 08:32:11] Request starting HTTP/1.1 POST http://localhost:5000/api/user/profile application/json 0
+[2019-04-26 08:32:11] Request finished in 13.7937ms 307 
+[2019-04-26 08:32:11] Request starting HTTP/1.1 POST https://localhost:5555/api/user/profile application/json 0
+[2019-04-26 08:32:11] Route matched with {action = "GetUserProfileAsync", controller = "Api"}. Executing action ChatWpf.Web.Server.Controllers.ApiController.GetUserProfileAsync (ChatWpf.Web.Server)
+[2019-04-26 08:32:11] Authorization failed.
+[2019-04-26 08:32:11] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+[2019-04-26 08:32:11] Executing ChallengeResult with authentication schemes (Bearer).
+[2019-04-26 08:32:11] AuthenticationScheme: Bearer was challenged.
+[2019-04-26 08:32:11] Executed action ChatWpf.Web.Server.Controllers.ApiController.GetUserProfileAsync (ChatWpf.Web.Server) in 62.9725ms
+[2019-04-26 08:32:11] Request finished in 88.0456ms 401 
+INFORMATION: [2019-04-29 02:15:57] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFORMATION: [2019-04-29 02:15:58] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFORMATION: [2019-04-29 02:15:59] Executed DbCommand (170ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+DEBUG: [2019-04-29 02:16:00] Failed to authenticate HTTPS connection.
+INFORMATION: [2019-04-29 02:16:01] Request starting HTTP/1.1 GET https://localhost:5555/  
+INFORMATION: [2019-04-29 02:16:02] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+INFORMATION: [2019-04-29 02:16:02] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+INFORMATION: [2019-04-29 02:16:02] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6442ms.
+INFORMATION: [2019-04-29 02:16:02] Executing ViewResult, running view Index.
+INFORMATION: [2019-04-29 02:16:02] Executed ViewResult - view Index executed in 223.4743ms.
+INFORMATION: [2019-04-29 02:16:03] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 633.0455ms
+INFORMATION: [2019-04-29 02:16:03] Request finished in 1588.6152ms 200 text/html; charset=utf-8
+INFORMATION: [2019-04-29 02:16:03] Request starting HTTP/1.1 GET https://localhost:5555/favicon.ico  
+INFORMATION: [2019-04-29 02:16:03] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\favicon.ico'
+INFORMATION: [2019-04-29 02:16:03] Request finished in 94.6065ms 200 image/x-icon
+INFORMATION: [2019-04-29 02:16:09] Request starting HTTP/1.1 POST http://localhost:5000/api/login application/json 40
+INFORMATION: [2019-04-29 02:16:09] Request finished in 17.1933ms 307 
+INFORMATION: [2019-04-29 02:16:10] Connection id "0HLMCIG7FM9SJ", Request id "0HLMCIG7FM9SJ:00000001": the application completed without reading the entire request body.
+INFORMATION: [2019-04-29 02:16:10] Request starting HTTP/1.1 POST https://localhost:5555/api/login application/json 40
+INFORMATION: [2019-04-29 02:16:10] Route matched with {action = "LogInAsync", controller = "Api"}. Executing action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server)
+INFORMATION: [2019-04-29 02:16:10] Executing action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) with arguments (ChatWpf.Core.ApiModels.LoginRegister.LoginCredentialsApiModel) - Validation state: Valid
+INFORMATION: [2019-04-29 02:16:10] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFORMATION: [2019-04-29 02:16:11] Executed DbCommand (215ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+INFORMATION: [2019-04-29 02:16:11] Executed action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 704.0162ms.
+INFORMATION: [2019-04-29 02:16:11] Executing ObjectResult, writing value of type 'ChatWpf.Core.ApiModels.ApiResponse`1[[ChatWpf.Core.ApiModels.UserProfile.UserProfileDetailsApiModel, ChatWpf.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+INFORMATION: [2019-04-29 02:16:11] Executed action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) in 1418.1847ms
+INFORMATION: [2019-04-29 02:16:11] Request finished in 1510.836ms 200 application/json; charset=utf-8
+INFORMATION: [2019-05-09 05:18:33] User profile is available. Using 'C:\Users\RGyrbu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFORMATION: [2019-05-09 05:18:37] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFORMATION: [2019-05-09 05:18:42] Executed DbCommand (3,466ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+DEBUG: [2019-05-09 05:18:45] Failed to authenticate HTTPS connection.
+DEBUG: [2019-05-09 05:18:45] Failed to authenticate HTTPS connection.
+INFORMATION: [2019-05-09 05:18:48] Request starting HTTP/1.1 GET https://localhost:5555/  
+INFORMATION: [2019-05-09 05:18:50] Route matched with {action = "Index", controller = "Home"}. Executing action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server)
+INFORMATION: [2019-05-09 05:18:52] Executing action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) - Validation state: Valid
+INFORMATION: [2019-05-09 05:18:52] Executed action method ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.8669ms.
+INFORMATION: [2019-05-09 05:18:52] Executing ViewResult, running view Index.
+INFORMATION: [2019-05-09 05:18:53] Executed ViewResult - view Index executed in 986.5135ms.
+INFORMATION: [2019-05-09 05:18:53] Executed action ChatWpf.Web.Server.Controllers.HomeController.Index (ChatWpf.Web.Server) in 2189.4218ms
+INFORMATION: [2019-05-09 05:18:54] Request finished in 5108.4026ms 200 text/html; charset=utf-8
+INFORMATION: [2019-05-09 05:18:54] Request starting HTTP/1.1 GET https://localhost:5555/favicon.ico  
+INFORMATION: [2019-05-09 05:18:54] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\RGyrbu\source\repos\ChatWpf\ChatWpf.Web.Server\wwwroot\favicon.ico'
+INFORMATION: [2019-05-09 05:18:54] Request finished in 213.0689ms 200 image/x-icon
+INFORMATION: [2019-05-09 05:19:01] Request starting HTTP/1.1 POST http://localhost:5000/api/login application/json 64
+INFORMATION: [2019-05-09 05:19:01] Request finished in 48.888ms 307 
+INFORMATION: [2019-05-09 05:19:02] Connection id "0HLMKH4VG9VRI", Request id "0HLMKH4VG9VRI:00000001": the application completed without reading the entire request body.
+INFORMATION: [2019-05-09 05:19:02] Request starting HTTP/1.1 POST https://localhost:5555/api/login application/json 64
+INFORMATION: [2019-05-09 05:19:02] Route matched with {action = "LogInAsync", controller = "Api"}. Executing action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server)
+INFORMATION: [2019-05-09 05:19:03] Executing action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) with arguments (ChatWpf.Core.ApiModels.LoginRegister.LoginCredentialsApiModel) - Validation state: Valid
+INFORMATION: [2019-05-09 05:19:03] Entity Framework Core 2.1.8-servicing-32085 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFORMATION: [2019-05-09 05:19:04] Executed DbCommand (678ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+INFORMATION: [2019-05-09 05:19:05] Executed action method ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2311.026ms.
+INFORMATION: [2019-05-09 05:19:05] Executing ObjectResult, writing value of type 'ChatWpf.Core.ApiModels.ApiResponse`1[[ChatWpf.Core.ApiModels.UserProfile.UserProfileDetailsApiModel, ChatWpf.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+INFORMATION: [2019-05-09 05:19:05] Executed action ChatWpf.Web.Server.Controllers.ApiController.LogInAsync (ChatWpf.Web.Server) in 3611.7275ms
+INFORMATION: [2019-05-09 05:19:06] Request finished in 3817.7292ms 200 application/json; charset=utf-8
+INFORMATION: [2019-05-09 05:19:07] Request starting HTTP/1.1 POST http://localhost:5000/api/user/profile application/json 0
+INFORMATION: [2019-05-09 05:19:07] Request finished in 9.7727ms 307 
+INFORMATION: [2019-05-09 05:19:07] Request starting HTTP/1.1 POST https://localhost:5555/api/user/profile application/json 0
+INFORMATION: [2019-05-09 05:19:07] Route matched with {action = "GetUserProfileAsync", controller = "Api"}. Executing action ChatWpf.Web.Server.Controllers.ApiController.GetUserProfileAsync (ChatWpf.Web.Server)
+INFORMATION: [2019-05-09 05:19:07] Authorization failed.
+INFORMATION: [2019-05-09 05:19:07] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+INFORMATION: [2019-05-09 05:19:07] Executing ChallengeResult with authentication schemes (Bearer).
+INFORMATION: [2019-05-09 05:19:07] AuthenticationScheme: Bearer was challenged.
+INFORMATION: [2019-05-09 05:19:07] Executed action ChatWpf.Web.Server.Controllers.ApiController.GetUserProfileAsync (ChatWpf.Web.Server) in 190.9049ms
+INFORMATION: [2019-05-09 05:19:07] Request finished in 313.7247ms 401 
