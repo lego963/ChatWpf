@@ -37,7 +37,7 @@
                                    Foreground="{StaticResource WordBlueBrush}" />
 
                             <!-- Sign up subtext-->
-                            <TextBlock Text="PISHI DANNIE!" 
+                            <TextBlock Text="enter credentials!" 
                                        FontSize="{StaticResource FontSizeLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
                                        Margin="0 0 0 20"
